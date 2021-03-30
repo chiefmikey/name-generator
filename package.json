@@ -1,10 +1,12 @@
 {
   "name": "myspace-name-generator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "For all social media users undergoing an identity crisis.",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build": "webpack --mode development -w"
   },
   "repository": {
     "type": "git",
