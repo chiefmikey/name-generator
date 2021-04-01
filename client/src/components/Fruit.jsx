@@ -38,7 +38,8 @@ class Fruit extends React.Component {
       .then((res) => {
         fruitDefault = res.data.name ? res.data.name
           : fruitInput[0].toUpperCase() + fruitInput.slice(1);
-        sugarDefault = res.data.nutritions.sugar ? String(res.data.nutritions.sugar).replace('.', '') : '666';
+        // sugarDefault = String(res.data.nutritions.sugar).replace('.', '');
+        sugarDefault = res.data.nutritions.sugar ? String(res.data.nutritions.sugar).replace('.', '') : '510';
         this.setState({ foundFruit: fruitDefault, sugar: sugarDefault },
           logFruit(fruitDefault, sugarDefault));
       })

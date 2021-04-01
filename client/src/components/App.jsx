@@ -36,11 +36,12 @@ class App extends React.Component {
   }
 
   handleSubmit() {
+    const { emo } = this.state;
+    this.getEmotion(emo);
     this.checkAll();
   }
 
   getEmotion(emo) {
-    let chosenEmotion;
     axios.get('/submit/emotion')
       .then((res) => {
         const randomEmotion1 = res.data[Math.floor(Math.random() * res.data.length)].word;
@@ -69,7 +70,7 @@ class App extends React.Component {
     const thePetName = petName || 'mikey';
     const theSugar = sugar || '3000';
     const mainResult = `${theEmotion}_${thePetName}_${theSugar}`;
-    const emoResult = `_xXx_${theEmo}_${thePetName}_${theSugar}_xXx_`;
+    const emoResult = `_xXx_${theEmo}_${thePetName}_666_xXx_`;
 
     axios.post('/submit/post', {
       emotion, normalEmotion, emoEmotion, animal, petName, birthday, fruit, sugar, result, mainResult, emoResult,

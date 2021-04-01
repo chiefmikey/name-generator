@@ -13,17 +13,17 @@ const Selection = ({
     <div>
       <h5>Birthday:</h5>
       {' '}
-      {birthday || 'none'}
+      {birthday || '–'}
     </div>
     <div>
       <h5>Animal:</h5>
       {' '}
-      {animal || 'none'}
+      {animal || '–'}
     </div>
     <div>
       <h5>Fruit:</h5>
       {' '}
-      {fruit || 'none'}
+      {fruit || '–'}
     </div>
     <div id="submit">
       {button}
