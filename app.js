@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mountRoutes = require('./routes');
+const db = require('./db');
 
 const port = process.env.PORT || 8080;
 
