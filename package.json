@@ -1,5 +1,5 @@
 {
-  "name": "myspace-name-generator",
+  "name": "name-generator",
   "version": "0.0.1",
   "description": "For all social media users undergoing an identity crisis.",
   "main": "app.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/miklbarton/myspace-name-generator.git"
+    "url": "git+https://github.com/wolfebyte/name-generator.git"
   },
-  "author": "miklbarton",
+  "author": "wolfebyte",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/miklbarton/myspace-name-generator/issues"
+    "url": "https://github.com/wolfebyte/name-generator/issues"
   },
-  "homepage": "https://github.com/miklbarton/myspace-name-generator#readme",
+  "homepage": "https://github.com/wolfebyte/name-generator#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "cors": "^2.8.5",

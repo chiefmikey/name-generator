@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import Animal from './Animal.jsx';
-import Birthday from './Birthday.jsx';
-import Fruit from './Fruit.jsx';
-import Emo from './Emo.jsx';
-import Selection from './Selection.jsx';
-import Result from './Result.jsx';
+
+import Animal from './Animal';
+import Birthday from './Birthday';
+import Fruit from './Fruit';
+import Emo from './Emo';
+import Selection from './Selection';
+import Result from './Result';
 
 class App extends React.Component {
   constructor() {
@@ -135,9 +136,7 @@ class App extends React.Component {
     return (
       <>
         <div id="header">
-          <h2>The</h2>
-          <h1>Myspace Name</h1>
-          <h2>Generator</h2>
+          name generator
         </div>
         <div id="main">
           <h4>Your Birthday:</h4>

@@ -4,7 +4,7 @@ const Result = ({ emo, mainResult, emoResult }) => {
   if (emo) {
     return (
       <div id="result">
-        <h3>Your New Myspace Name:</h3>
+        <h3>Your New Name:</h3>
         <div id="new-name">
           <h2>{emoResult}</h2>
         </div>
@@ -14,7 +14,7 @@ const Result = ({ emo, mainResult, emoResult }) => {
 
   return (
     <div id="result">
-      <h3>Your New Myspace Name:</h3>
+      <h3>Your New Name:</h3>
       <div id="new-name">
         <h2>{mainResult}</h2>
       </div>
