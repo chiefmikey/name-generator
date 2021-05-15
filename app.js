@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const mountRoutes = require('./routes');
-const db = require('./db');
 
 const port = process.env.PORT || 8080;
 
@@ -16,7 +15,7 @@ app.use(
   }),
 );
 app.use(express.json());
-app.use(express.static('./client/dist'));
+app.use(express.static('./client/public'));
 mountRoutes(app);
 
 app.listen(port, () => {

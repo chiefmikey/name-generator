@@ -1,0 +1,72 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color:cornflowerblue;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: teal;
+}
+
+#app {
+  background-color: aliceblue;
+  width: 444px;
+  height: auto;
+  padding: 4%;
+  padding-top: 2%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color:dodgerblue;
+  padding-top: 4%;
+}
+
+h1, h2 {
+  text-align: center;
+  margin: 0;
+  line-height: 20px;
+}
+
+h5 {
+  padding: 0;
+}
+
+button {
+  background-color:dodgerblue;
+  border: none;
+  color: white;
+  font-weight: 700;
+  width: 200px;
+  height: 50px;
+  margin-top: 4%;
+}
+
+#main {
+  margin-top: 8%;
+}
+
+#selection {
+  padding-top: 4%;
+}
+
+#result {
+  padding-top: 4%;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#new-name {
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#submit-disable {
+  background-color: gray;
+}

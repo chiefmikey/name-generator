@@ -105,3 +105,6 @@ dist
 
 # Tokens
 token.js
+
+# VSCode Counter
+.VSCodeCounter
