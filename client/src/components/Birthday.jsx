@@ -1,5 +1,5 @@
 import React from 'react';
-import BirthdayOptions from './BirthdayOptions.jsx';
+import BirthdayOptions from './BirthdayOptions';
 
 class Birthday extends React.Component {
   constructor() {
