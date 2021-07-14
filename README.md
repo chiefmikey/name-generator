@@ -1,12 +1,14 @@
 # **Name Generator**
 
-For all social media users undergoing an identity crisis
+Dynamic text generator with result data sourced from multiple external APIs
 
 - Grew user interest with dynamic data generated from a variety of external APIs
 - Defined application structure by creatively utilizing uniquely shaped data from public sources
 - Minimized response times by serving stored results from a persistent NoSQL database
 
 ## **Name Generator** is all you need to succeed with your mid-life "rebrand"
+
+To all social media users undergoing an identity crisis:
 
 If your social profile is feeling stale or outdated, pump it full of our prescription for this sweet sugary dose of *rad*. Just answer a few simple questions about your personality and suddenly all of your problems will dissolve into oblivion as you revel in the shining glory that is your brand new name.
 
