@@ -1,10 +1,10 @@
 # **Name Generator**
 
-Dynamic text generator with result data sourced from multiple external APIs
+Dynamic text generator with results built from public data sources
 
-- Grew user interest with dynamic data generated from a variety of external APIs
-- Defined application structure by creatively utilizing uniquely shaped data from public sources
-- Minimized response times by serving stored results from a persistent NoSQL database
+- Developed user interest by constructing unique results influenced by client input
+- Refined data availability by shaping information received from a variety of external APIs
+- Minimized response times by serving common data from a persistent NoSQL database
 
 ## **Name Generator** is all you need to succeed with your mid-life "rebrand"
 
