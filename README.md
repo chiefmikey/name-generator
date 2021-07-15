@@ -16,7 +16,7 @@ If your social profile is feeling stale or outdated, pump it full of our prescri
 
 ### *Social media is hard.*
 
-In a world of short attention spans there is little opportunity to make an impression. Statistically the number one influencer when a public profile is being viewed is the name being used. This is generally the most prominent of the displayed information and most interacted with as well. How can anyone stand out in a sea of simple names?
+In a world of short attention spans there is little opportunity to make an impression. Statistically, it is the displayed name that is the number one user influencer when a public profile is being viewed. This is generally the most prominent information and most interacted with as well. So tell us, how can *anyone* stand out in a sea of simple names?
 
 Personal naming convention complications are no longer an obstacle with **Name Generator**. By simply providing some basic personality details, the generator can supply a unique identifier to be used as a displayed profile name on any social media platform.
 
