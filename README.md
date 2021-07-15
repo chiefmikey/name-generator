@@ -1,6 +1,6 @@
 # **Name Generator**
 
-Dynamic text generator with results built from public data sources
+Full stack text generator with dynamic results built from public data sources
 
 - Developed user interest by constructing unique results influenced by client input
 - Refined data availability by shaping information received from a variety of external APIs
