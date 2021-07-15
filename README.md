@@ -2,7 +2,7 @@
 
 Full stack text generator with dynamic results built from public data sources
 
-- Developed user interest by constructing unique results influenced by client input
+- Developed user interest from constructing unique results influenced by client input
 - Refined data availability by shaping information received from a variety of external APIs
 - Minimized response times by serving common data from a persistent NoSQL database
 
