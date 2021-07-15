@@ -22,7 +22,7 @@ Personal naming convention complications are no longer an obstacle with **Name G
 
 > "Picking a name for a baby is hard. Picking a name for your social media profile is harder. At least it was, until now... **Name Generator**, *just use it.*"
 
-A few simple clicks like the wave of a wand. A brief questionnaire is all that is required to conquer the pursuit of coolness.
+The flick of your mouse, the wave of a wand. A brief questionnaire is all that is required to conquer the pursuit of coolness.
 
 > "All of my friends thought I was a lame but my swag got turned on as soon as I hit up the **Name Generator**."
 
