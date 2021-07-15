@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wolfebyte/name-generator.git"
+    "url": "git+https://github.com/chiefmikey/name-generator.git"
   },
-  "author": "wolfebyte",
+  "author": "chiefmikey",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wolfebyte/name-generator/issues"
+    "url": "https://github.com/chiefmikey/name-generator/issues"
   },
-  "homepage": "https://github.com/wolfebyte/name-generator#readme",
+  "homepage": "https://github.com/chiefmikey/name-generator#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "cors": "^2.8.5",

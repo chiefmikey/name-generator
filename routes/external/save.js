@@ -2,7 +2,11 @@ const Name = require('../../db/models/Name');
 
 exports.get = async (req, res) => {
   try {
-    const results = await Name.find({ birthday: req.query.birthday, fruit: req.query.fruit, animal: req.query.animal });
+    const results = await Name.find({
+      birthday: req.query.birthday,
+      fruit: req.query.fruit,
+      animal: req.query.animal,
+    });
     res.status(200).send(results);
   } catch (error) {
     console.log(error);

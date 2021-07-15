@@ -44,7 +44,12 @@ class Birthday extends React.Component {
             <option value="">Day</option>
             <BirthdayOptions day />
           </select>
-          {/* <input type="text" name="birthday" onChange={this.onChange} value={birthdayInput} /> */}
+          {/* <input
+            type="text"
+            name="birthday"
+            onChange={this.onChange}
+            value={birthdayInput}
+          /> */}
           <input type="submit" value="Submit" />
         </form>
       </div>

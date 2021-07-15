@@ -74,7 +74,17 @@ class App extends React.Component {
     const emoResult = `_xXx_${theEmo}_${thePetName}_666_xXx_`;
 
     axios.post('/submit/post', {
-      emotion, normalEmotion, emoEmotion, animal, petName, birthday, fruit, sugar, result, mainResult, emoResult,
+      emotion,
+      normalEmotion,
+      emoEmotion,
+      animal,
+      petName,
+      birthday,
+      fruit,
+      sugar,
+      result,
+      mainResult,
+      emoResult,
     })
       .catch((error) => {
         console.error('error in submit post', error);
@@ -92,7 +102,16 @@ class App extends React.Component {
     axios(checkIt)
       .then((res) => {
         if (res.data[0]) {
-          this.setState({ result: true, emotion: res.data[0].emotion, normalEmotion: res.data[0].normalEmotion, emoEmotion: res.data[0].emoEmotion, petName: res.data[0].petName, sugar: res.data[0].sugar, mainResult: res.data[0].mainResult, emoResult: res.data[0].emoResult });
+          this.setState({
+            result: true,
+            emotion: res.data[0].emotion,
+            normalEmotion: res.data[0].normalEmotion,
+            emoEmotion: res.data[0].emoEmotion,
+            petName: res.data[0].petName,
+            sugar: res.data[0].sugar,
+            mainResult: res.data[0].mainResult,
+            emoResult: res.data[0].emoResult,
+          });
         } else {
           this.postAll();
         }
@@ -145,7 +164,13 @@ class App extends React.Component {
           <Animal logPet={this.logPet} birthday={birthday} />
           <h4>Pick a Fruit:</h4>
           <Fruit logFruit={this.logFruit} />
-          <Selection birthday={birthday} animal={animal} fruit={fruit} submit={this.handleSubmit} result={result} />
+          <Selection
+            birthday={birthday}
+            animal={animal}
+            fruit={fruit}
+            submit={this.handleSubmit}
+            result={result}
+          />
           <Emo selectChange={this.selectChange} emo={emo} />
           {result ? <Result emo={emo} mainResult={mainResult} emoResult={emoResult} />
             : undefined}

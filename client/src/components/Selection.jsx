@@ -9,26 +9,27 @@ const Selection = ({
   }
   return (
 
-  <div id="selection">
-    <div>
-      <h5>Birthday:</h5>
-      {' '}
-      {birthday || '–'}
+    <div id="selection">
+      <div>
+        <h5>Birthday:</h5>
+        {' '}
+        {birthday || '–'}
+      </div>
+      <div>
+        <h5>Animal:</h5>
+        {' '}
+        {animal || '–'}
+      </div>
+      <div>
+        <h5>Fruit:</h5>
+        {' '}
+        {fruit || '–'}
+      </div>
+      <div id="submit">
+        {button}
+      </div>
     </div>
-    <div>
-      <h5>Animal:</h5>
-      {' '}
-      {animal || '–'}
-    </div>
-    <div>
-      <h5>Fruit:</h5>
-      {' '}
-      {fruit || '–'}
-    </div>
-    <div id="submit">
-      {button}
-    </div>
-  </div>
-)};
+  );
+};
 
 export default Selection;
