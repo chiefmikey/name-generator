@@ -12,8 +12,6 @@ To all social media users undergoing an identity crisis:
 
 If your social profile is feeling stale or outdated, pump it full of our prescription for this sweet sugary dose of *rad*. Just answer a few simple questions about your personality and suddenly all of your problems will dissolve into oblivion as you revel in the shining glory that is your brand new name.
 
----
-
 ### *Social media is hard.*
 
 In a world of short attention spans there is little opportunity to make an impression. Statistically, it is the displayed name that is the number one user influencer when a public profile is being viewed. This is generally the most prominent information and most interacted with as well. So tell us, how can *anyone* stand out in a sea of simple names?
