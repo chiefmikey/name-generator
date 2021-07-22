@@ -1,15 +1,19 @@
-const Router = require('express-promise-router');
-const axios = require('axios');
+import Router from '@koa/router';
+import axios from 'axios';
 
-const router = new Router();
+const router = new Router({ prefix: '/fruit' });
 
-module.exports = router;
-
-router.get('/', async (req, res) => {
+router.get('/', async (ctx) => {
   try {
-    const fruit = await axios.get(`https://www.fruityvice.com/api/fruit/${req.query.fruitInput}`);
-    res.status(200).send(fruit.data);
+    const fruit = await axios.get(
+      `https://www.fruityvice.com/api/fruit/${ctx.request.query.fruitInput}`,
+    );
+    ctx.response.status(200).send(fruit.data);
   } catch (error) {
-    res.status(200).send({ name: undefined, nutritions: { sugar: undefined } });
+    ctx.response
+      .status(200)
+      .send({ name: undefined, nutritions: { sugar: undefined } });
   }
 });
+
+export default router;
