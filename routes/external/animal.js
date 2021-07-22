@@ -1,30 +1,31 @@
-const Router = require('express-promise-router');
-const axios = require('axios');
-const auth = require('../../token.js');
+import Router from '@koa/router';
+import axios from 'axios';
+import auth from '../../token.js';
 
-const router = new Router();
+const router = new Router({ prefix: '/animal' });
 
-module.exports = router;
-
-router.get('/', async (req, res) => {
+router.get('/', async (ctx) => {
   try {
     const authorize = await auth.animalAccess();
     // console.log(authorize.animalTokenType);
     const allAnimals = {
       method: 'get',
-      url: `https://api.petfinder.com/v2/animals?type=${req.query.defaultAnimal}&after=2020-${req.query.defaultBirthday}T00:00:00Z&before=2020-${req.query.defaultBirthday}T23:59:59Z`,
+      url: `https://api.petfinder.com/v2/animals?type=${ctx.request.query.defaultAnimal}&after=2020-${ctx.request.query.defaultBirthday}T00:00:00Z&before=2020-${ctx.request.query.defaultBirthday}T23:59:59Z`,
       headers: {
         Authorization: `${authorize.animalTokenType} ${authorize.animalToken}`,
       },
     };
     const animalResults = await axios(allAnimals);
     // console.log(animalResults.data.animals);
-    const selectAnimal = animalResults.data.animals[
-      Math.floor(Math.random() * animalResults.data.animals.length)
-    ];
+    const selectAnimal =
+      animalResults.data.animals[
+        Math.floor(Math.random() * animalResults.data.animals.length)
+      ];
     // console.log(animalResults.data.animals);
-    res.status(200).send(selectAnimal);
+    ctx.response.status(200).send(selectAnimal);
   } catch (error) {
-    res.status(200).send({ name: 'mikey' });
+    ctx.response.status(200).send({ name: 'mikey' });
   }
 });
+
+export default router;
