@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const nameSchema = new mongoose.Schema({
   emotion: String,
@@ -16,4 +16,4 @@ const nameSchema = new mongoose.Schema({
 
 const Name = mongoose.model('Name', nameSchema);
 
-module.exports = Name;
+export default Name;
