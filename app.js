@@ -1,23 +1,30 @@
-const express = require('express');
-const cors = require('cors');
-const mountRoutes = require('./routes');
+/* eslint-disable import/extensions */
+import Koa from 'koa';
+import cors from '@koa/cors';
+import serve from 'koa-static';
+import path from 'path';
 
-const port = process.env.PORT || 8080;
+import submitRouter from './routes/submit.js';
 
-const app = express();
+const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf('/'));
 
-app.use(
-  cors({
-    origin: '*',
-    methods: 'GET, POST, PUT',
-    allowedHeaders: '*',
-    exposedHeaders: '*',
-  }),
+const app = new Koa();
+
+app
+  .use(
+    cors({
+      origin: '*',
+      methods: 'GET, POST, PUT',
+      allowedHeaders: '*',
+      exposedHeaders: '*',
+    }),
+  )
+  .use(serve(path.join(__dirname, '/client/public')))
+  .use(submitRouter.routes())
+  .use(submitRouter.allowedMethods());
+
+app.listen(3000, () =>
+  console.log(`Koa is listening to http://localhost:3000`),
 );
-app.use(express.json());
-app.use(express.static('./client/public'));
-mountRoutes(app);
 
-app.listen(port, () => {
-  console.log('Express server is listening on port', port);
-});
+export default app;
