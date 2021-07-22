@@ -1,25 +1,26 @@
-const Router = require('express-promise-router');
-const axios = require('axios');
-const auth = require('../../token.js');
+import Router from '@koa/router';
+import axios from 'axios';
 
-const router = new Router();
+const router = new Router({ prefix: '/emotion' });
 
-module.exports = router;
-
-router.get('/', async (req, res) => {
+router.get('/', async (ctx) => {
   try {
-    const emotion = await axios.get('https://api.datamuse.com/words?ml=enthusiastic');
-    res.status(200).send(emotion.data);
+    const emotion = await axios.get(
+      'https://api.datamuse.com/words?ml=enthusiastic',
+    );
+    ctx.response.status(200).send(emotion.data);
   } catch (error) {
-    res.status(200).send([{ word: 'chief' }]);
+    ctx.response.status(200).send([{ word: 'chief' }]);
   }
 });
 
-router.get('/emo', async (req, res) => {
+router.get('/emo', async (ctx) => {
   try {
     const emotion = await axios.get('https://api.datamuse.com/words?ml=sad');
-    res.status(200).send(emotion.data);
+    ctx.response.status(200).send(emotion.data);
   } catch (error) {
-    res.status(200).send([{ word: 'chief' }]);
+    ctx.response.status(200).send([{ word: 'chief' }]);
   }
 });
+
+export default router;
