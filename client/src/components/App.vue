@@ -10,20 +10,21 @@
       <Fruit @logFruit="logFruit" />
       <Selection :birthday="birthday" :animal="animal" :fruit="fruit" />
       <form @submit.prevent="handleSubmit">
-        <button class="submit-button-main" type="submit">Submit</button>
+        <button id="submit-button-main" :disabled="isFilled" type="submit">
+          Submit
+        </button>
       </form>
       <h4>
         Emo Mode:
         <input v-model="emo" type="checkbox" />
       </h4>
+      <h3>Your New Name:</h3>
       <div v-if="emo" id="result">
-        <h3>Your New Name:</h3>
         <div id="new-name">
           <h2>{{ emoResult }}</h2>
         </div>
       </div>
       <div v-else id="result">
-        <h3>Your New Name:</h3>
         <div id="new-name">
           <h2>{{ mainResult }}</h2>
         </div>
@@ -62,6 +63,19 @@ export default {
       mainResult: '',
       emoResult: '',
     };
+  },
+
+  computed: {
+    isFilled() {
+      if (
+        !this.birthday.length > 0 ||
+        !this.animal.length > 0 ||
+        !this.fruit.length > 0
+      ) {
+        return true;
+      }
+      return false;
+    },
   },
 
   methods: {
@@ -149,6 +163,11 @@ export default {
             this.postAll();
           }
         })
+        .then(() => {
+          this.animal = '';
+          this.birthday = '';
+          this.fruit = '';
+        })
         .catch((error) => {
           console.error('error in check it', error);
         });
@@ -188,8 +207,24 @@ html, body
   font 16px/1.2 BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif
   padding 10px
 
+h2, h3, h4, h5, h6
+  padding 5px 0 5px 0
+  margin 5px 0 5px 0
+
 .wrapper
+  background-color black
+  color white
+  width 500px
   margin 0 auto
+  padding 40px
+
+#header
+  font-size 24px
+  font-weight 900
+  text-align center
+  padding-bottom 20px
+
+#main
   display flex
   flex-direction column
   align-items center
@@ -197,8 +232,25 @@ html, body
 form
   margin-bottom 20px
 
+select
+  height 30px
+
 input[type="text"]
   width 200px
+  height 30px
   padding 10px
   border 1px solid #777
+
+.submit-button
+  height 30px
+
+#submit-button-main
+  width 300px
+  height 50px
+  margin 20px 0 10px 0
+  padding 10px 20px 10px 20px
+  align-self center
+
+#result
+  height 50px
 </style>
