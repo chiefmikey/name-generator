@@ -26,7 +26,6 @@ export default {
   data() {
     return {
       fruitInput: '',
-      foundFruit: '',
       sugar: null,
     };
   },
@@ -45,11 +44,9 @@ export default {
           fruitDefault = res.data.name
             ? res.data.name
             : this.fruitInput[0].toUpperCase() + this.fruitInput.slice(1);
-          // sugarDefault = String(res.data.nutritions.sugar).replace('.', '');
           sugarDefault = res.data.nutritions.sugar
             ? String(res.data.nutritions.sugar).replace('.', '')
             : '510';
-          this.foundFruit = fruitDefault;
           this.sugar = sugarDefault;
           this.$emit('logFruit', fruitDefault, sugarDefault);
         })
