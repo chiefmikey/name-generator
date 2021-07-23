@@ -34,4 +34,7 @@ export default {
 };
 </script>
 
-<style lang="stylus"></style>
+<style lang="stylus">
+#selection
+  width 300px
+</style>
