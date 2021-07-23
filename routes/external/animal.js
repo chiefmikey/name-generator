@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import Router from '@koa/router';
 import axios from 'axios';
 import auth from '../../token.js';
@@ -22,9 +23,11 @@ router.get('/', async (ctx) => {
         Math.floor(Math.random() * animalResults.data.animals.length)
       ];
     // console.log(animalResults.data.animals);
-    ctx.response.status(200).send(selectAnimal);
+    ctx.response.status = 200;
+    ctx.response.body = selectAnimal;
   } catch (error) {
-    ctx.response.status(200).send({ name: 'mikey' });
+    ctx.response.status = 200;
+    ctx.response.body = { name: 'mikey' };
   }
 });
 
