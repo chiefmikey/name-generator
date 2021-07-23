@@ -25,6 +25,7 @@ module.exports = {
     'object-shorthand': 'off',
     'class-methods-use-this': 'off',
     'no-underscore-dangle': 'off',
+    'import/extensions': 0,
   },
   plugins: ['import', '@babel', 'prettier'],
 };
