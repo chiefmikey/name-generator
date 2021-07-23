@@ -47,6 +47,6 @@ export default {
   },
   plugins: [new VueLoaderPlugin()],
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json', '...'],
+    extensions: ['*', '.js', '.jsx', '.vue', '.json', '...'],
   },
 };
