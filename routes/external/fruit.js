@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import Router from '@koa/router';
 import axios from 'axios';
 
@@ -8,11 +9,11 @@ router.get('/', async (ctx) => {
     const fruit = await axios.get(
       `https://www.fruityvice.com/api/fruit/${ctx.request.query.fruitInput}`,
     );
-    ctx.response.status(200).send(fruit.data);
+    ctx.response.status = 200;
+    ctx.response.body = fruit.data;
   } catch (error) {
-    ctx.response
-      .status(200)
-      .send({ name: undefined, nutritions: { sugar: undefined } });
+    ctx.response.status = 200;
+    ctx.response.body = { name: undefined, nutritions: { sugar: undefined } };
   }
 });
 
