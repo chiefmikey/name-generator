@@ -8,7 +8,6 @@ import getRouter from './db/get.js';
 const router = new Router({ prefix: '/submit' });
 
 router.use(
-  '/',
   animalRouter.routes(),
   animalRouter.allowedMethods(),
   emotionRouter.routes(),
