@@ -1,19 +1,22 @@
+/* eslint-disable no-param-reassign */
 import Router from '@koa/router';
 import Name from '../../db/models/Name.js';
 
 const router = new Router({ prefix: '/get' });
 
-router.get('/', async (req, res) => {
+router.get('/', async (ctx) => {
   try {
     const results = await Name.find({
-      birthday: req.query.birthday,
-      fruit: req.query.fruit,
-      animal: req.query.animal,
+      birthday: ctx.request.query.birthday,
+      fruit: ctx.request.query.fruit,
+      animal: ctx.request.query.animal,
     });
-    res.status(200).send(results);
+    ctx.response.status = 200;
+    ctx.response.body = results;
   } catch (error) {
     console.log(error);
-    res.status(200).send(false);
+    ctx.response.status = 200;
+    ctx.response.body = false;
   }
 });
 
