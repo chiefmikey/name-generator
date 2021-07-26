@@ -15,7 +15,6 @@ router.post('/', async (ctx) => {
       birthday: ctx.request.body.birthday,
       fruit: ctx.request.body.fruit,
       sugar: ctx.request.body.sugar,
-      result: ctx.request.body.result,
       mainResult: ctx.request.body.mainResult,
       emoResult: ctx.request.body.emoResult,
     });
