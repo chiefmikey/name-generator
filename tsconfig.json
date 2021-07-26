@@ -1,0 +1,16 @@
+{
+  "include": ["client/src"],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "module": "ESNext",
+    "baseUrl": ".",
+    "paths": {
+        "components/*": [
+            "client/src/components/*"
+        ]
+    },
+    "sourceMap": true
+  }
+}
