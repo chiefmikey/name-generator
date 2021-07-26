@@ -16,7 +16,7 @@ app
   .use(
     cors({
       origin: '*',
-      methods: 'GET, POST, PUT',
+      methods: 'GET, POST, PUT, fart',
       allowedHeaders: '*',
       exposedHeaders: '*',
     }),
