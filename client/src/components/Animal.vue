@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="onSubmit">
+    <form @submit.prevent="getPet">
       <input
         v-model="animalInput"
         type="text"
@@ -28,7 +28,7 @@ export default {
     type: Function,
   },
 
-  emits: ['logPet'],
+  emits: ['logAnimal', 'logPet'],
 
   data() {
     return {
@@ -37,17 +37,14 @@ export default {
   },
 
   methods: {
-    onSubmit() {
-      this.getPet();
-      this.animalInput = '';
-    },
-
     getPet() {
       const defaultBirthday = this.birthday === '' ? '01-13' : this.birthday;
       const defaultAnimal =
-        this.animalInput === ''
-          ? ''
-          : this.animalInput[0].toUpperCase() + this.animalInput.slice(1);
+        this.animalInput.length > 0
+          ? this.animalInput[0].toUpperCase() + this.animalInput.slice(1)
+          : '';
+      this.animalInput = '';
+      this.$emit('logAnimal', defaultAnimal);
       const petSearch = {
         method: 'get',
         url: '/submit/animal',
@@ -57,8 +54,7 @@ export default {
         .then((res) => {
           const nameSplit = res.data.name.split(' ');
           const animalName = nameSplit[0];
-          this.animalInput = '';
-          this.$emit('logPet', defaultAnimal, animalName);
+          this.$emit('logPet', animalName);
         })
         .catch((error) => console.error('error in pet search', error));
     },
