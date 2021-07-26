@@ -2,32 +2,42 @@
   "name": "name-generator",
   "version": "0.0.1",
   "description": "Full stack text generator with dynamic results built from public data sources",
-  "main": "app.js",
-  "type": "module",
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "build": "webpack --mode development -w"
+  "homepage": "https://github.com/chiefmikey/name-generator#readme",
+  "bugs": {
+    "url": "https://github.com/chiefmikey/name-generator/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chiefmikey/name-generator.git"
   },
-  "author": "chiefmikey",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/chiefmikey/name-generator/issues"
+  "author": "chiefmikey",
+  "type": "module",
+  "main": "app.js",
+  "module": "client/public/build.js",
+  "files": [
+    "client/public"
+  ],
+  "scripts": {
+    "start": "node app.js",
+    "test": "nodemon app.js",
+    "build": "webpack --mode development -w"
   },
-  "homepage": "https://github.com/chiefmikey/name-generator#readme",
+  "browserslist": [
+    "defaults"
+  ],
   "dependencies": {
+    "@babel/runtime": "^7.14.8",
     "@koa/cors": "^3.1.0",
     "@koa/router": "^10.1.0",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-static": "^5.0.0",
     "mongoose": "^5.13.3",
+    "path": "^0.12.7",
     "vue": "^3.1.4",
     "vue-router": "^3.5.2"
   },
@@ -35,9 +45,11 @@
     "@babel/core": "^7.14.8",
     "@babel/eslint-parser": "^7.14.7",
     "@babel/eslint-plugin": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.8",
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@vue/babel-plugin-jsx": "^1.0.6",
-    "@vue/cli-service": "^3.12.1",
+    "@vue/cli-service": "^4.5.13",
     "@vue/compiler-sfc": "^3.1.5",
     "@vue/eslint-config-airbnb": "^5.3.0",
     "airbnb-browser-shims": "^3.3.0",
@@ -69,8 +81,5 @@
     "vue-template-compiler": "^2.6.14",
     "webpack": "^5.46.0",
     "webpack-cli": "^4.7.2"
-  },
-  "browserslist": [
-    "defaults"
-  ]
+  }
 }
