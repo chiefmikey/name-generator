@@ -5,11 +5,11 @@
       <h4>Your Birthday:</h4>
       <Birthday @logBirthday="logBirthday" />
       <h4>Favorite Animal:</h4>
-      <Animal :birthday="birthday" @logPet="logPet" />
+      <Animal :birthday="birthday" @logAnimal="logAnimal" @logPet="logPet" />
       <h4>Pick a Fruit:</h4>
-      <Fruit @logFruit="logFruit" />
+      <Fruit @logFruit="logFruit" @logSugar="logSugar" />
       <Selection :birthday="birthday" :animal="animal" :fruit="fruit" />
-      <form @submit.prevent="handleSubmit">
+      <form @submit.prevent="checkAll">
         <button id="submit-button-main" :disabled="isFilled" type="submit">
           Submit
         </button>
@@ -21,12 +21,12 @@
       <h3>Your New Name:</h3>
       <div v-if="emo" id="result">
         <div id="new-name">
-          <h2>{{ emoResult }}</h2>
+          <h2 v-if="finalResults">{{ emoResult }}</h2>
         </div>
       </div>
       <div v-else id="result">
         <div id="new-name">
-          <h2>{{ mainResult }}</h2>
+          <h2 v-if="finalResults">{{ mainResult }}</h2>
         </div>
       </div>
     </div>
@@ -59,7 +59,6 @@ export default {
       fruit: '',
       sugar: '',
       emo: false,
-      result: false,
       mainResult: '',
       emoResult: '',
     };
@@ -68,10 +67,17 @@ export default {
   computed: {
     isFilled() {
       if (
-        !this.birthday.length > 0 ||
-        !this.animal.length > 0 ||
-        !this.fruit.length > 0
+        this.birthday.length !== 0 &&
+        this.animal.length !== 0 &&
+        this.fruit.length !== 0
       ) {
+        return false;
+      }
+      return true;
+    },
+
+    finalResults() {
+      if (this.mainResult.length !== 0 && this.emoResult.length !== 0) {
         return true;
       }
       return false;
@@ -79,11 +85,6 @@ export default {
   },
 
   methods: {
-    handleSubmit() {
-      this.getEmotion(this.emo);
-      this.checkAll();
-    },
-
     getEmotion() {
       axios
         .get('/submit/emotion')
@@ -115,7 +116,8 @@ export default {
       const theSugar = this.sugar || '3000';
       const mainResult = `${theEmotion}_${thePetName}_${theSugar}`;
       const emoResult = `_xXx_${theEmo}_${thePetName}_666_xXx_`;
-
+      this.mainResult = mainResult;
+      this.emoResult = emoResult;
       axios
         .post('/submit/post', {
           emotion: this.emotion,
@@ -126,16 +128,12 @@ export default {
           birthday: this.birthday,
           fruit: this.fruit,
           sugar: this.sugar,
-          result: this.result,
-          mainResult: this.mainResult,
-          emoResult: this.emoResult,
+          mainResult,
+          emoResult,
         })
         .catch((error) => {
           console.error('error in submit post', error);
         });
-      this.result = true;
-      this.mainResult = mainResult;
-      this.emoResult = emoResult;
     },
 
     checkAll() {
@@ -150,8 +148,9 @@ export default {
       };
       axios(checkIt)
         .then((res) => {
-          if (res.data[0]) {
-            this.result = true;
+          if (!res.data[0]) {
+            this.postAll();
+          } else {
             this.emotion = res.data[0].emotion;
             this.normalEmotion = res.data[0].normalEmotion;
             this.emoEmotion = res.data[0].emoEmotion;
@@ -159,8 +158,6 @@ export default {
             this.sugar = res.data[0].sugar;
             this.mainResult = res.data[0].mainResult;
             this.emoResult = res.data[0].emoResult;
-          } else {
-            this.postAll();
           }
         })
         .then(() => {
@@ -176,19 +173,22 @@ export default {
     logBirthday(birthday) {
       this.getEmotion(this.emo);
       this.birthday = birthday;
-      this.result = false;
     },
 
-    logPet(animal, petName) {
+    logAnimal(animal) {
       this.animal = animal;
-      this.petName = petName;
-      this.result = false;
     },
 
-    logFruit(fruit, sugar) {
+    logPet(petName) {
+      this.petName = petName;
+    },
+
+    logFruit(fruit) {
       this.fruit = fruit;
+    },
+
+    logSugar(sugar) {
       this.sugar = sugar;
-      this.result = false;
     },
 
     logResult(mainResult, emoResult) {
@@ -206,6 +206,7 @@ export default {
 html, body
   font 16px/1.2 BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif
   padding 10px
+  background-color lightgray
 
 h2, h3, h4, h5, h6
   padding 5px 0 5px 0
@@ -217,6 +218,7 @@ h2, h3, h4, h5, h6
   width 500px
   margin 0 auto
   padding 40px
+  box-shadow 10px 10px green
 
 #header
   font-size 24px
@@ -253,4 +255,5 @@ input[type="text"]
 
 #result
   height 50px
+  text-shadow 4px 4px green
 </style>
