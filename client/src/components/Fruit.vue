@@ -21,19 +21,23 @@ export default {
     type: Function,
   },
 
-  emits: ['logFruit'],
+  emits: ['logFruit', 'logSugar'],
 
   data() {
     return {
       fruitInput: '',
-      sugar: null,
     };
   },
 
   methods: {
     getFruit() {
-      let fruitDefault;
-      let sugarDefault;
+      const fruitDefault =
+        this.fruitInput.length > 0
+          ? this.fruitInput[0].toUpperCase() + this.fruitInput.slice(1)
+          : '';
+      if (fruitDefault.length > 0) {
+        this.$emit('logFruit', fruitDefault);
+      }
       const fruitSearch = {
         method: 'get',
         url: '/submit/fruit',
@@ -41,14 +45,10 @@ export default {
       };
       axios(fruitSearch)
         .then((res) => {
-          fruitDefault = res.data.name
-            ? res.data.name
-            : this.fruitInput[0].toUpperCase() + this.fruitInput.slice(1);
-          sugarDefault = res.data.nutritions.sugar
+          const sugarDefault = res.data.nutritions.sugar
             ? String(res.data.nutritions.sugar).replace('.', '')
             : '510';
-          this.sugar = sugarDefault;
-          this.$emit('logFruit', fruitDefault, sugarDefault);
+          this.$emit('logSugar', sugarDefault);
         })
         .catch((error) => console.error('error in fruit search', error));
       this.fruitInput = '';
