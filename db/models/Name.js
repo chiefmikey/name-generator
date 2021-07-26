@@ -9,7 +9,6 @@ const nameSchema = new mongoose.Schema({
   birthday: String,
   fruit: String,
   sugar: String,
-  result: String,
   mainResult: String,
   emoResult: String,
 });
