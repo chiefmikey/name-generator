@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 const weather = '';
 const animalKey = '';
@@ -26,7 +26,7 @@ const animalAccess = () =>
       .catch((error) => console.error('error in access request', error));
   });
 
-module.exports = {
+export default {
   weather,
   animalAccess,
   animalTokenType,
