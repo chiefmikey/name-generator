@@ -4,7 +4,7 @@ import { VueLoaderPlugin } from 'vue-loader';
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf('/'));
 
 const SRC_DIR = path.join(__dirname, '/client/src');
-const DIST_DIR = path.join(__dirname, '/client/public');
+const DIST_DIR = path.join(__dirname, '/client/public/dist');
 
 const vue = 'vue-style-loader';
 const css = 'css-loader';
