@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "start": "node app.js",
-    "test": "nodemon app.js",
+    "dev": "nodemon app.js",
     "build": "webpack --mode development -w"
   },
   "browserslist": [
