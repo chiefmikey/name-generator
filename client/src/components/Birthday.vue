@@ -39,20 +39,14 @@ export default {
   beforeMount() {
     const monthKey = 0;
     for (let i = 1; i <= 12; i += 1) {
-      let theMonth = String(i);
-      if (theMonth.length < 2) {
-        theMonth = `0${theMonth}`;
-      }
+      const theMonth = String(i);
       this.months.push({ id: monthKey, date: theMonth });
       this.monthKey += 1;
     }
 
     const dayKey = 0;
     for (let i = 1; i <= 31; i += 1) {
-      let theDay = String(i);
-      if (theDay.length < 2) {
-        theDay = `0${theDay}`;
-      }
+      const theDay = String(i);
       this.days.push({ id: dayKey, date: theDay });
       this.dayKey += 1;
     }
