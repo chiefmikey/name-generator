@@ -216,7 +216,7 @@ h2, h3, h4, h5, h6
   background-color black
   color white
   width 500px
-  margin 0 auto
+  margin auto
   padding 40px
   box-shadow 10px 10px green
 
