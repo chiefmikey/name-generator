@@ -21,11 +21,6 @@ module.exports = {
     browser: true,
     node: true,
   },
-  // parser: 'vue-eslint-parser',
-  // parserOptions: {
-  //   parser: '@babel/eslint-parser',
-  //   sourceType: 'module',
-  // },
   rules: {
     'no-unused-vars': 'warn',
     'no-console': 'off',
