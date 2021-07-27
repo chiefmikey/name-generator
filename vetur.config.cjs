@@ -8,6 +8,7 @@ module.exports = {
       root: './',
       package: './package.json',
       globalComponents: ['./client/src/components/**/*.vue'],
+      tsconfig: './client/jsconfig.json',
     },
   ],
 };
