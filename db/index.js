@@ -1,19 +1,20 @@
-import mongoose from 'mongoose';
+import cassandra from 'cassandra-driver';
 
-const mongoURI = 'mongodb://127.0.0.1:27017/myspace';
+const { PlainTextAuthProvider } = cassandra.auth;
 
-const db = mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
+const auth = PlainTextAuthProvider('cassandra', 'cassandra');
+
+const client = new cassandra.Client({
+  contactPoints: ['0.0.0.0'],
+  localDataCenter: 'datacenter1',
+  keyspace: 'user',
+  authProvider: auth,
 });
 
-db.then(() => console.log(`Connected to: ${mongoURI}`)).catch((error) => {
-  console.error(
-    `There was a problem connecting to mongo at: ${mongoURI}`,
-    error,
-  );
-});
+export default client;
 
-export default db;
+// const query = 'SELECT name, email FROM users WHERE key = ?';
+
+// client
+//   .execute(query, ['someone'])
+//   .then((result) => console.log('User with email %s', result.rows[0].email));
