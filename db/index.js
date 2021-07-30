@@ -2,7 +2,7 @@ import cassandra from 'cassandra-driver';
 
 const { PlainTextAuthProvider } = cassandra.auth;
 
-const auth = PlainTextAuthProvider('cassandra', 'cassandra');
+const auth = new PlainTextAuthProvider('cassandra', 'cassandra');
 
 const client = new cassandra.Client({
   contactPoints: ['0.0.0.0'],
