@@ -1,12 +1,12 @@
 /* eslint-disable no-param-reassign */
 import Router from '@koa/router';
-import Name from '../../db/models/Name.js';
+import User from '../../db/models/User.js';
 
 const router = new Router({ prefix: '/post' });
 
 router.post('/', async (ctx) => {
   try {
-    const newName = await new Name({
+    await User.insert({
       emotion: ctx.request.body.emotion,
       normalEmotion: ctx.request.body.normalEmotion,
       emoEmotion: ctx.request.body.emoEmotion,
@@ -18,7 +18,6 @@ router.post('/', async (ctx) => {
       mainResult: ctx.request.body.mainResult,
       emoResult: ctx.request.body.emoResult,
     });
-    await newName.save();
     ctx.response.status = 200;
     ctx.response.body = 'Saved';
   } catch (error) {
