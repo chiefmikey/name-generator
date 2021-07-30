@@ -41,5 +41,5 @@ module.exports = {
       },
     ],
   },
-  plugins: ['import', '@babel', 'prettier', 'json-format'],
+  plugins: ['import', 'prettier', 'json-format'],
 };
