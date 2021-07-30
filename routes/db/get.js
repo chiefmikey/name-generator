@@ -1,12 +1,12 @@
 /* eslint-disable no-param-reassign */
 import Router from '@koa/router';
-import Name from '../../db/models/Name.js';
+import User from '../../db/models/User.js';
 
 const router = new Router({ prefix: '/get' });
 
 router.get('/', async (ctx) => {
   try {
-    const results = await Name.find({
+    const results = await User.find({
       birthday: ctx.request.query.birthday,
       fruit: ctx.request.query.fruit,
       animal: ctx.request.query.animal,
