@@ -1,0 +1,35 @@
+services:
+  ng_client:
+    build: .
+    depends_on:
+      - ng_db
+    env_file:
+      - .env
+    networks:
+      - ng-network
+    ports:
+      - '3000:3000'
+
+  ng_db:
+    image: cassandra:latest
+    networks:
+      - ng-network
+    ports:
+      - '9042:9042'
+    volumes:
+      - cassandra-data:/var/lib/postgresql/data
+      - ./db/scripts/schema.cql:/schema.cql
+    command:
+      'sleep 60 && echo loading cassandra keyspace && cqlsh cassandra -f
+      /schema.cql'
+    healthcheck:
+      test: ['cqlsh --debug']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  cassandra-data:
+
+networks:
+  ng-network:
