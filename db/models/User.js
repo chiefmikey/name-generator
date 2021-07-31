@@ -6,7 +6,7 @@ const { Mapper } = cassandra.mapping;
 const mappingOptions = {
   models: {
     User: {
-      tables: ['users'],
+      tables: ['name'],
       columns: {
         emotion: 'emotion',
         normalEmotion: 'normalEmotion',
@@ -23,27 +23,8 @@ const mappingOptions = {
   },
 };
 
-const mapper = new Mapper(client, mappingOptions);
+const mapper = new Mapper(client('user'), mappingOptions);
 
 const User = mapper.forModel('User');
 
 export default User;
-
-// import mongoose from 'mongoose';
-
-// const nameSchema = new mongoose.Schema({
-//   emotion: String,
-//   normalEmotion: String,
-//   emoEmotion: String,
-//   animal: String,
-//   petName: String,
-//   birthday: String,
-//   fruit: String,
-//   sugar: String,
-//   mainResult: String,
-//   emoResult: String,
-// });
-
-// const Name = mongoose.model('Name', nameSchema);
-
-// export default Name;
