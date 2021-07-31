@@ -1,6 +1,6 @@
 {
   "name": "name-generator",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Full stack text generator with dynamic results built from public data sources",
   "homepage": "https://github.com/chiefmikey/name-generator#readme",
   "bugs": {
