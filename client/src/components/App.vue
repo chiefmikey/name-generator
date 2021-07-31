@@ -148,16 +148,16 @@ export default {
       };
       axios(checkIt)
         .then((res) => {
-          if (!res.data[0]) {
-            this.postAll();
+          if (res.data.length > 0) {
+            this.emotion = res.data._rs.rows[0].emotion;
+            this.normalEmotion = res.data._rs.rows[0].normal_rmotion;
+            this.emoEmotion = res.data._rs.rows[0].emo_rmotion;
+            this.petName = res.data._rs.rows[0].pet_rame;
+            this.sugar = res.data._rs.rows[0].sugar;
+            this.mainResult = res.data._rs.rows[0].main_result;
+            this.emoResult = res.data._rs.rows[0].emo_result;
           } else {
-            this.emotion = res.data[0].emotion;
-            this.normalEmotion = res.data[0].normalEmotion;
-            this.emoEmotion = res.data[0].emoEmotion;
-            this.petName = res.data[0].petName;
-            this.sugar = res.data[0].sugar;
-            this.mainResult = res.data[0].mainResult;
-            this.emoResult = res.data[0].emoResult;
+            this.postAll();
           }
         })
         .then(() => {
