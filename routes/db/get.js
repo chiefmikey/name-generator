@@ -16,7 +16,6 @@ router.get('/', async (ctx) => {
   } catch (error) {
     console.log(error);
     ctx.response.status = 200;
-    ctx.response.body = false;
   }
 });
 
