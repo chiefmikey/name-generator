@@ -1,11 +1,15 @@
 node_modules
+client/src
 .env
 .VSCodeCounter
-client/src
 .dropboxignore
 .dropboxignore.eslintrc.cjs
 .gitignore
 .prettierrc
+.babelrc.cjs
+.eslintrc.jcs
 vetur.config.cjs
 webpack.config.js
-
+jsconfig.json
+Dockerfile
+docker-compose.yaml
