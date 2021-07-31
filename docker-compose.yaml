@@ -9,7 +9,7 @@ services:
     networks:
       - ng-network
     ports:
-      - '3000:3000'
+      - '80:8080'
 
   ng_db:
     image: cassandra:latest
@@ -18,7 +18,7 @@ services:
     ports:
       - '9042:9042'
     volumes:
-      - cassandra-data:/var/lib/postgresql/data
+      - cassandra-data:/var/lib/cassandra
     healthcheck:
       test: cqlsh --debug
       interval: 5s
