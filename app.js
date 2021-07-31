@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import cors from '@koa/cors';
@@ -15,7 +14,7 @@ app
   .use(
     cors({
       origin: '*',
-      methods: 'GET, POST, PUT, fart',
+      methods: 'GET, POST',
       allowedHeaders: '*',
       exposedHeaders: '*',
     }),
@@ -25,8 +24,8 @@ app
   .use(submitRouter.routes())
   .use(submitRouter.allowedMethods());
 
-app.listen(3000, () =>
-  console.log(`Koa is listening to http://localhost:3000`),
+app.listen(8080, () =>
+  console.log(`Koa is listening to http://localhost:8080`),
 );
 
 export default app;
