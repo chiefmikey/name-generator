@@ -15,15 +15,15 @@ const use = `USE user`;
 const construct = `
   CREATE TABLE IF NOT EXISTS user.name (
     emotion text,
-    normalEmotion text,
-    emoEmotion text,
+    normal_emotion text,
+    emo_emotion text,
     animal text,
-    petName text,
+    pet_name text,
     birthday text,
     fruit text,
     sugar text,
-    mainResult text,
-    emoResult text,
+    main_result text,
+    emo_result text,
     PRIMARY KEY (birthday, fruit, animal)
   );
 `;
