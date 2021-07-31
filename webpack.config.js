@@ -1,4 +1,5 @@
 import path from 'path';
+import webpack from 'webpack';
 import { VueLoaderPlugin } from 'vue-loader';
 
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf('/'));
@@ -45,7 +46,13 @@ export default {
       },
     ],
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [
+    new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: false,
+    }),
+  ],
   resolve: {
     extensions: ['*', '.js', '.jsx', '.vue', '.json', '...'],
   },
