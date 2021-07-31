@@ -8,7 +8,6 @@ const router = new Router({ prefix: '/animal' });
 router.get('/', async (ctx) => {
   try {
     const authorize = await auth.animalAccess();
-    // console.log(authorize.animalTokenType);
     const allAnimals = {
       method: 'get',
       url: `https://api.petfinder.com/v2/animals?type=${ctx.request.query.defaultAnimal}&after=2020-${ctx.request.query.defaultBirthday}T00:00:00Z&before=2020-${ctx.request.query.defaultBirthday}T23:59:59Z`,
@@ -17,12 +16,10 @@ router.get('/', async (ctx) => {
       },
     };
     const animalResults = await axios(allAnimals);
-    // console.log(animalResults.data.animals);
     const selectAnimal =
       animalResults.data.animals[
         Math.floor(Math.random() * animalResults.data.animals.length)
       ];
-    // console.log(animalResults.data.animals);
     ctx.response.status = 200;
     ctx.response.body = selectAnimal;
   } catch (error) {
