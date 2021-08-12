@@ -9,7 +9,7 @@ services:
     networks:
       - ng-network
     ports:
-      - '80:8080'
+      - '80:3001'
 
   ng_db:
     image: cassandra:latest
