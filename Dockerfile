@@ -1,5 +1,5 @@
 FROM node:latest
-EXPOSE 8080
+EXPOSE 3001
 WORKDIR /name-generator
 COPY . .
 COPY init.sh /bin
