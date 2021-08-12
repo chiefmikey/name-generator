@@ -2,7 +2,7 @@ import cassandra from 'cassandra-driver';
 
 const client = (ks) =>
   new cassandra.Client({
-    contactPoints: ['ng_db'],
+    contactPoints: ['name-generator_db'],
     localDataCenter: 'datacenter1',
     credentials: { username: 'cassandra', password: 'cassandra' },
     keyspace: ks,
