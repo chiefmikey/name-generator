@@ -1,7 +1,11 @@
 FROM node:latest
+EXPOSE 8080
 WORKDIR /name-generator
 COPY . .
-RUN npm ci
+COPY init.sh /bin
+RUN rm /name-generator/init.sh
 RUN chown -R node:node /name-generator
+RUN chown node:node /bin/init.sh
+RUN chmod +x /bin/init.sh
 USER node
-CMD ["npm", "start"]
+ENTRYPOINT "init.sh"
