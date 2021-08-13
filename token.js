@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const weather = process.env.WEATHER;
 const animalKey = process.env.ANIMAL_KEY;
 const animalSecret = process.env.ANIMAL_SECRET;
 let animalTokenType = '';
@@ -29,7 +28,6 @@ const animalAccess = () =>
   });
 
 export default {
-  weather,
   animalAccess,
   animalTokenType,
   animalToken,
