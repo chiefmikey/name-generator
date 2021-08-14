@@ -27,6 +27,7 @@
     "@babel/runtime": "^7.14.8",
     "@koa/cors": "^3.1.0",
     "@koa/router": "^10.1.0",
+    "aws-sdk": "^2.968.0",
     "axios": "^0.21.1",
     "cassandra-driver": "^4.6.3",
     "cors": "^2.8.5",
@@ -36,6 +37,7 @@
     "koa-static": "^5.0.0",
     "mongoose": "^5.13.3",
     "path": "^0.12.7",
+    "ts-node": "^10.2.0",
     "vue": "^3.1.4",
     "vue-router": "^3.5.2"
   },
@@ -44,7 +46,6 @@
     "@babel/eslint-parser": "^7.14.7",
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.8",
-    "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@vue/babel-plugin-jsx": "^1.0.6",
     "@vue/eslint-config-airbnb": "^5.3.0",
     "airbnb-browser-shims": "^3.3.0",
