@@ -1,8 +1,8 @@
 services:
-  ng_client:
-    build: .
+  name-generator_client:
+    image: chiefmikey/name-generator:latest
     depends_on:
-      ng_db:
+      name-generator_db:
         condition: service_healthy
     env_file:
       - .env
@@ -11,7 +11,7 @@ services:
     ports:
       - '80:3001'
 
-  ng_db:
+  name-generator_db:
     image: cassandra:latest
     networks:
       - ng-network
