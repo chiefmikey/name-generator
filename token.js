@@ -1,12 +1,38 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
+import AWS from 'aws-sdk';
 
 dotenv.config();
 
-const animalKey = process.env.ANIMAL_KEY;
-const animalSecret = process.env.ANIMAL_SECRET;
+let animalKey = process.env.ANIMAL_KEY;
+let animalSecret = process.env.ANIMAL_SECRET;
 let animalTokenType = '';
 let animalToken = '';
+
+const region = 'us-east-2';
+const secretName = 'name-generator';
+
+const client = new AWS.SecretsManager({
+  region: region,
+});
+
+if (!animalKey || !animalSecret) {
+  client.getSecretValue({ SecretId: secretName }, function (err, data) {
+    if (err) {
+      if (
+        err.code === 'DecryptionFailureException' ||
+        err.code === 'InternalServiceErrorException' ||
+        err.code === 'InvalidParameterException' ||
+        err.code === 'InvalidRequestException' ||
+        err.code === 'ResourceNotFoundException'
+      )
+        throw err;
+    } else if ('SecretString' in data) {
+      animalKey = JSON.parse(data.SecretString).ANIMAL_KEY;
+      animalSecret = JSON.parse(data.SecretString).ANIMAL_SECRET;
+    }
+  });
+}
 
 const animalAccess = () =>
   new Promise((resolve) => {
