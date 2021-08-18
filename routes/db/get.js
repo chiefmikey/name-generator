@@ -14,7 +14,7 @@ router.get('/', async (ctx) => {
     ctx.response.status = 200;
     ctx.response.body = results;
   } catch (error) {
-    console.log(error);
+    console.error('error with get', error);
     ctx.response.status = 200;
   }
 });
