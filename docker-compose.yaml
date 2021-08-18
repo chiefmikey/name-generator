@@ -1,5 +1,6 @@
 services:
   name-generator_client:
+    container_name: name-generator_client
     image: chiefmikey/name-generator:latest
     depends_on:
       name-generator_db:
@@ -9,31 +10,21 @@ services:
     networks:
       - ng-network
     ports:
-      - '80:3001'
+      - 80:3001
 
   name-generator_db:
+    container_name: name-generator_db
     image: chiefmikey/cassandra:latest
     networks:
       - ng-network
-    ports:
-      - '9042:9042'
     volumes:
       - cassandra-data:/var/lib/cassandra
     healthcheck:
       test:
-        cd /cassandra/apache-cassandra-4.0.0 && su -s /bin/bash -c 'bin/cqlsh
-        --debug' cassandra
+        cd /opt/cassandra && su -s /bin/bash -c 'bin/cqlsh --debug' cassandra
       interval: 10s
       timeout: 10s
       retries: 10
-
-  db_helper:
-    image: chiefmikey/cass-helper:latest
-    networks:
-      - ng-network
-    depends_on:
-      name-generator_db:
-        condition: service_healthy
 
 volumes:
   cassandra-data:
