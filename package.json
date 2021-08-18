@@ -11,7 +11,10 @@
     "url": "git+https://github.com/chiefmikey/name-generator.git"
   },
   "license": "ISC",
-  "author": "chiefmikey",
+  "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
+  "contributors": [
+    "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)"
+  ],
   "type": "module",
   "main": "app.js",
   "scripts": {
