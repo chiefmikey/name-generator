@@ -28,11 +28,17 @@ const construct = `
   );
 `;
 
-client('system').execute(init);
+client('system')
+  .execute(init)
+  .catch((error) => console.error('client init error', error));
 
 setTimeout(() => {
-  client('system').execute(use);
-  client('user').execute(construct);
+  client('system')
+    .execute(use)
+    .catch((error) => console.error('client use error', error));
+  client('user')
+    .execute(construct)
+    .catch((error) => console.error('client construct error', error));
 }, 20000);
 
 export default client;
