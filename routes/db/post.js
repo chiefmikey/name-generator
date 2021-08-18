@@ -21,7 +21,7 @@ router.post('/', async (ctx) => {
     ctx.response.status = 200;
     ctx.response.body = 'Saved';
   } catch (error) {
-    console.log(error);
+    console.error('error in post', error);
     ctx.response.status = 400;
     ctx.response.body = error;
   }
