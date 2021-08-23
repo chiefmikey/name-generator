@@ -1,14 +1,5 @@
 # **Name Generator**
 
-Full stack text generator with dynamic results built from public data sources
-
-- Enabled collaborative fluidity with separation of concerns using Vue Single
-  File Components
-- Refined data availability by shaping public information received from a
-  variety of external APIs
-- Minimized response times by serving frequently-used data from a persistent
-  NoSQL database
-
 ## **Name Generator** is all you need to succeed with your mid-life "rebrand"
 
 To all social media users undergoing an identity crisis:
