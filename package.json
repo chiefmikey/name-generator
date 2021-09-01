@@ -63,7 +63,7 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-json-format": "^2.0.1",
     "eslint-plugin-md": "^1.0.19",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-sonar": "^0.6.1",
     "eslint-plugin-vue": "^7.14.0",
     "file-loader": "^6.2.0",
