@@ -2,20 +2,6 @@
   "name": "name-generator",
   "version": "1.0.0",
   "description": "Full stack text generator with dynamic results built from public data sources",
-  "homepage": "https://github.com/chiefmikey/name-generator#readme",
-  "bugs": {
-    "url": "https://github.com/chiefmikey/name-generator/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chiefmikey/name-generator.git"
-  },
-  "license": "ISC",
-  "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
-  "contributors": [
-    "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)"
-  ],
-  "type": "module",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -23,9 +9,6 @@
     "build": "webpack --mode development",
     "dev": "webpack --mode development -w"
   },
-  "browserslist": [
-    "defaults"
-  ],
   "dependencies": {
     "@babel/runtime": "^7.14.8",
     "@koa/cors": "^3.1.0",
@@ -49,33 +32,47 @@
     "@babel/eslint-parser": "^7.14.7",
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.8",
+    "@mikey-pro/eslint-config-vue": "^1.0.0",
+    "@mikey-pro/style-guide": "^1.2.1",
     "@vue/babel-plugin-jsx": "^1.0.6",
-    "@vue/eslint-config-airbnb": "^5.3.0",
     "airbnb-browser-shims": "^3.3.0",
     "babel-loader": "^8.2.2",
     "babel-preset-airbnb": "^5.0.0",
     "css-loader": "^6.2.0",
     "defer-to-connect": "^2.0.1",
-    "eslint": "^7.31.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-compat": "^3.11.1",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-json-format": "^2.0.1",
-    "eslint-plugin-md": "^1.0.19",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-sonar": "^0.6.1",
-    "eslint-plugin-vue": "^7.14.0",
     "file-loader": "^6.2.0",
     "node-sass": "^6.0.1",
     "nodemon": "^2.0.12",
     "sass-loader": "^12.1.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^6.1.0",
-    "vue-eslint-parser": "^7.9.0",
     "vue-loader": "^16.3.0",
     "vue-style-loader": "^4.1.3",
     "webpack": "^5.46.0",
     "webpack-cli": "^4.7.2"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiefmikey/name-generator.git"
+  },
+  "homepage": "https://github.com/chiefmikey/name-generator#readme",
+  "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
+  "bugs": {
+    "url": "https://github.com/chiefmikey/name-generator/issues"
+  },
+  "contributors": [
+    "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)"
+  ],
+  "type": "module",
+  "browserslist": [
+    "defaults"
+  ],
+  "prettier": "@mikey-pro/prettier-config",
+  "eslintConfig": {
+    "extends": "@mikey-pro/eslint-config-vue"
+  },
+  "stylelint": {
+    "extends": "@mikey-pro/stylelint-config"
   }
 }
