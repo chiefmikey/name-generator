@@ -12,7 +12,7 @@
   "dependencies": {
     "@babel/runtime": "^7.14.8",
     "@koa/cors": "^3.1.0",
-    "@koa/router": "^10.1.0",
+    "@koa/router": "^10.1.1",
     "aws-sdk": "^2.968.0",
     "axios": "^0.21.1",
     "cassandra-driver": "^4.6.3",
@@ -21,7 +21,7 @@
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-static": "^5.0.0",
-    "mongoose": "^5.13.3",
+    "mongoose": "^6.0.4",
     "path": "^0.12.7",
     "ts-node": "^10.2.0",
     "vue": "^3.1.4",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
-    "@babel/eslint-parser": "^7.14.7",
+    "@babel/eslint-parser": "^7.15.4",
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.8",
     "@mikey-pro/eslint-config-vue": "^1.0.0",
@@ -40,15 +40,32 @@
     "babel-preset-airbnb": "^5.0.0",
     "css-loader": "^6.2.0",
     "defer-to-connect": "^2.0.1",
+<<<<<<< HEAD
+=======
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-compat": "^3.13.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-md": "^1.0.19",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-sonar": "^0.6.1",
+    "eslint-plugin-vue": "^7.14.0",
+>>>>>>> 92ec93444e913b5551540441c482f819d75059e9
     "file-loader": "^6.2.0",
     "node-sass": "^6.0.1",
     "nodemon": "^2.0.12",
     "sass-loader": "^12.1.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^6.1.0",
+<<<<<<< HEAD
+=======
+    "vue-eslint-parser": "^7.10.0",
+>>>>>>> 92ec93444e913b5551540441c482f819d75059e9
     "vue-loader": "^16.3.0",
     "vue-style-loader": "^4.1.3",
-    "webpack": "^5.46.0",
+    "webpack": "^5.51.2",
     "webpack-cli": "^4.7.2"
   },
   "license": "ISC",
