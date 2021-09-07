@@ -7,7 +7,12 @@
         name="fruit"
         placeholder="Apple, banana, etc."
       />
-      <button class="submit-button" type="submit">Submit</button>
+      <button
+        class="submit-button"
+        type="submit"
+      >
+        Submit
+      </button>
     </form>
   </div>
 </template>
@@ -31,10 +36,9 @@ export default {
 
   methods: {
     getFruit() {
-      const fruitDefault =
-        this.fruitInput.length > 0
-          ? this.fruitInput[0].toUpperCase() + this.fruitInput.slice(1)
-          : '';
+      const fruitDefault = this.fruitInput.length > 0
+        ? this.fruitInput[0].toUpperCase() + this.fruitInput.slice(1)
+        : '';
       if (fruitDefault.length > 0) {
         this.$emit('logFruit', fruitDefault);
       }

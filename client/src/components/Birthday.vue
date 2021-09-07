@@ -1,19 +1,42 @@
 <template>
   <div>
     <form @submit.prevent="onSubmit">
-      <select id="monthSelect" v-model="monthInput">
-        <option value="">Month</option>
-        <option v-for="month in months" :key="month.id" :value="month.date">
+      <select
+        id="monthSelect"
+        v-model="monthInput"
+      >
+        <option value="">
+          Month
+        </option>
+        <option
+          v-for="month in months"
+          :key="month.id"
+          :value="month.date"
+        >
           {{ month.date }}
         </option>
       </select>
-      <select id="daySelect" v-model="dayInput">
-        <option value="">Day</option>
-        <option v-for="day in days" :key="day.id" :value="day.date">
+      <select
+        id="daySelect"
+        v-model="dayInput"
+      >
+        <option value="">
+          Day
+        </option>
+        <option
+          v-for="day in days"
+          :key="day.id"
+          :value="day.date"
+        >
           {{ day.date }}
         </option>
       </select>
-      <button class="submit-button" type="submit">Submit</button>
+      <button
+        class="submit-button"
+        type="submit"
+      >
+        Submit
+      </button>
     </form>
   </div>
 </template>

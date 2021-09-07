@@ -1,32 +1,62 @@
 <template>
   <div class="wrapper">
-    <div id="header">NAME GENERATOR</div>
+    <div id="header">
+      NAME GENERATOR
+    </div>
     <div id="main">
       <h4>Your Birthday:</h4>
       <Birthday @logBirthday="logBirthday" />
       <h4>Favorite Animal:</h4>
-      <Animal :birthday="birthday" @logAnimal="logAnimal" @logPet="logPet" />
+      <Animal
+        :birthday="birthday"
+        @logAnimal="logAnimal"
+        @logPet="logPet"
+      />
       <h4>Pick a Fruit:</h4>
-      <Fruit @logFruit="logFruit" @logSugar="logSugar" />
-      <Selection :birthday="birthday" :animal="animal" :fruit="fruit" />
+      <Fruit
+        @logFruit="logFruit"
+        @logSugar="logSugar"
+      />
+      <Selection
+        :birthday="birthday"
+        :animal="animal"
+        :fruit="fruit"
+      />
       <form @submit.prevent="checkAll">
-        <button id="submit-button-main" :disabled="isFilled" type="submit">
+        <button
+          id="submit-button-main"
+          :disabled="isFilled"
+          type="submit"
+        >
           Submit
         </button>
       </form>
       <h4>
         Emo Mode:
-        <input v-model="emo" type="checkbox" />
+        <input
+          v-model="emo"
+          type="checkbox"
+        />
       </h4>
       <h3>Your New Name:</h3>
-      <div v-if="emo" id="result">
+      <div
+        v-if="emo"
+        id="result"
+      >
         <div id="new-name">
-          <h2 v-if="finalResults">{{ emoResult }}</h2>
+          <h2 v-if="finalResults">
+            {{ emoResult }}
+          </h2>
         </div>
       </div>
-      <div v-else id="result">
+      <div
+        v-else
+        id="result"
+      >
         <div id="new-name">
-          <h2 v-if="finalResults">{{ mainResult }}</h2>
+          <h2 v-if="finalResults">
+            {{ mainResult }}
+          </h2>
         </div>
       </div>
     </div>
@@ -67,9 +97,9 @@ export default {
   computed: {
     isFilled() {
       if (
-        this.birthday.length !== 0 &&
-        this.animal.length !== 0 &&
-        this.fruit.length !== 0
+        this.birthday.length !== 0
+        && this.animal.length !== 0
+        && this.fruit.length !== 0
       ) {
         return false;
       }
