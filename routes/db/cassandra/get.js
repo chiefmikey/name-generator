@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import Router from '@koa/router';
-import User from '../../db/models/User.js';
+import User from '../../../db/cassandra/models/User.js';
 
 const router = new Router({ prefix: '/get' });
 
