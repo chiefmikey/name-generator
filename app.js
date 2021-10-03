@@ -4,7 +4,8 @@ import cors from '@koa/cors';
 import serve from 'koa-static';
 import path from 'path';
 import submitRouter from './routes/submit.js';
-import './db/index.js';
+import './db/mongo/index.js';
+// import './db/cassandra/index.js';
 
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf('/'));
 
