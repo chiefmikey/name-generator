@@ -29,7 +29,7 @@ services:
 
   name-generator_db:
     container_name: name-generator_db
-    image: mongo
+    image: mongo:latest
     networks:
       - ng-network
     volumes:
@@ -40,7 +40,8 @@ services:
       - 27017:27017
     healthcheck:
       test:
-        echo 'db.runCommand("ping").ok' | mongo localhost:27017/namegenerator --quiet
+        echo 'db.runCommand("ping").ok' | mongo localhost:27017/namegenerator
+        --quiet
       interval: 10s
       timeout: 10s
       retries: 10
