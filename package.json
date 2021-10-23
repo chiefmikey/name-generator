@@ -24,7 +24,7 @@
     "mongoose": "^6.0.10",
     "path": "^0.12.7",
     "ts-node": "^10.3.0",
-    "vue": "^3.2.11",
+    "vue": "^3.2.19",
     "vue-router": "^3.5.2"
   },
   "devDependencies": {
