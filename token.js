@@ -13,11 +13,11 @@ const region = 'us-east-2';
 const secretName = 'name-generator';
 
 const client = new AWS.SecretsManager({
-  region: region,
+  region,
 });
 
 if (!animalKey || !animalSecret) {
-  client.getSecretValue({ SecretId: secretName }, function (err, data) {
+  client.getSecretValue({ SecretId: secretName }, (err, data) => {
     if (err) {
       if (
         err.code === 'DecryptionFailureException' ||
