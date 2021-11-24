@@ -1,0 +1,22 @@
+version = 1
+
+exclude_patterns = [
+  "dist",
+  "bundle.js",
+  "build.js"
+]
+
+[[analyzers]]
+name = "shell"
+enabled = true
+
+[[analyzers]]
+name = "docker"
+enabled = true
+
+[[analyzers]]
+name = "javascript"
+enabled = true
+
+  [analyzers.meta]
+  plugins = ["vue"]
