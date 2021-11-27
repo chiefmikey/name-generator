@@ -39,6 +39,6 @@ setTimeout(() => {
   client('user')
     .execute(construct)
     .catch((error) => console.error('client construct error', error));
-}, 20000);
+}, 20_000);
 
 export default client;

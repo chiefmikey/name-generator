@@ -1,5 +1,4 @@
 version = 1
-
 exclude_patterns = [
   "dist",
   "bundle.js",
@@ -18,5 +17,5 @@ enabled = true
 name = "javascript"
 enabled = true
 
-  [analyzers.meta]
-  plugins = ["vue"]
+[analyzers.meta]
+plugins = [ "vue" ]

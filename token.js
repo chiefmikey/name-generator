@@ -1,6 +1,6 @@
+import AWS from 'aws-sdk';
 import axios from 'axios';
 import dotenv from 'dotenv';
-import AWS from 'aws-sdk';
 
 dotenv.config();
 
@@ -17,16 +17,16 @@ const client = new AWS.SecretsManager({
 });
 
 if (!animalKey || !animalSecret) {
-  client.getSecretValue({ SecretId: secretName }, (err, data) => {
-    if (err) {
+  client.getSecretValue({ SecretId: secretName }, (error, data) => {
+    if (error) {
       if (
-        err.code === 'DecryptionFailureException' ||
-        err.code === 'InternalServiceErrorException' ||
-        err.code === 'InvalidParameterException' ||
-        err.code === 'InvalidRequestException' ||
-        err.code === 'ResourceNotFoundException'
+        error.code === 'DecryptionFailureException' ||
+        error.code === 'InternalServiceErrorException' ||
+        error.code === 'InvalidParameterException' ||
+        error.code === 'InvalidRequestException' ||
+        error.code === 'ResourceNotFoundException'
       )
-        throw err;
+        throw error;
     } else if ('SecretString' in data) {
       animalKey = JSON.parse(data.SecretString).ANIMAL_KEY;
       animalSecret = JSON.parse(data.SecretString).ANIMAL_SECRET;

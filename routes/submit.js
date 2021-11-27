@@ -1,9 +1,10 @@
 import Router from '@koa/router';
+
+import getMongoRouter from './db/mongo/get.js';
+import postMongoRouter from './db/mongo/post.js';
 import animalRouter from './external/animal.js';
 import emotionRouter from './external/emotion.js';
 import fruitRouter from './external/fruit.js';
-import postMongoRouter from './db/mongo/post.js';
-import getMongoRouter from './db/mongo/get.js';
 // import postCassandraRouter from './db/cassandra/post.js';
 // import getCassandraRouter from './db/cassandra/get.js';
 

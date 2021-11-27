@@ -1,16 +1,16 @@
-/* eslint-disable no-param-reassign */
 import Router from '@koa/router';
 import axios from 'axios';
+
 import auth from '../../token.js';
 
 const router = new Router({ prefix: '/animal' });
 
-router.get('/', async (ctx) => {
+router.get('/', async (context) => {
   try {
     const authorize = await auth.animalAccess();
     const allAnimals = {
       method: 'get',
-      url: `https://api.petfinder.com/v2/animals?type=${ctx.request.query.defaultAnimal}&after=2020-${ctx.request.query.defaultBirthday}T00:00:00Z&before=2020-${ctx.request.query.defaultBirthday}T23:59:59Z`,
+      url: `https://api.petfinder.com/v2/animals?type=${context.request.query.defaultAnimal}&after=2020-${context.request.query.defaultBirthday}T00:00:00Z&before=2020-${context.request.query.defaultBirthday}T23:59:59Z`,
       headers: {
         Authorization: `${authorize.animalTokenType} ${authorize.animalToken}`,
       },
@@ -20,11 +20,11 @@ router.get('/', async (ctx) => {
       animalResults.data.animals[
         Math.floor(Math.random() * animalResults.data.animals.length)
       ];
-    ctx.response.status = 200;
-    ctx.response.body = selectAnimal;
-  } catch (error) {
-    ctx.response.status = 200;
-    ctx.response.body = { name: 'mikey' };
+    context.response.status = 200;
+    context.response.body = selectAnimal;
+  } catch {
+    context.response.status = 200;
+    context.response.body = { name: 'mikey' };
   }
 });
 

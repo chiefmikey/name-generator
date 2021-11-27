@@ -1,29 +1,29 @@
-/* eslint-disable no-param-reassign */
 import Router from '@koa/router';
+
 import User from '../../../db/cassandra/models/User.js';
 
 const router = new Router({ prefix: '/post' });
 
-router.post('/', async (ctx) => {
+router.post('/', async (context) => {
   try {
     await User.insert({
-      emotion: ctx.request.body.emotion,
-      normalEmotion: ctx.request.body.normalEmotion,
-      emoEmotion: ctx.request.body.emoEmotion,
-      animal: ctx.request.body.animal,
-      petName: ctx.request.body.petName,
-      birthday: ctx.request.body.birthday,
-      fruit: ctx.request.body.fruit,
-      sugar: ctx.request.body.sugar,
-      mainResult: ctx.request.body.mainResult,
-      emoResult: ctx.request.body.emoResult,
+      emotion: context.request.body.emotion,
+      normalEmotion: context.request.body.normalEmotion,
+      emoEmotion: context.request.body.emoEmotion,
+      animal: context.request.body.animal,
+      petName: context.request.body.petName,
+      birthday: context.request.body.birthday,
+      fruit: context.request.body.fruit,
+      sugar: context.request.body.sugar,
+      mainResult: context.request.body.mainResult,
+      emoResult: context.request.body.emoResult,
     });
-    ctx.response.status = 200;
-    ctx.response.body = 'Saved';
+    context.response.status = 200;
+    context.response.body = 'Saved';
   } catch (error) {
     console.error('error in post', error);
-    ctx.response.status = 400;
-    ctx.response.body = error;
+    context.response.status = 400;
+    context.response.body = error;
   }
 });
 

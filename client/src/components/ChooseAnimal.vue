@@ -3,8 +3,9 @@
     <form @submit.prevent="getPet">
       <input
         v-model="animalInput"
+        aria-label="animalInput"
         type="text"
-        name="fruit"
+        name="animalInput"
         placeholder="Dog, cat, etc."
       />
       <button
@@ -55,8 +56,8 @@ export default {
         params: { defaultAnimal, defaultBirthday },
       };
       axios(petSearch)
-        .then((res) => {
-          const nameSplit = res.data.name.split(' ');
+        .then((response) => {
+          const nameSplit = response.data.name.split(' ');
           const animalName = nameSplit[0];
           this.$emit('logPet', animalName);
         })

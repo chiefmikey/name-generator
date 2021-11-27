@@ -1,6 +1,6 @@
-import path from 'path';
-import webpack from 'webpack';
+import path from 'node:path';
 import { VueLoaderPlugin } from 'vue-loader';
+import webpack from 'webpack';
 
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf('/'));
 

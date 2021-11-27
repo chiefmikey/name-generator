@@ -5,19 +5,19 @@
     </div>
     <div id="main">
       <h4>Your Birthday:</h4>
-      <Birthday @logBirthday="logBirthday" />
+      <ChooseBirthday @log-birthday="logBirthday" />
       <h4>Favorite Animal:</h4>
-      <Animal
+      <ChooseAnimal
         :birthday="birthday"
-        @logAnimal="logAnimal"
-        @logPet="logPet"
+        @log-animal="logAnimal"
+        @log-et="logPet"
       />
       <h4>Pick a Fruit:</h4>
-      <Fruit
-        @logFruit="logFruit"
-        @logSugar="logSugar"
+      <ChooseFruit
+        @log-fruit="logFruit"
+        @log-sugar="logSugar"
       />
-      <Selection
+      <ChooseSelection
         :birthday="birthday"
         :animal="animal"
         :fruit="fruit"
@@ -65,17 +65,17 @@
 
 <script>
 import axios from 'axios';
-import Animal from './Animal.vue';
-import Birthday from './Birthday.vue';
-import Fruit from './Fruit.vue';
-import Selection from './Selection.vue';
+import ChooseAnimal from './ChooseAnimal.vue';
+import ChooseBirthday from './ChooseBirthday.vue';
+import ChooseFruit from './ChooseFruit.vue';
+import SubmitSelection from './SubmitSelection.vue';
 
 export default {
   components: {
-    Animal,
-    Birthday,
-    Fruit,
-    Selection,
+    ChooseAnimal,
+    ChooseBirthday,
+    ChooseFruit,
+    SubmitSelection,
   },
 
   data() {
@@ -97,9 +97,9 @@ export default {
   computed: {
     isFilled() {
       if (
-        this.birthday.length !== 0
-        && this.animal.length !== 0
-        && this.fruit.length !== 0
+        this.birthday.length > 0
+        && this.animal.length > 0
+        && this.fruit.length > 0
       ) {
         return false;
       }
@@ -107,7 +107,7 @@ export default {
     },
 
     finalResults() {
-      if (this.mainResult.length !== 0 && this.emoResult.length !== 0) {
+      if (this.mainResult.length > 0 && this.emoResult.length > 0) {
         return true;
       }
       return false;
@@ -177,15 +177,15 @@ export default {
         },
       };
       axios(checkIt)
-        .then((res) => {
-          if (res.data[0]) {
-            this.emotion = res.data[0].emotion;
-            this.normalEmotion = res.data[0].normalEmotion;
-            this.emoEmotion = res.data[0].emoEmotion;
-            this.petName = res.data[0].petName;
-            this.sugar = res.data[0].sugar;
-            this.mainResult = res.data[0].mainResult;
-            this.emoResult = res.data[0].emoResult;
+        .then((response) => {
+          if (response.data[0]) {
+            this.emotion = response.data[0].emotion;
+            this.normalEmotion = response.data[0].normalEmotion;
+            this.emoEmotion = response.data[0].emoEmotion;
+            this.petName = response.data[0].petName;
+            this.sugar = response.data[0].sugar;
+            this.mainResult = response.data[0].mainResult;
+            this.emoResult = response.data[0].emoResult;
           } else {
           // if (res.data.length > 0) {
           //   this.emotion = res.data._rs.rows[0].emotion;

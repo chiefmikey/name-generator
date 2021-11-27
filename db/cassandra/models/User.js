@@ -1,4 +1,5 @@
 import cassandra from 'cassandra-driver';
+
 import client from '../index.js';
 
 const { Mapper } = cassandra.mapping;

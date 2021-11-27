@@ -1,30 +1,29 @@
-/* eslint-disable no-param-reassign */
 import Router from '@koa/router';
 import axios from 'axios';
 
 const router = new Router({ prefix: '/emotion' });
 
-router.get('/', async (ctx) => {
+router.get('/', async (context) => {
   try {
     const emotion = await axios.get(
       'https://api.datamuse.com/words?ml=enthusiastic',
     );
-    ctx.response.status = 200;
-    ctx.body = emotion.data;
-  } catch (error) {
-    ctx.response.status = 200;
-    ctx.body = { word: 'chief' };
+    context.response.status = 200;
+    context.body = emotion.data;
+  } catch {
+    context.response.status = 200;
+    context.body = { word: 'chief' };
   }
 });
 
-router.get('/emo', async (ctx) => {
+router.get('/emo', async (context) => {
   try {
     const emotion = await axios.get('https://api.datamuse.com/words?ml=sad');
-    ctx.response.status = 200;
-    ctx.body = emotion.data;
-  } catch (error) {
-    ctx.response.status = 200;
-    ctx.response.body = { word: 'chief' };
+    context.response.status = 200;
+    context.body = emotion.data;
+  } catch {
+    context.response.status = 200;
+    context.response.body = { word: 'chief' };
   }
 });
 

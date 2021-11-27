@@ -1,22 +1,22 @@
-/* eslint-disable no-param-reassign */
 import Router from '@koa/router';
+
 import User from '../../../db/mongo/models/User.js';
 
 const router = new Router({ prefix: '/get' });
 
-router.get('/', async (ctx) => {
+router.get('/', async (context) => {
   try {
     const results = await User.find({
-      birthday: ctx.request.query.birthday,
-      fruit: ctx.request.query.fruit,
-      animal: ctx.request.query.animal,
+      birthday: context.request.query.birthday,
+      fruit: context.request.query.fruit,
+      animal: context.request.query.animal,
     });
-    ctx.response.status = 200;
-    ctx.response.body = results;
+    context.response.status = 200;
+    context.response.body = results;
   } catch (error) {
     console.log(error);
-    ctx.response.status = 200;
-    ctx.response.body = false;
+    context.response.status = 200;
+    context.response.body = false;
   }
 });
 

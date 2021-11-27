@@ -2,15 +2,15 @@
   <div id="selection">
     <div>
       <h5>Birthday:</h5>
-      {{ birthday || '–' }}
+      {{ birthday || '-' }}
     </div>
     <div>
       <h5>Animal:</h5>
-      {{ animal || '–' }}
+      {{ animal || '-' }}
     </div>
     <div>
       <h5>Fruit:</h5>
-      {{ fruit || '–' }}
+      {{ fruit || '-' }}
     </div>
   </div>
 </template>
