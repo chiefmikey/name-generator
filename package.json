@@ -24,7 +24,7 @@
     "mongoose": "^6.2.10",
     "path": "^0.12.7",
     "ts-node": "^10.7.0",
-    "vue": "^3.2.31",
+    "vue": "^3.2.32",
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
@@ -33,7 +33,7 @@
     "@babel/preset-env": "^7.16.11",
     "@mikey-pro/style-guide": "^4.11.1",
     "@vue/babel-plugin-jsx": "^1.1.1",
-    "@vue/compiler-sfc": "^3.2.31",
+    "@vue/compiler-sfc": "^3.2.32",
     "airbnb-browser-shims": "^3.3.0",
     "babel-loader": "^8.2.4",
     "babel-preset-airbnb": "^5.0.0",
