@@ -31,7 +31,7 @@
     "@babel/core": "^7.18.0",
     "@babel/plugin-transform-runtime": "^7.18.0",
     "@babel/preset-env": "^7.18.0",
-    "@mikey-pro/style-guide": "^4.11.1",
+    "@mikey-pro/style-guide": "^4.11.2",
     "@vue/babel-plugin-jsx": "^1.1.1",
     "@vue/compiler-sfc": "^3.2.36",
     "airbnb-browser-shims": "^3.3.0",
