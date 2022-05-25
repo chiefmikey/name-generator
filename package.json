@@ -10,10 +10,10 @@
     "dev": "webpack --mode development -w"
   },
   "dependencies": {
-    "@babel/runtime": "^7.18.0",
+    "@babel/runtime": "^7.18.2",
     "@koa/cors": "^3.3.0",
     "@koa/router": "^10.1.1",
-    "aws-sdk": "^2.1141.0",
+    "aws-sdk": "^2.1142.0",
     "axios": "^0.27.2",
     "cassandra-driver": "^4.6.3",
     "cors": "^2.8.5",
@@ -28,9 +28,9 @@
     "vue-router": "^4.0.15"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.0",
-    "@babel/plugin-transform-runtime": "^7.18.0",
-    "@babel/preset-env": "^7.18.0",
+    "@babel/core": "^7.18.2",
+    "@babel/plugin-transform-runtime": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
     "@mikey-pro/style-guide": "^4.11.2",
     "@vue/babel-plugin-jsx": "^1.1.1",
     "@vue/compiler-sfc": "^3.2.36",
