@@ -30,7 +30,7 @@ The flick of your mouse, the wave of a wand. A brief questionnaire is all that
 is required to conquer the pursuit of coolness.
 
 > "All of my friends thought I was a lame but my swag got turned on as soon as I
-> hit up the **Name Generator**."
+> hit up **Name Generator**."
 
 The biggest change of your life is just a few clicks away. Visit
 <http://localhost:8080> to get started lol.
