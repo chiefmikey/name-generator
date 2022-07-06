@@ -18,7 +18,7 @@ prominent information and most interacted with as well. So tell us, how can
 _anyone_ stand out in a sea of simple names?
 
 Personal naming convention complications are no longer an obstacle with **Name
-Generator**. By simply providing some basic personality details, the generator
+Generator**. By simply providing some basic personal details, the generator
 can supply a unique identifier to be used as a displayed profile name on any
 social media platform.
 
