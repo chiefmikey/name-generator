@@ -15,7 +15,7 @@
     "@koa/router": "^11.0.1",
     "aws-sdk": "^2.1172.0",
     "axios": "^0.27.2",
-    "cassandra-driver": "^4.6.3",
+    "cassandra-driver": "^4.6.4",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "koa": "^2.13.4",
