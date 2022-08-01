@@ -13,7 +13,7 @@
     "@babel/runtime": "^7.18.9",
     "@koa/cors": "^3.3.0",
     "@koa/router": "^12.0.0",
-    "aws-sdk": "^2.1184.0",
+    "aws-sdk": "^2.1185.0",
     "axios": "^0.27.2",
     "cassandra-driver": "^4.6.4",
     "cors": "^2.8.5",
