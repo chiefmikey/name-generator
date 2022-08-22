@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
-    "@koa/cors": "^3.3.0",
+    "@koa/cors": "^3.4.1",
     "@koa/router": "^12.0.0",
     "aws-sdk": "^2.1198.0",
     "axios": "^0.27.2",
