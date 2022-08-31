@@ -33,7 +33,7 @@
     "@babel/preset-env": "^7.18.10",
     "@mikey-pro/style-guide": "^4.146.0",
     "@vue/babel-plugin-jsx": "^1.1.1",
-    "@vue/compiler-sfc": "^3.2.37",
+    "@vue/compiler-sfc": "^3.2.38",
     "airbnb-browser-shims": "^3.3.0",
     "babel-loader": "^8.2.5",
     "babel-preset-airbnb": "^5.0.0",
