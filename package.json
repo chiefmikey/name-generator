@@ -17,7 +17,7 @@
     "axios": "^0.27.2",
     "cassandra-driver": "^4.6.4",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.0.2",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-static": "^5.0.0",
