@@ -10,7 +10,7 @@
     "dev": "webpack --mode development -w"
   },
   "dependencies": {
-    "@babel/runtime": "^7.19.4",
+    "@babel/runtime": "^7.20.0",
     "@koa/cors": "^4.0.0",
     "@koa/router": "^12.0.0",
     "aws-sdk": "^2.1241.0",
