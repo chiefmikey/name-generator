@@ -28,7 +28,7 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.6",
+    "@babel/core": "^7.20.2",
     "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
     "@mikey-pro/style-guide": "^4.146.0",
