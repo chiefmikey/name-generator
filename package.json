@@ -37,7 +37,7 @@
     "airbnb-browser-shims": "^3.3.0",
     "babel-loader": "^9.1.0",
     "babel-preset-airbnb": "^5.0.0",
-    "css-loader": "^6.7.2",
+    "css-loader": "^6.7.3",
     "defer-to-connect": "^2.0.1",
     "file-loader": "^6.2.0",
     "node-sass": "^8.0.0",
