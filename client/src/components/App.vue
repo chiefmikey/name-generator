@@ -36,6 +36,7 @@
         <input
           v-model="emo"
           type="checkbox"
+          aria-label="emo"
         />
       </h4>
       <h3>Your New Name:</h3>
@@ -68,14 +69,14 @@ import axios from 'axios';
 import ChooseAnimal from './ChooseAnimal.vue';
 import ChooseBirthday from './ChooseBirthday.vue';
 import ChooseFruit from './ChooseFruit.vue';
-import SubmitSelection from './SubmitSelection.vue';
+import ChooseSelection from './ChooseSelection.vue';
 
 export default {
   components: {
     ChooseAnimal,
     ChooseBirthday,
     ChooseFruit,
-    SubmitSelection,
+    ChooseSelection,
   },
 
   data() {
