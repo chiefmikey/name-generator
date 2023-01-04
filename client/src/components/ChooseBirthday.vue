@@ -42,7 +42,7 @@
 </template>
 
 <script>
-export default {
+const choose = {
   method: {
     required: true,
     type: Function,
@@ -61,15 +61,15 @@ export default {
 
   beforeMount() {
     const monthKey = 0;
-    for (let i = 1; i <= 12; i += 1) {
-      const theMonth = String(i);
+    for (let index = 1; index <= 12; index += 1) {
+      const theMonth = String(index);
       this.months.push({ id: monthKey, date: theMonth });
       this.monthKey += 1;
     }
 
     const dayKey = 0;
-    for (let i = 1; i <= 31; i += 1) {
-      const theDay = String(i);
+    for (let index = 1; index <= 31; index += 1) {
+      const theDay = String(index);
       this.days.push({ id: dayKey, date: theDay });
       this.dayKey += 1;
     }
@@ -84,6 +84,7 @@ export default {
     },
   },
 };
+export default choose;
 </script>
 
 <style lang="stylus"></style>

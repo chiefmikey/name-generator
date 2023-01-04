@@ -1,11 +1,12 @@
+import path from 'node:path';
+
 import cors from '@koa/cors';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import serve from 'koa-static';
-import path from 'node:path';
 
-import submitRouter from './routes/submit.js';
-import './db/mongo/index.js';
+import submitRouter from './routes/submit';
+import './db/mongo/index';
 // import './db/cassandra/index.js';
 
 const __dirname = import.meta.url.slice(7, import.meta.url.lastIndexOf('/'));

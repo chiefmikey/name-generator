@@ -66,12 +66,13 @@
 
 <script>
 import axios from 'axios';
+
 import ChooseAnimal from './ChooseAnimal.vue';
 import ChooseBirthday from './ChooseBirthday.vue';
 import ChooseFruit from './ChooseFruit.vue';
 import ChooseSelection from './ChooseSelection.vue';
 
-export default {
+const App = {
   components: {
     ChooseAnimal,
     ChooseBirthday,
@@ -237,6 +238,7 @@ export default {
     },
   },
 };
+export default App;
 </script>
 
 <style lang="stylus">

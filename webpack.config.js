@@ -1,4 +1,5 @@
 import path from 'node:path';
+
 import { VueLoaderPlugin } from 'vue-loader';
 import webpack from 'webpack';
 
@@ -10,7 +11,7 @@ const DIST_DIR = path.join(__dirname, '/client/public/dist');
 const vue = 'vue-style-loader';
 const css = 'css-loader';
 
-export default {
+const weback = {
   mode: 'development',
   entry: `${SRC_DIR}/index.js`,
   output: {
@@ -71,3 +72,5 @@ export default {
     extensions: ['*', '.js', '.jsx', '.vue', '.json', '...'],
   },
 };
+
+export default weback;

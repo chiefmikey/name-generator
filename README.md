@@ -18,9 +18,9 @@ prominent information and most interacted with as well. So tell us, how can
 _anyone_ stand out in a sea of simple names?
 
 Personal naming convention complications are no longer an obstacle with **Name
-Generator**. By simply providing some basic personal details, the generator
-can supply a unique identifier to be used as a displayed profile name on any
-social media platform.
+Generator**. By simply providing some basic personal details, the generator can
+supply a unique identifier to be used as a displayed profile name on any social
+media platform.
 
 > "Picking a name for a baby is hard. Picking a name for your social media
 > profile is harder. At least it was, until now... **Name Generator**, _just use

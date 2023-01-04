@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "Full stack text generator with dynamic results built from public data sources",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "start": "node app.js",
-    "test": "nodemon app.js",
     "build": "webpack --mode development",
-    "dev": "webpack --mode development -w"
+    "dev": "webpack --mode development -w",
+    "fix": "eslint --fix '**/*'",
+    "start": "node app.js",
+    "test": "nodemon app.js"
   },
   "dependencies": {
     "@babel/runtime": "^7.20.7",
@@ -28,18 +30,18 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.7",
+    "@babel/core": "^7.20.12",
     "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/preset-env": "^7.20.2",
-    "@mikey-pro/style-guide": "^4.146.0",
     "@vue/babel-plugin-jsx": "^1.1.1",
-    "@vue/compiler-sfc": "^3.2.41",
+    "@vue/compiler-sfc": "^3.2.45",
     "airbnb-browser-shims": "^3.3.0",
     "babel-loader": "^9.1.0",
     "babel-preset-airbnb": "^5.0.0",
     "css-loader": "^6.7.3",
     "defer-to-connect": "^2.0.1",
     "file-loader": "^6.2.0",
+    "mikey-pro": "^6.2.1",
     "node-sass": "^8.0.0",
     "nodemon": "^2.0.20",
     "sass-loader": "^13.2.0",
@@ -50,20 +52,16 @@
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   },
-  "license": "ISC",
+  "homepage": "https://github.com/chiefmikey/name-generator#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chiefmikey/name-generator.git"
   },
-  "homepage": "https://github.com/chiefmikey/name-generator#readme",
-  "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
   "bugs": {
     "url": "https://github.com/chiefmikey/name-generator/issues"
   },
-  "contributors": [
-    "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)"
-  ],
-  "type": "module",
+  "license": "ISC",
+  "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
   "browserslist": [
     "defaults"
   ],
