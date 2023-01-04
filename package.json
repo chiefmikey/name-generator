@@ -36,7 +36,7 @@
     "@vue/babel-plugin-jsx": "^1.1.1",
     "@vue/compiler-sfc": "^3.2.45",
     "airbnb-browser-shims": "^3.3.0",
-    "babel-loader": "^9.1.0",
+    "babel-loader": "^9.1.2",
     "babel-preset-airbnb": "^5.0.0",
     "css-loader": "^6.7.3",
     "defer-to-connect": "^2.0.1",
