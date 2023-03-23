@@ -43,7 +43,7 @@
     "file-loader": "^6.2.0",
     "mikey-pro": "^6.2.1",
     "node-sass": "^8.0.0",
-    "nodemon": "^2.0.20",
+    "nodemon": "^2.0.22",
     "sass-loader": "^13.2.0",
     "stylus": "^0.59.0",
     "stylus-loader": "^7.1.0",
