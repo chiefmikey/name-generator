@@ -30,7 +30,7 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.12",
+    "@babel/core": "^7.21.5",
     "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/preset-env": "^7.20.2",
     "@vue/babel-plugin-jsx": "^1.1.1",
