@@ -34,7 +34,7 @@
     "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/preset-env": "^7.20.2",
     "@vue/babel-plugin-jsx": "^1.1.1",
-    "@vue/compiler-sfc": "^3.2.45",
+    "@vue/compiler-sfc": "^3.3.1",
     "airbnb-browser-shims": "^3.3.0",
     "babel-loader": "^9.1.0",
     "babel-preset-airbnb": "^5.0.0",
