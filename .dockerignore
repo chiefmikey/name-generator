@@ -8,7 +8,6 @@ client/src
 .prettierrc
 .babelrc.cjs
 .eslintrc.jcs
-vetur.config.cjs
 webpack.config.js
 jsconfig.json
 Dockerfile

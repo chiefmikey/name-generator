@@ -5,8 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "build:prod": "webpack --mode development",
     "build:dev": "webpack --mode development -w",
+    "build:prod": "webpack --mode development",
     "fix": "eslint --fix '**/*'",
     "start:client": "node app.js",
     "test": "nodemon app.js"
@@ -33,13 +33,13 @@
     "@babel/core": "^7.24.0",
     "@babel/plugin-transform-runtime": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
+    "@mikey-pro/eslint-config-vue": "^7.2.1",
     "@vue/babel-plugin-jsx": "^1.2.1",
     "@vue/compiler-sfc": "^3.4.21",
     "airbnb-browser-shims": "^3.3.0",
     "babel-loader": "^9.1.3",
     "babel-preset-airbnb": "^5.0.0",
     "css-loader": "^6.10.0",
-    "defer-to-connect": "^2.0.1",
     "file-loader": "^6.2.0",
     "mikey-pro": "^7.2.1",
     "node-sass": "^9.0.0",
@@ -60,7 +60,7 @@
   "bugs": {
     "url": "https://github.com/chiefmikey/name-generator/issues"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
   "browserslist": [
     "defaults"
