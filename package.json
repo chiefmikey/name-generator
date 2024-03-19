@@ -34,7 +34,7 @@
     "@babel/plugin-transform-runtime": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
     "@mikey-pro/eslint-config-vue": "^7.2.1",
-    "@vue/babel-plugin-jsx": "^1.2.1",
+    "@vue/babel-plugin-jsx": "^1.2.2",
     "@vue/compiler-sfc": "^3.4.21",
     "airbnb-browser-shims": "^3.3.0",
     "babel-loader": "^9.1.3",
