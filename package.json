@@ -30,7 +30,7 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0",
+    "@babel/core": "^7.24.1",
     "@babel/plugin-transform-runtime": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
     "@mikey-pro/eslint-config-vue": "^7.2.1",
