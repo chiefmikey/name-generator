@@ -66,13 +66,16 @@
 
 <script>
 import axios from 'axios';
+import { defineComponent } from 'vue';
 
 import ChooseAnimal from './ChooseAnimal.vue';
 import ChooseBirthday from './ChooseBirthday.vue';
 import ChooseFruit from './ChooseFruit.vue';
 import ChooseSelection from './ChooseSelection.vue';
 
-const App = {
+export default defineComponent({
+  name: 'App',
+
   components: {
     ChooseAnimal,
     ChooseBirthday,
@@ -237,8 +240,8 @@ const App = {
       this.emoResult = emoResult;
     },
   },
-};
-export default App;
+});
+
 </script>
 
 <style lang="stylus">
