@@ -23,7 +23,7 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.3",
+    "@babel/core": "^7.24.4",
     "@babel/plugin-transform-runtime": "^7.24.3",
     "@babel/preset-env": "^7.24.3",
     "@koa/cors": "^5.0.0",
