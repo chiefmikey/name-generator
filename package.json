@@ -25,7 +25,7 @@
   "devDependencies": {
     "@babel/core": "^7.24.3",
     "@babel/plugin-transform-runtime": "^7.24.3",
-    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-env": "^7.24.4",
     "@koa/cors": "^5.0.0",
     "@koa/router": "^12.0.1",
     "@mikey-pro/eslint-config-vue": "^7.2.2",
