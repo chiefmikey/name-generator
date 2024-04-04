@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.24.4",
-    "aws-sdk": "^2.1592.0",
+    "aws-sdk": "^2.1593.0",
     "axios": "^1.6.8",
     "cassandra-driver": "^4.7.2",
     "cors": "^2.8.5",
