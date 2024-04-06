@@ -3,16 +3,14 @@ import path from 'node:path';
 import { VueLoaderPlugin } from 'vue-loader';
 import webpack from 'webpack';
 
-const SRC_DIR = path.join(path.resolve(), '/src');
+const SRC_DIR = path.join(path.resolve(), '/src/index.ts');
 const DIST_DIR = path.join(path.resolve(), '/public/dist');
 
-const vue = 'vue-style-loader';
-const css = ['style-loader', 'css-loader'];
-const scss = ['style-loader', 'css-loader', 'sass-loader'];
+const scss = ['vue-style-loader', 'css-loader', 'sass-loader'];
 
 const weback = {
   mode: 'development',
-  entry: `${SRC_DIR}/index.ts`,
+  entry: SRC_DIR,
   output: {
     filename: 'bundle.js',
     path: DIST_DIR,
@@ -50,14 +48,6 @@ const weback = {
             },
           },
         ],
-      },
-      {
-        test: /\.css$/,
-        use: css,
-      },
-      {
-        test: /\.scss$/,
-        use: [vue, css, 'sass-loader'],
       },
       {
         test: /\.s[ac]ss$/,

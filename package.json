@@ -8,7 +8,7 @@
     "build:dev": "webpack --mode development -w",
     "build:prod": "webpack --mode development",
     "fix": "eslint --fix '**/*'",
-    "start:client": "node app.js",
+    "start:client": "ts-node ./server.ts",
     "test": "nodemon app.js"
   },
   "dependencies": {
@@ -44,8 +44,7 @@
     "node-sass": "^9.0.0",
     "nodemon": "^3.1.0",
     "sass-loader": "^14.1.1",
-    "stylus": "^0.63.0",
-    "stylus-loader": "^8.1.0",
+    "style-loader": "^3.3.4",
     "ts-node": "^10.9.2",
     "vue-loader": "^17.4.2",
     "vue-style-loader": "^4.1.3",
