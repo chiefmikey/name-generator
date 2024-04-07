@@ -5,9 +5,7 @@
         id="monthSelect"
         v-model="monthInput"
       >
-        <option value="">
-          Month
-        </option>
+        <option value="">Month</option>
         <option
           v-for="month in months"
           :key="month.id"
@@ -20,9 +18,7 @@
         id="daySelect"
         v-model="dayInput"
       >
-        <option value="">
-          Day
-        </option>
+        <option value="">Day</option>
         <option
           v-for="day in days"
           :key="day.id"
@@ -87,4 +83,4 @@ const choose = {
 export default choose;
 </script>
 
-<style lang="stylus"></style>
+<style lang="scss"></style>

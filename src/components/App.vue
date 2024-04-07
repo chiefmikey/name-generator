@@ -1,22 +1,17 @@
 <template>
   <div class="wrapper">
-    <div id="header">
-      NAME GENERATOR
-    </div>
-    <div id="main">
-      <h4>Your Birthday:</h4>
-      <ChooseBirthday @log-birthday="logBirthday" />
-      <h4>Favorite Animal:</h4>
-      <ChooseAnimal
-        :birthday="birthday"
-        @log-animal="logAnimal"
-        @log-et="logPet"
-      />
-      <h4>Pick a Fruit:</h4>
-      <ChooseFruit
-        @log-fruit="logFruit"
-        @log-sugar="logSugar"
-      />
+    <div class="header">NAME GENERATOR</div>
+    <div class="main">
+      <div
+        v-for="item in items"
+        :key="item.label"
+      >
+        <h4>{{ item.label }}:</h4>
+        <component
+          :is="item.component"
+          v-model="item.model"
+        />
+      </div>
       <ChooseSelection
         :birthday="birthday"
         :animal="animal"
@@ -24,7 +19,7 @@
       />
       <form @submit.prevent="checkAll">
         <button
-          id="submit-button-main"
+          class="submit-button-main"
           :disabled="isFilled"
           type="submit"
         >
@@ -40,23 +35,10 @@
         />
       </h4>
       <h3>Your New Name:</h3>
-      <div
-        v-if="emo"
-        id="result"
-      >
-        <div id="new-name">
+      <div class="result">
+        <div class="new-name">
           <h2 v-if="finalResults">
-            {{ emoResult }}
-          </h2>
-        </div>
-      </div>
-      <div
-        v-else
-        id="result"
-      >
-        <div id="new-name">
-          <h2 v-if="finalResults">
-            {{ mainResult }}
+            {{ result }}
           </h2>
         </div>
       </div>
@@ -85,6 +67,19 @@ export default defineComponent({
 
   data() {
     return {
+      items: [
+        {
+          label: 'Your Birthday',
+          component: 'ChooseBirthday',
+          model: 'birthday',
+        },
+        {
+          label: 'Favorite Animal',
+          component: 'ChooseAnimal',
+          model: 'animal',
+        },
+        { label: 'Pick a Fruit', component: 'ChooseFruit', model: 'fruit' },
+      ],
       emotion: '',
       normalEmotion: '',
       emoEmotion: '',
@@ -101,47 +96,42 @@ export default defineComponent({
 
   computed: {
     isFilled() {
-      if (
-        this.birthday.length > 0
-        && this.animal.length > 0
-        && this.fruit.length > 0
-      ) {
-        return false;
-      }
-      return true;
+      return !(
+        this.birthday.length > 0 &&
+        this.animal.length > 0 &&
+        this.fruit.length > 0
+      );
     },
 
     finalResults() {
-      if (this.mainResult.length > 0 && this.emoResult.length > 0) {
-        return true;
-      }
-      return false;
+      return this.mainResult.length > 0 && this.emoResult.length > 0;
+    },
+
+    result() {
+      return this.emo ? this.emoResult : this.mainResult;
     },
   },
 
   methods: {
-    getEmotion() {
-      axios
-        .get('/submit/emotion')
-        .then((res) => {
-          const random = Math.floor(Math.random() * res.data.length);
-          const randomEmotion1 = res.data[random].word;
-          this.emotion = randomEmotion1;
-          this.normalEmotion = randomEmotion1;
-        })
-        .catch((error) => {
-          console.error('error in get emotion', error);
-        });
-      axios
-        .get('/submit/emotion/emo')
-        .then((res) => {
-          const random = Math.floor(Math.random() * res.data.length);
-          const randomEmotion2 = res.data[random].word;
-          this.emoEmotion = randomEmotion2;
-        })
-        .catch((error) => {
-          console.error('error in get emotion', error);
-        });
+    async getEmotion() {
+      try {
+        const response = await axios.get('/submit/emotion');
+        const random = Math.floor(Math.random() * response.data.length);
+        const randomEmotion1 = response.data[random].word;
+        this.emotion = randomEmotion1;
+        this.normalEmotion = randomEmotion1;
+      } catch (error) {
+        console.error('error in get emotion', error);
+      }
+
+      try {
+        const response = await axios.get('/submit/emotion/emo');
+        const random = Math.floor(Math.random() * response.data.length);
+        const randomEmotion2 = response.data[random].word;
+        this.emoEmotion = randomEmotion2;
+      } catch (error) {
+        console.error('error in get emotion', error);
+      }
     },
 
     postAll() {
@@ -192,15 +182,6 @@ export default defineComponent({
             this.mainResult = response.data[0].mainResult;
             this.emoResult = response.data[0].emoResult;
           } else {
-          // if (res.data.length > 0) {
-          //   this.emotion = res.data._rs.rows[0].emotion;
-          //   this.normalEmotion = res.data._rs.rows[0].normal_emotion;
-          //   this.emoEmotion = res.data._rs.rows[0].emo_emotion;
-          //   this.petName = res.data._rs.rows[0].pet_name;
-          //   this.sugar = res.data._rs.rows[0].sugar;
-          //   this.mainResult = res.data._rs.rows[0].main_result;
-          //   this.emoResult = res.data._rs.rows[0].emo_result;
-          // } else {
             this.postAll();
           }
         })
@@ -213,92 +194,88 @@ export default defineComponent({
           console.error('error in check it', error);
         });
     },
-
-    logBirthday(birthday) {
-      this.getEmotion(this.emo);
-      this.birthday = birthday;
-    },
-
-    logAnimal(animal) {
-      this.animal = animal;
-    },
-
-    logPet(petName) {
-      this.petName = petName;
-    },
-
-    logFruit(fruit) {
-      this.fruit = fruit;
-    },
-
-    logSugar(sugar) {
-      this.sugar = sugar;
-    },
-
-    logResult(mainResult, emoResult) {
-      this.mainResult = mainResult;
-      this.emoResult = emoResult;
-    },
   },
 });
-
 </script>
 
-<style lang="stylus">
-*, *::before, *::after
-  box-sizing border-box
+<style lang="scss">
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-html, body
-  font 16px/1.2 BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif
-  padding 10px
-  background-color lightgray
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
 
-h2, h3, h4, h5, h6
-  padding 5px 0 5px 0
-  margin 5px 0 5px 0
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 5px 0 5px 0;
+  margin: 5px 0 5px 0;
+}
 
-.wrapper
-  background-color black
-  color white
-  width 500px
-  margin auto
-  padding 40px
-  box-shadow 10px 10px green
+.wrapper {
+  background-color: black;
+  color: white;
+  width: 500px;
+  margin: auto;
+  padding: 3rem;
+  box-shadow: 10px 10px green;
+}
 
-#header
-  font-size 24px
-  font-weight 900
-  text-align center
-  padding-bottom 20px
+.header {
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+  padding-bottom: 20px;
+}
 
-#main
-  display flex
-  flex-direction column
-  align-items center
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
-form
-  margin-bottom 20px
+form {
+  margin-bottom: 20px;
+  align-self: center;
+}
 
-select
-  height 30px
+select {
+  height: 30px;
+}
 
-input[type="text"]
-  width 200px
-  height 30px
-  padding 10px
-  border 1px solid #777
+input[type='text'] {
+  width: 200px;
+  height: 30px;
+  padding: 10px;
+  border: 1px solid #777;
+}
 
-.submit-button
-  height 30px
+.submit-button {
+  height: 30px;
+}
 
-#submit-button-main
-  width 300px
-  height 50px
-  margin 20px 0 10px 0
-  padding 10px 20px 10px 20px
-  align-self center
+.submit-button-main {
+  width: 300px;
+  height: 50px;
+  margin: 20px 0 10px 0;
+  padding: 10px 20px 10px 20px;
+}
 
-#result
-  height 50px
-  text-shadow 4px 4px green
+.result {
+  height: 50px;
+  text-shadow: 4px 4px green;
+}
 </style>

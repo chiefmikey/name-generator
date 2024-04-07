@@ -45,9 +45,10 @@ export default {
   methods: {
     getPet() {
       const defaultBirthday = this.birthday === '' ? '01-13' : this.birthday;
-      const defaultAnimal = this.animalInput.length > 0
-        ? this.animalInput[0].toUpperCase() + this.animalInput.slice(1)
-        : '';
+      const defaultAnimal =
+        this.animalInput.length > 0
+          ? this.animalInput[0].toUpperCase() + this.animalInput.slice(1)
+          : '';
       this.animalInput = '';
       this.$emit('logAnimal', defaultAnimal);
       const petSearch = {
@@ -67,4 +68,4 @@ export default {
 };
 </script>
 
-<style lang="stylus"></style>
+<style lang="scss"></style>

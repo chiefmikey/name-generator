@@ -36,9 +36,10 @@ export default {
 
   methods: {
     getFruit() {
-      const fruitDefault = this.fruitInput.length > 0
-        ? this.fruitInput[0].toUpperCase() + this.fruitInput.slice(1)
-        : '';
+      const fruitDefault =
+        this.fruitInput.length > 0
+          ? this.fruitInput[0].toUpperCase() + this.fruitInput.slice(1)
+          : '';
       if (fruitDefault.length > 0) {
         this.$emit('logFruit', fruitDefault);
       }
@@ -61,4 +62,4 @@ export default {
 };
 </script>
 
-<style lang="stylus"></style>
+<style lang="scss"></style>
