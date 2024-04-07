@@ -221,8 +221,8 @@ h3,
 h4,
 h5,
 h6 {
-  padding: 5px 0 5px 0;
-  margin: 5px 0 5px 0;
+  padding: 5px 0;
+  margin: 5px 0;
 }
 
 .wrapper {
@@ -270,8 +270,8 @@ input[type='text'] {
 .submit-button-main {
   width: 300px;
   height: 50px;
-  margin: 20px 0 10px 0;
-  padding: 10px 20px 10px 20px;
+  margin: 20px 0 10px;
+  padding: 10px 20px;
 }
 
 .result {

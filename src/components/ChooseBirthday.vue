@@ -82,5 +82,3 @@ const choose = {
 };
 export default choose;
 </script>
-
-<style lang="scss"></style>
