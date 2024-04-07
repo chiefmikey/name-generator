@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": [
-      "es2020",
+      "esnext",
       "dom",
       "dom.iterable"
     ],
@@ -10,6 +10,7 @@
     "module": "esnext",
     "target": "es2020",
     "sourceMap": true,
+    "allowJs": true,
     "jsx": "preserve",
     "jsxImportSource": "vue",
     "strict": true,
@@ -20,24 +21,14 @@
     "noEmit": true,
     "removeComments": true,
     "isolatedModules": true,
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
+    "noImplicitAny": true,
+    "preserveConstEnums": true
   },
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
-  ],
   "exclude": [
     "node_modules",
     "**/*.spec.ts"

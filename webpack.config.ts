@@ -8,7 +8,7 @@ const DIST_DIR = path.join(path.resolve(), '/public/dist');
 
 const scss = ['vue-style-loader', 'css-loader', 'sass-loader'];
 
-const weback = {
+const webpackConfig = {
   mode: 'development',
   entry: SRC_DIR,
   output: {
@@ -79,4 +79,4 @@ const weback = {
   devtool: 'source-map',
 };
 
-export default weback;
+export default webpackConfig;
