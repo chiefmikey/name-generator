@@ -1,7 +1,7 @@
 import Router from '@koa/router';
 import axios from 'axios';
 
-import auth from '../../token.js';
+import auth from '../../../token.js';
 
 const router = new Router({ prefix: '/animal' });
 

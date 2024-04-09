@@ -1,7 +1,5 @@
 import Router from '@koa/router';
 
-import User from '../../../db/mongo/models/User.js';
-
 const router = new Router({ prefix: '/get' });
 
 router.get('/', async (context) => {

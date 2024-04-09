@@ -1,12 +1,12 @@
 import Router from '@koa/router';
 
-import User from '../../../db/cassandra/models/User.js';
+import User from '../../../db/mongo/models/User';
 
 const router = new Router({ prefix: '/post' });
 
 router.post('/', async (context) => {
   try {
-    await User.insert({
+    const addUser = await new User({
       emotion: context.request.body.emotion,
       normalEmotion: context.request.body.normalEmotion,
       emoEmotion: context.request.body.emoEmotion,
@@ -18,10 +18,11 @@ router.post('/', async (context) => {
       mainResult: context.request.body.mainResult,
       emoResult: context.request.body.emoResult,
     });
+    await addUser.save();
     context.response.status = 200;
     context.response.body = 'Saved';
   } catch (error) {
-    console.error('error in post', error);
+    console.log(error);
     context.response.status = 400;
     context.response.body = error;
   }
