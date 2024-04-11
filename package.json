@@ -29,7 +29,7 @@
     "koa-static": "^5.0.0",
     "mikey-pro": "^7.3.1",
     "node-sass": "^9.0.0",
-    "sass-loader": "^14.1.1",
+    "sass-loader": "^14.2.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
     "vue-loader": "^17.4.2",
