@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "^1.7.2",
-    "vue": "^3.4.31"
+    "vue": "^3.4.32"
   },
   "devDependencies": {
     "@babel/core": "^7.24.9",
