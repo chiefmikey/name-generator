@@ -9,7 +9,7 @@
     "start:client": "ts-node server.ts"
   },
   "dependencies": {
-    "axios": "^1.7.4",
+    "axios": "^1.7.5",
     "vue": "^3.4.38"
   },
   "devDependencies": {
