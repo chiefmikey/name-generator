@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.9",
-    "@babel/plugin-transform-runtime": "^7.25.7",
+    "@babel/plugin-transform-runtime": "^7.25.9",
     "@babel/preset-env": "^7.25.9",
     "@mikey-pro/eslint-config-vue": "^7.5.3",
     "@types/koa-static": "^4.0.4",
