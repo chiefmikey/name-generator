@@ -27,7 +27,7 @@
     "koa": "^2.15.3",
     "koa-bodyparser": "^4.4.1",
     "koa-static": "^5.0.0",
-    "mikey-pro": "^8.0.18",
+    "mikey-pro": "^8.0.19",
     "node-sass": "^9.0.0",
     "sass-loader": "^16.0.4",
     "ts-node": "^10.9.2",
