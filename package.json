@@ -18,7 +18,7 @@
     "@babel/preset-env": "^7.28.5",
     "@mikey-pro/eslint-config-vue": "^9.0.5",
     "@types/koa-static": "^4.0.4",
-    "@types/koa__router": "^12.0.4",
+    "@types/koa__router": "^12.0.5",
     "@types/webpack": "^5.28.5",
     "@vue/babel-plugin-jsx": "^2.0.1",
     "@vue/compiler-sfc": "^3.5.21",
