@@ -6,62 +6,70 @@ import webpack from 'webpack';
 const SRC_DIR = path.join(path.resolve(), '/src/index.ts');
 const DIST_DIR = path.join(path.resolve(), '/public/dist');
 
-const scss = ['vue-style-loader', 'css-loader', 'sass-loader'];
+const scss = [
+  'vue-style-loader',
+  'css-loader',
+  { loader: 'sass-loader', options: { api: 'modern-compiler' } },
+];
 
 const webpackConfig = {
-  mode: 'development',
-  entry: SRC_DIR,
-  output: {
-    filename: 'bundle.js',
-    path: DIST_DIR,
-  },
   devServer: {
     contentBase: './public/dist',
     hot: true,
     open: true,
   },
+  devtool: 'source-map',
+  entry: SRC_DIR,
+  experiments: {
+    topLevelAwait: true,
+  },
+  mode: 'development',
   module: {
     rules: [
       {
-        test: /\.vue$/,
         loader: 'vue-loader',
+        test: /\.vue$/u,
       },
       {
-        test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules/,
+        exclude: /node_modules/u,
+        test: /\.(js|jsx|ts|tsx)$/u,
         use: [
           {
             loader: 'babel-loader',
             options: {
+              plugins: [['@vue/babel-plugin-jsx']],
               presets: [
                 [
                   '@babel/preset-env',
                   {
+                    modules: false,
                     targets: {
                       node: 'current',
                     },
-                    modules: false,
                   },
                 ],
               ],
-              plugins: [['@vue/babel-plugin-jsx']],
             },
           },
         ],
       },
       {
-        test: /\.s[ac]ss$/,
+        test: /\.s[ac]ss$/u,
         use: scss,
       },
       {
-        test: /\.(png|ttf|jp(e*)g)$/,
+        test: /\.(png|ttf|jp(e*)g)$/u,
         use: 'url-loader?limit=100000&name=img/[name].[ext]',
       },
       {
-        test: /\.svg$/,
+        test: /\.svg$/u,
         use: ['@svgr/webpack', 'url-loader?limit=100000&name=img/[name].[ext]'],
       },
     ],
+  },
+  output: {
+    filename: 'bundle.js',
+    path: DIST_DIR,
   },
   plugins: [
     new VueLoaderPlugin(),
@@ -73,10 +81,6 @@ const webpackConfig = {
   resolve: {
     extensions: ['*', '.ts', '.tsx', '.js', '.jsx', '.vue', '.json', '...'],
   },
-  experiments: {
-    topLevelAwait: true,
-  },
-  devtool: 'source-map',
 };
 
 export default webpackConfig;

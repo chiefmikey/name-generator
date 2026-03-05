@@ -5,8 +5,9 @@ const router = new Router({ prefix: '/fruit' });
 
 router.get('/', async (context) => {
   try {
+    const fruitInput = String(context.request.query.fruitInput ?? '');
     const fruit = await axios.get(
-      `https://www.fruityvice.com/api/fruit/${context.request.query.fruitInput}`,
+      `https://www.fruityvice.com/api/fruit/${fruitInput}`,
     );
     context.response.status = 200;
     context.response.body = fruit.data;
