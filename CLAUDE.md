@@ -37,8 +37,13 @@ public/                 # Static assets + built bundle
 - Prettier config via `mikey-pro/prettier`
 - Stylelint config via `mikey-pro/stylelint`
 
+## Common Mistakes to Avoid
+- **No inline eslint-disable**: mikey-pro v10 enables `noInlineConfig`. All rule overrides must go in `eslint.config.js`.
+- **Missing eslint-import-resolver-typescript**: mikey-pro references it but doesn't bundle it. Must be installed separately.
+- **npm install needs `--legacy-peer-deps`**: ESLint 10 has peer dep conflicts with several plugins.
+- **Prettier can't parse `.d.ts` files**: The `prettier/prettier` rule is disabled for `.d.ts` files in eslint config.
+
 ## Known Issues
-- Route files reference `@koa/router` and `koa-send` which are devDependencies, not dependencies
 - `src/routes/db/mongo/post.ts` imports `User` model that doesn't exist in repo
 - `src/routes/external/animal.ts` imports `token.js` that doesn't exist in repo
 - The server.ts and route files are not wired together (no route mounting)
