@@ -29,7 +29,7 @@
     "@vue/compiler-sfc": "^3.5.28",
     "babel-loader": "^10.1.0",
     "css-loader": "^7.1.4",
-    "eslint": "^10.0.0",
+    "eslint": "^10.0.3",
     "eslint-import-resolver-typescript": "^4.4.4",
     "mikey-pro": "^10.2.0",
     "sass": "^1.97.3",
