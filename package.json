@@ -16,7 +16,7 @@
     "koa-bodyparser": "^4.4.1",
     "koa-send": "^5.0.1",
     "koa-static": "^5.0.0",
-    "vue": "^3.5.29"
+    "vue": "^3.5.30"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
