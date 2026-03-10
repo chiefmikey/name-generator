@@ -1,63 +1,29 @@
 <template>
-  <div>
-    <form @submit.prevent="getFruit">
-      <input
-        v-model="fruitInput"
-        type="text"
-        name="fruit"
-        placeholder="Apple, banana, etc."
-      />
-      <button
-        class="submit-button"
-        type="submit"
-      >
-        Submit
-      </button>
-    </form>
+  <div class="input-group">
+    <label class="input-label">Pick a Fruit</label>
+    <input
+      :value="modelValue"
+      class="styled-input"
+      type="text"
+      placeholder="Apple, banana, mango..."
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import { defineComponent } from 'vue';
 
-export default {
-  method: {
-    required: true,
-    type: Function,
-  },
+export default defineComponent({
+  name: 'ChooseFruit',
 
-  emits: ['logFruit', 'logSugar'],
-
-  data() {
-    return {
-      fruitInput: '',
-    };
-  },
-
-  methods: {
-    getFruit() {
-      const fruitDefault =
-        this.fruitInput.length > 0
-          ? this.fruitInput[0].toUpperCase() + this.fruitInput.slice(1)
-          : '';
-      if (fruitDefault.length > 0) {
-        this.$emit('logFruit', fruitDefault);
-      }
-      const fruitSearch = {
-        method: 'get',
-        url: '/submit/fruit',
-        params: { fruitInput: this.fruitInput },
-      };
-      axios(fruitSearch)
-        .then((res) => {
-          const sugarDefault = res.data.nutritions.sugar
-            ? String(res.data.nutritions.sugar).replace('.', '')
-            : '510';
-          this.$emit('logSugar', sugarDefault);
-        })
-        .catch((error) => console.error('error in fruit search', error));
-      this.fruitInput = '';
+  props: {
+    modelValue: {
+      default: '',
+      type: String,
     },
   },
-};
+
+  emits: ['update:modelValue'],
+});
 </script>

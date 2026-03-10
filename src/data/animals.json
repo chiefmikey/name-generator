@@ -1,0 +1,13 @@
+{
+  "dog": ["Buddy", "Max", "Charlie", "Cooper", "Rocky", "Bear", "Duke", "Tucker", "Buster", "Moose", "Diesel", "Bandit", "Zeus", "Gizmo", "Oakley", "Scout", "Maverick", "Jasper", "Tank", "Shadow"],
+  "cat": ["Luna", "Milo", "Oliver", "Leo", "Simba", "Nala", "Cleo", "Whiskers", "Salem", "Felix", "Patches", "Mittens", "Socks", "Tiger", "Oreo", "Smokey", "Ginger", "Pepper", "Boots", "Jinx"],
+  "bird": ["Tweety", "Kiwi", "Skye", "Rio", "Phoenix", "Sunny", "Peaches", "Mango", "Blue", "Coco", "Pip", "Chirpy", "Feather", "Willow", "Storm"],
+  "fish": ["Nemo", "Bubbles", "Splash", "Finn", "Goldie", "Neptune", "Coral", "Dory", "Gill", "Flipper", "Wave", "Aqua", "Scales", "Shimmer", "Tide"],
+  "rabbit": ["Thumper", "Clover", "Bun-Bun", "Hazel", "Cotton", "Flopsy", "Oreo", "Pepper", "Cinnamon", "Snowball", "Nibbles", "Cocoa", "Marshmallow", "Pebbles", "Basil"],
+  "hamster": ["Nugget", "Peanut", "Biscuit", "Tiny", "Squeaky", "Nibbles", "Chip", "Cookie", "Muffin", "Pickles", "Bean", "Waffle", "Poppy", "Acorn", "Pudding"],
+  "snake": ["Slinky", "Monty", "Hiss", "Venom", "Nagini", "Cobra", "Fang", "Scales", "Ziggy", "Noodle", "Slither", "Medusa", "Viper", "Shadow", "Onyx"],
+  "turtle": ["Sheldon", "Tank", "Shelly", "Turbo", "Crush", "Squirt", "Mossy", "Snap", "Donatello", "Leonardo", "Raphael", "Michelangelo", "Slowpoke", "Pebble", "Jade"],
+  "horse": ["Spirit", "Thunder", "Blaze", "Storm", "Midnight", "Star", "Ginger", "Apollo", "Maverick", "Shadow", "Dusty", "Lucky", "Sundance", "Willow", "Sage"],
+  "lizard": ["Spike", "Rex", "Draco", "Godzilla", "Iggy", "Chameleon", "Gecko", "Blaze", "Camo", "Scales", "Ziggy", "Flash", "Titan", "Ember", "Fern"],
+  "default": ["Mikey", "Whiskers", "Patches", "Shadow", "Fluffy", "Sparky", "Biscuit", "Nugget", "Mochi", "Pickles", "Waffles", "Tofu", "Sprout", "Noodle", "Gizmo", "Ziggy", "Pixel", "Pebbles", "Clover", "Marble"]
+}

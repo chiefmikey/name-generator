@@ -1,29 +1,20 @@
 {
   "name": "name-generator",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "type": "module",
-  "description": "Full stack text generator with dynamic results built from public data sources",
+  "description": "Fun social media name generator — pick your birthday, animal, and fruit to generate a unique name",
   "scripts": {
     "build:dev": "NODE_ENV=development webpack --mode development -w",
     "build:prod": "NODE_ENV=production webpack --mode production",
-    "fix": "eslint --fix '**/*'",
-    "start:client": "ts-node server.ts"
+    "fix": "eslint --fix '**/*'"
   },
   "dependencies": {
-    "@koa/router": "^15.3.1",
-    "axios": "^1.13.6",
-    "koa": "^3.1.2",
-    "koa-bodyparser": "^4.4.1",
-    "koa-send": "^5.0.1",
-    "koa-static": "^5.0.0",
     "vue": "^3.5.30"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@babel/plugin-transform-runtime": "^7.29.0",
     "@babel/preset-env": "^7.29.0",
-    "@types/koa-static": "^4.0.4",
-    "@types/koa__router": "^12.0.5",
     "@types/webpack": "^5.28.5",
     "@vue/babel-plugin-jsx": "^2.0.1",
     "@vue/compiler-sfc": "^3.5.28",
@@ -34,7 +25,6 @@
     "mikey-pro": "^10.3.0",
     "sass": "^1.97.3",
     "sass-loader": "^16.0.7",
-    "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "vue-loader": "^17.4.2",
     "vue-style-loader": "^4.1.3",

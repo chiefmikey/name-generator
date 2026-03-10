@@ -27,7 +27,7 @@ Completed the in-progress tooling upgrade: mikey-pro v7 to v10, ESLint 10 flat c
 
 ## Applied Updates
 
-- [x] Created CLAUDE.md for the project (didn't exist before)
-- [x] Updated CLAUDE.md: added known issues section documenting broken route file imports
-- [ ] No docs/context/ created (project too small to warrant separate context docs)
-- [x] Updated MEMORY.md: added mikey-pro gotchas (see below)
+- Created CLAUDE.md for the project (didn't exist before)
+- Updated CLAUDE.md: added known issues section documenting broken route file imports
+- No docs/context/ created (project too small to warrant separate context docs)
+- Updated MEMORY.md: added mikey-pro gotchas (see below)

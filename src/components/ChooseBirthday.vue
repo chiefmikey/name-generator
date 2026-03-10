@@ -1,84 +1,81 @@
 <template>
-  <div>
-    <form @submit.prevent="onSubmit">
+  <div class="input-group">
+    <label class="input-label">Your Birthday</label>
+    <div class="select-row">
       <select
-        id="monthSelect"
-        v-model="monthInput"
+        v-model="month"
+        class="styled-select"
+        @change="emitValue"
       >
         <option value="">Month</option>
         <option
-          v-for="month in months"
-          :key="month.id"
-          :value="month.date"
+          v-for="m in 12"
+          :key="m"
+          :value="m"
         >
-          {{ month.date }}
+          {{ monthNames[m - 1] }}
         </option>
       </select>
       <select
-        id="daySelect"
-        v-model="dayInput"
+        v-model="day"
+        class="styled-select"
+        @change="emitValue"
       >
         <option value="">Day</option>
         <option
-          v-for="day in days"
-          :key="day.id"
-          :value="day.date"
+          v-for="d in 31"
+          :key="d"
+          :value="d"
         >
-          {{ day.date }}
+          {{ d }}
         </option>
       </select>
-      <button
-        class="submit-button"
-        type="submit"
-      >
-        Submit
-      </button>
-    </form>
+    </div>
   </div>
 </template>
 
 <script>
-const choose = {
-  method: {
-    required: true,
-    type: Function,
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'ChooseBirthday',
+
+  props: {
+    modelValue: {
+      default: '',
+      type: String,
+    },
   },
 
-  emits: ['logBirthday'],
+  emits: ['update:modelValue'],
 
   data() {
     return {
-      monthInput: '',
-      dayInput: '',
-      days: [],
-      months: [],
+      month: '',
+      day: '',
+      monthNames: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ],
     };
   },
 
-  beforeMount() {
-    const monthKey = 0;
-    for (let index = 1; index <= 12; index += 1) {
-      const theMonth = String(index);
-      this.months.push({ id: monthKey, date: theMonth });
-      this.monthKey += 1;
-    }
-
-    const dayKey = 0;
-    for (let index = 1; index <= 31; index += 1) {
-      const theDay = String(index);
-      this.days.push({ id: dayKey, date: theDay });
-      this.dayKey += 1;
-    }
-  },
-
   methods: {
-    onSubmit() {
-      const date = `${this.monthInput}-${this.dayInput}`;
-      this.$emit('logBirthday', date);
-      this.monthInput = '';
-      this.dayInput = '';
+    emitValue() {
+      if (this.month && this.day) {
+        this.$emit('update:modelValue', `${this.month}-${this.day}`);
+      }
     },
   },
-};
-export default choose;
+});
 </script>
