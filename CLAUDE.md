@@ -7,7 +7,7 @@ Static site that generates fun social media names from user inputs (birthday, an
 - **Frontend**: Vue 3 (Options API, SFC), SCSS, Webpack 5, Babel
 - **Linting**: ESLint 10 (flat config via mikey-pro), Prettier, Stylelint
 - **Data**: Static JSON datasets bundled at build time (emotions, fruits, animals)
-- **Hosting**: Static files — S3 + CloudFront (or any static host)
+- **Hosting**: S3 (`name-hullowurld-com`) + CloudFront (`E1IMS0MNM7TTIU`) at https://name.hullowurld.com
 
 ## Architecture
 ```text
@@ -25,9 +25,17 @@ public/                 # Static assets + built bundle
 ```
 
 ## Commands
+- `npm run dev` — Start local dev server on port 8080
 - `npm run build:dev` — Development build with watch
 - `npm run build:prod` — Production build
 - `npm run fix` — ESLint auto-fix
+
+## Deployment
+```bash
+npm run build:prod
+aws s3 sync public/ s3://name-hullowurld-com/ --delete --cache-control "max-age=86400"
+aws cloudfront create-invalidation --distribution-id E1IMS0MNM7TTIU --paths "/*"
+```
 
 ## Conventions
 - Conventional commits: `feat:`, `fix:`, `chore:`, `refactor:`
