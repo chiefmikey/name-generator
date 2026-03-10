@@ -14,9 +14,10 @@ const scss = [
 
 const webpackConfig = {
   devServer: {
-    contentBase: './public/dist',
+    historyApiFallback: true,
     hot: true,
-    open: true,
+    port: 8080,
+    static: path.resolve(import.meta.dirname, 'public'),
   },
   devtool: 'source-map',
   entry: SRC_DIR,
@@ -58,12 +59,8 @@ const webpackConfig = {
         use: scss,
       },
       {
-        test: /\.(png|ttf|jp(e*)g)$/u,
-        use: 'url-loader?limit=100000&name=img/[name].[ext]',
-      },
-      {
-        test: /\.svg$/u,
-        use: ['@svgr/webpack', 'url-loader?limit=100000&name=img/[name].[ext]'],
+        test: /\.(png|ttf|jp(e*)g|svg)$/u,
+        type: 'asset/resource',
       },
     ],
   },
@@ -76,6 +73,7 @@ const webpackConfig = {
     new webpack.DefinePlugin({
       __VUE_OPTIONS_API__: true,
       __VUE_PROD_DEVTOOLS__: false,
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false),
     }),
   ],
   resolve: {

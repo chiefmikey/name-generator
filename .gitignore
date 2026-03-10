@@ -1,4 +1,6 @@
 .DS_Store
+.playwright-mcp/
 .vscode
 node_modules
 dist
+name-generator-*.png
