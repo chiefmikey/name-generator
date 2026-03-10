@@ -41,3 +41,5 @@ public/                 # Static assets + built bundle
 - **npm install needs `--legacy-peer-deps`**: ESLint 10 has peer dep conflicts with several plugins.
 - **Prettier can't parse `.d.ts` files**: The `prettier/prettier` rule is disabled for `.d.ts` files in eslint config.
 - **Markdown checkbox syntax**: ESLint markdown plugin treats `[ ]` and `[x]` as label references. Use plain bullets in markdown docs.
+- **prettier must be installed separately**: mikey-pro bundles `eslint-plugin-prettier` but not `prettier` itself. Without it, the prettier/prettier rule hangs indefinitely (no error, just infinite wait).
+- **@mikey-pro/eslint-config-vue required for .vue files**: mikey-pro base config only covers JS/TS/CSS/MD/etc. Vue SFC linting needs the separate `@mikey-pro/eslint-config-vue` package spread into eslint.config.js.
