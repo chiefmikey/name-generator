@@ -13,6 +13,7 @@
       </div>
 
       <button
+        type="button"
         class="generate-btn"
         :disabled="!isReady"
         @click="generate"
@@ -41,6 +42,7 @@
             {{ displayResult }}
           </div>
           <button
+            type="button"
             class="copy-btn"
             @click="copyResult"
           >

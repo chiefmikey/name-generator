@@ -1,7 +1,9 @@
+import vue from '@mikey-pro/eslint-config-vue';
 import config from 'mikey-pro';
 
 export default [
   ...config,
+  ...vue,
   {
     files: [
       'eslint.config.js',
