@@ -26,7 +26,7 @@
     "eslint-import-resolver-typescript": "^4.4.4",
     "mikey-pro": "^10.3.0",
     "prettier": "^3.8.1",
-    "sass": "^1.97.3",
+    "sass": "^1.98.0",
     "sass-loader": "^16.0.7",
     "typescript": "^5.9.3",
     "vue-loader": "^17.4.2",
