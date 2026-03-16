@@ -340,6 +340,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+body {
+  position: fixed;
+  inset: 0;
   overflow: hidden;
 }
 
@@ -354,7 +359,6 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-  background-attachment: fixed;
 
   &::before {
     content: '';
@@ -725,9 +729,8 @@ body {
   caret-color: #00d4aa;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.4s;
 
-  &::selection {
-    background: transparent;
-  }
+  user-select: none;
+  -webkit-user-select: none;
 
   &::placeholder {
     color: rgba(255, 255, 255, 0.35);
@@ -1031,64 +1034,94 @@ body {
 
 @media (max-width: 520px) {
   .page {
-    padding: 0.5rem;
+    padding: 1.5rem 0.5rem;
   }
 
   .card {
-    padding: 1.75rem 1.25rem;
+    padding: 1.5rem 1.25rem;
     border-radius: 1rem;
   }
 
   .title {
-    font-size: 1.5rem;
-    letter-spacing: 0.1em;
+    font-size: 1.35rem;
+    letter-spacing: 0.08em;
   }
 
   .subtitle {
-    margin-bottom: 1.5rem;
-    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
   }
 
   .form-area {
-    gap: 1rem;
-    margin-bottom: 1.25rem;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .input-group {
+    gap: 0.25rem;
+  }
+
+  .input-label {
+    font-size: 0.65rem;
   }
 
   .styled-input,
   .styled-select {
-    height: 2.5rem;
+    height: 2.25rem;
     font-size: 1rem;
   }
 
+  .error-text {
+    font-size: 0.6rem;
+  }
+
+  .select-row {
+    gap: 0.5rem;
+  }
+
   .generate-btn {
-    height: 2.875rem;
-    font-size: 0.9rem;
+    height: 2.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .emo-toggle {
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .result-card {
-    padding: 1.25rem 1rem;
+    padding: 1rem 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .copy-btn {
+    margin-bottom: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .emo-decor {
-    inset: -20px;
+    inset: -24px;
   }
 
   .emo-bar {
-    height: 16px;
+    height: 14px;
   }
 
   .emo-skull {
-    width: 28px;
-    height: 34px;
+    width: 26px;
+    height: 32px;
 
     &::before {
-      width: 28px;
-      height: 26px;
-      border-radius: 14px 14px 8px 8px;
+      width: 26px;
+      height: 24px;
+      border-radius: 13px 13px 7px 7px;
     }
 
     &::after {
-      left: 4px;
+      left: 3px;
       width: 20px;
       height: 10px;
     }
@@ -1107,16 +1140,16 @@ body {
 
 @media (max-width: 380px) {
   .card {
-    padding: 1.5rem 1rem;
+    padding: 1.25rem 1rem;
   }
 
   .title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
 
   .generate-btn {
-    height: 2.75rem;
-    font-size: 0.85rem;
+    height: 2.5rem;
+    font-size: 0.8rem;
   }
 }
 </style>

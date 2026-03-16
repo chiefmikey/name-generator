@@ -143,12 +143,7 @@ export default defineComponent({
 
 @media (max-width: 520px) {
   .ac-ghost {
-    height: 2.5rem;
-  }
-
-  .ac-spacer,
-  .ac-hint {
-    font-size: 0.875rem;
+    height: 2.25rem;
   }
 }
 </style>
