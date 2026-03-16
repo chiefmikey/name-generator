@@ -17,6 +17,7 @@ jobs:
           cache: "npm"
       - run: npm install --legacy-peer-deps
       - run: npx eslint .
+      - run: npm test
       - run: npm run build:prod
       - name: Upload dist artifact
         uses: actions/upload-artifact@v7

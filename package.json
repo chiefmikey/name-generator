@@ -7,7 +7,8 @@
     "build:dev": "NODE_ENV=development webpack --mode development -w",
     "build:prod": "NODE_ENV=production webpack --mode production",
     "dev": "webpack serve --mode development --open",
-    "fix": "eslint --fix '**/*'"
+    "fix": "eslint --fix '**/*'",
+    "test": "vitest run"
   },
   "dependencies": {
     "vue": "^3.5.30"
@@ -20,15 +21,18 @@
     "@types/webpack": "^5.28.5",
     "@vue/babel-plugin-jsx": "^2.0.1",
     "@vue/compiler-sfc": "^3.5.28",
+    "@vue/test-utils": "^2.4.6",
     "babel-loader": "^10.1.1",
     "css-loader": "^7.1.4",
     "eslint": "^10.0.3",
     "eslint-import-resolver-typescript": "^4.4.4",
+    "happy-dom": "^20.8.4",
     "mikey-pro": "^10.3.0",
     "prettier": "^3.8.1",
     "sass": "^1.98.0",
     "sass-loader": "^16.0.7",
     "typescript": "^5.9.3",
+    "vitest": "^4.1.0",
     "vue-loader": "^17.4.2",
     "vue-style-loader": "^4.1.3",
     "webpack": "^5.105.4",
@@ -45,7 +49,9 @@
   },
   "license": "MIT",
   "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
-  "browserslist": ["defaults"],
+  "browserslist": [
+    "defaults"
+  ],
   "prettier": "mikey-pro/prettier",
   "stylelint": {
     "extends": "mikey-pro/stylelint"
