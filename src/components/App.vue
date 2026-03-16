@@ -660,6 +660,7 @@ body {
   color: #fff;
   text-align: center;
   letter-spacing: 0.15em;
+  user-select: none;
   transition: color 0.4s ease, text-shadow 0.4s ease;
 
   .emo-active & {
@@ -674,6 +675,7 @@ body {
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.45);
   text-align: center;
+  user-select: none;
   transition: color 0.4s ease;
 
   .emo-active & {
@@ -700,6 +702,7 @@ body {
   color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  user-select: none;
   transition: color 0.4s ease;
 
   .emo-active & {
@@ -755,6 +758,7 @@ body {
   font-size: 0.7rem;
   font-weight: 500;
   color: #ff4757;
+  user-select: none;
 
   &.error-text-hidden {
     visibility: hidden;
@@ -871,6 +875,7 @@ body {
   margin-bottom: 1.5rem;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.35);
+  user-select: none;
 
   span.active {
     color: #fff;
@@ -996,6 +1001,7 @@ body {
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.25);
   text-align: center;
+  user-select: none;
   transition: color 0.4s ease;
 
   a {
