@@ -786,35 +786,80 @@ body {
 .generate-btn {
   display: block;
   width: 100%;
-  height: 3.25rem;
+  height: 3.5rem;
   margin-bottom: 1.25rem;
   font-family: inherit;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: #fff;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   cursor: pointer;
-  background: linear-gradient(135deg, #00d4aa 0%, #00b4d8 100%);
+  background: linear-gradient(135deg, #00d4aa 0%, #00b4d8 50%, #00d4aa 100%);
+  background-size: 200% 100%;
   border: none;
   border-radius: 0.75rem;
-  transition: opacity 0.2s, transform 0.15s, background 0.4s;
+  box-shadow:
+    0 4px 15px rgba(0, 212, 170, 0.3),
+    0 0 30px rgba(0, 180, 216, 0.1);
+  transition: transform 0.2s, box-shadow 0.3s, background 0.4s,
+    background-size 0.4s;
+  animation: btn-shimmer 3s ease-in-out infinite;
 
   &:hover:not(:disabled) {
-    transform: translateY(-1px);
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 20px rgba(0, 212, 170, 0.4),
+      0 0 40px rgba(0, 180, 216, 0.15);
   }
 
   &:active:not(:disabled) {
     transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 212, 170, 0.2);
   }
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.35;
+    opacity: 0.3;
+    box-shadow: none;
+    animation: none;
   }
 
   .emo-active & {
-    background: linear-gradient(135deg, #4a1275 0%, #2d0845 100%);
+    background: linear-gradient(135deg, #4a1275 0%, #2d0845 50%, #4a1275 100%);
+    background-size: 200% 100%;
+    box-shadow:
+      0 4px 15px rgba(55, 12, 85, 0.4),
+      0 0 30px rgba(55, 12, 85, 0.15);
+    animation: btn-shimmer-emo 3s ease-in-out infinite;
+
+    &:hover:not(:disabled) {
+      box-shadow:
+        0 6px 20px rgba(55, 12, 85, 0.5),
+        0 0 40px rgba(55, 12, 85, 0.2);
+    }
+  }
+}
+
+@keyframes btn-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes btn-shimmer-emo {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
   }
 }
 
