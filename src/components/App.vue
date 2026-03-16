@@ -505,54 +505,59 @@ body {
 @keyframes emo-cross-drift {
   0% {
     transform: rotate(0deg) translate(0, 0);
-    opacity: 0.3;
+    opacity: 0.25;
   }
 
   25% {
-    transform: rotate(90deg) translate(6px, -4px);
-    opacity: 0.6;
+    transform: rotate(90deg) translate(14px, -10px);
+    opacity: 0.65;
   }
 
   50% {
-    transform: rotate(180deg) translate(-3px, 5px);
-    opacity: 0.3;
+    transform: rotate(180deg) translate(-8px, 12px);
+    opacity: 0.25;
   }
 
   75% {
-    transform: rotate(270deg) translate(4px, 3px);
-    opacity: 0.6;
+    transform: rotate(270deg) translate(10px, 8px);
+    opacity: 0.65;
   }
 
   100% {
     transform: rotate(360deg) translate(0, 0);
-    opacity: 0.3;
+    opacity: 0.25;
   }
 }
 
 @keyframes emo-float {
   0% {
     transform: translate(0, 0);
-    opacity: 0.4;
+    opacity: 0.35;
   }
 
-  25% {
-    transform: translate(4px, -8px);
-    opacity: 0.5;
-  }
-
-  50% {
-    transform: translate(-3px, -4px);
+  20% {
+    transform: translate(10px, -16px);
     opacity: 0.55;
   }
 
-  75% {
-    transform: translate(5px, -10px);
-    opacity: 0.45;
+  40% {
+    transform: translate(-6px, -8px);
+    opacity: 0.4;
+  }
+
+  60% {
+    transform: translate(12px, -20px);
+    opacity: 0.55;
+  }
+
+  80% {
+    transform: translate(-8px, -12px);
+    opacity: 0.4;
   }
 
   100% {
     transform: translate(0, 0);
-    opacity: 0.4;
+    opacity: 0.35;
   }
 }
 
