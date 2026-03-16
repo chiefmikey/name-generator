@@ -5,11 +5,12 @@
       <input
         ref="input"
         :value="modelValue"
-        :class="['styled-input', { 'input-error': error }]"
+        :class="['styled-input', { 'input-error': showError }]"
         type="text"
         :placeholder="placeholder"
         autocomplete="off"
-        @input="$emit('update:modelValue', $event.target.value)"
+        @input="onInput($event.target.value)"
+        @blur="touched = true"
         @keydown="onKeydown"
       />
       <div
@@ -22,8 +23,8 @@
     </div>
     <span
       class="error-text"
-      :class="{ 'error-text-hidden': !error }"
-    >{{ error || '&nbsp;' }}</span>
+      :class="{ 'error-text-hidden': !showError }"
+    >{{ showError ? error : '&nbsp;' }}</span>
   </div>
 </template>
 
@@ -58,7 +59,17 @@ export default defineComponent({
 
   emits: ['update:modelValue'],
 
+  data() {
+    return {
+      touched: false,
+    };
+  },
+
   computed: {
+    showError() {
+      return this.touched && this.error;
+    },
+
     hint() {
       const query = this.modelValue.toLowerCase();
       if (!query.trim()) return '';
@@ -75,6 +86,11 @@ export default defineComponent({
   },
 
   methods: {
+    onInput(value) {
+      this.$emit('update:modelValue', value);
+      if (!value.trim()) this.touched = false;
+    },
+
     onKeydown(e) {
       if (!this.hint) return;
       if (e.key === 'Tab' || e.key === 'ArrowRight') {
