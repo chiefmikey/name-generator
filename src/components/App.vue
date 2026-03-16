@@ -349,6 +349,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   padding: 1rem;
+  overflow-x: clip;
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
 
   &::before {
@@ -962,6 +963,97 @@ body {
         color: #8855bb;
       }
     }
+  }
+}
+
+@media (max-width: 520px) {
+  .page {
+    padding: 0.5rem;
+  }
+
+  .card {
+    padding: 1.75rem 1.25rem;
+    border-radius: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .subtitle {
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .form-area {
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .styled-input,
+  .styled-select {
+    height: 2.5rem;
+    font-size: 0.875rem;
+  }
+
+  .generate-btn {
+    height: 2.875rem;
+    font-size: 0.9rem;
+  }
+
+  .result-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .emo-decor {
+    inset: -20px;
+  }
+
+  .emo-bar {
+    height: 16px;
+  }
+
+  .emo-skull {
+    width: 28px;
+    height: 34px;
+
+    &::before {
+      width: 28px;
+      height: 26px;
+      border-radius: 14px 14px 8px 8px;
+    }
+
+    &::after {
+      left: 4px;
+      width: 20px;
+      height: 10px;
+    }
+  }
+
+  .emo-cross {
+    height: 14px;
+
+    &::after {
+      top: 3px;
+      left: -5px;
+      width: 12px;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .card {
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .generate-btn {
+    height: 2.75rem;
+    font-size: 0.85rem;
   }
 }
 </style>
