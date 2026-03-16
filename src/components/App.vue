@@ -438,13 +438,13 @@ body {
   height: 22px;
   background: repeating-linear-gradient(
     90deg,
-    #331055 0px,
-    #331055 3px,
-    #06020f 3px,
-    #06020f 7px
+    #5a2d88 0px,
+    #5a2d88 3px,
+    #0e0418 3px,
+    #0e0418 7px
   );
   border-radius: 2px;
-  opacity: 0.45;
+  opacity: 0.55;
 }
 
 .emo-bar-1 {
@@ -461,9 +461,9 @@ body {
   position: absolute;
   width: 3px;
   height: 18px;
-  background: #3d1260;
-  opacity: 0.5;
-  filter: drop-shadow(0 0 4px rgba(45, 10, 65, 0.4));
+  background: #9966cc;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 6px rgba(120, 60, 180, 0.6));
   animation: emo-cross-drift 20s linear infinite;
 
   &::after {
@@ -505,59 +505,59 @@ body {
 @keyframes emo-cross-drift {
   0% {
     transform: rotate(0deg) translate(0, 0);
-    opacity: 0.25;
+    opacity: 0.5;
   }
 
   25% {
     transform: rotate(90deg) translate(14px, -10px);
-    opacity: 0.65;
+    opacity: 0.85;
   }
 
   50% {
     transform: rotate(180deg) translate(-8px, 12px);
-    opacity: 0.25;
+    opacity: 0.5;
   }
 
   75% {
     transform: rotate(270deg) translate(10px, 8px);
-    opacity: 0.65;
+    opacity: 0.85;
   }
 
   100% {
     transform: rotate(360deg) translate(0, 0);
-    opacity: 0.25;
+    opacity: 0.5;
   }
 }
 
 @keyframes emo-float {
   0% {
     transform: translate(0, 0);
-    opacity: 0.35;
+    opacity: 0.6;
   }
 
   20% {
     transform: translate(10px, -16px);
-    opacity: 0.55;
+    opacity: 0.8;
   }
 
   40% {
     transform: translate(-6px, -8px);
-    opacity: 0.4;
+    opacity: 0.65;
   }
 
   60% {
     transform: translate(12px, -20px);
-    opacity: 0.55;
+    opacity: 0.8;
   }
 
   80% {
     transform: translate(-8px, -12px);
-    opacity: 0.4;
+    opacity: 0.65;
   }
 
   100% {
     transform: translate(0, 0);
-    opacity: 0.35;
+    opacity: 0.6;
   }
 }
 
@@ -565,8 +565,8 @@ body {
   position: absolute;
   width: 34px;
   height: 42px;
-  opacity: 0.45;
-  filter: drop-shadow(0 0 6px rgba(45, 10, 65, 0.5));
+  opacity: 0.7;
+  filter: drop-shadow(0 0 8px rgba(120, 60, 180, 0.6));
   animation: emo-float 7s ease-in-out infinite;
 
   &::before {
@@ -580,7 +580,7 @@ body {
       radial-gradient(circle 4px at 35% 52%, #06020f 99%, transparent 100%),
       radial-gradient(circle 4px at 65% 52%, #06020f 99%, transparent 100%),
       radial-gradient(ellipse 3px 4px at 50% 72%, #06020f 99%, transparent 100%),
-      #3d1260;
+      #6b3a9e;
     border-radius: 17px 17px 10px 10px;
   }
 
@@ -593,8 +593,8 @@ body {
     height: 12px;
     background: repeating-linear-gradient(
       90deg,
-      #3d1260 0px,
-      #3d1260 3px,
+      #6b3a9e 0px,
+      #6b3a9e 3px,
       #06020f 3px,
       #06020f 4px
     );
