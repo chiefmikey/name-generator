@@ -340,6 +340,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow: hidden;
 }
 
 .page {
@@ -348,13 +349,16 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  min-height: 100dvh;
   padding: 1rem;
-  overflow-x: clip;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  background-attachment: fixed;
 
   &::before {
     content: '';
-    position: absolute;
+    position: fixed;
     inset: 0;
     background: linear-gradient(
       135deg,
