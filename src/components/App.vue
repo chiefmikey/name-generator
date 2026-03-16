@@ -45,7 +45,7 @@
           :disabled="!isReady"
           @click="generate"
         >
-          {{ generating ? 'Generating...' : 'Generate My Name' }}
+          {{ buttonText }}
         </button>
 
         <div class="emo-toggle">
@@ -129,6 +129,72 @@ const emoNums = [
   '666', '13', '333', '999', '616', '143', '831', '69', '420',
 ];
 
+const postGenerateMessages = [
+  'Enjoy the new you',
+  'You are reborn',
+  'Absolute perfection',
+  'No refunds',
+  'You are welcome',
+  'Iconic, honestly',
+  'Peak identity',
+  'Unmatched aura',
+  'Certified banger',
+  'Main character era',
+  'Born to slay',
+  'Accept your destiny',
+  'Vibe: shifted',
+  'Tell your friends',
+  'Go forth, legend',
+  'Witness greatness',
+  'Name unlocked',
+  'This is you now',
+  'Tattoo-worthy',
+  'The crowd roars',
+  'Prophecy fulfilled',
+  'No going back',
+  'Respect the name',
+  'It was meant to be',
+  'Consider it a gift',
+  'Screenshot this',
+  'Update your bio',
+  'Pure excellence',
+  'Flawless execution',
+  'Chef kiss',
+];
+
+const emoPostMessages = [
+  'Sad 4 u',
+  'Pain is art',
+  'Nobody gets it',
+  'The void approves',
+  'Darkness becomes u',
+  'RIP old self',
+  'Broken but cute',
+  'Dead inside',
+  'Tears forever',
+  'Feel the pain',
+  'Black suits you',
+  'Screaming inside',
+  'Forever alone',
+  'So misunderstood',
+  'Shattered, reborn',
+  'Shadows know',
+  'Let it bleed',
+  'Born to suffer',
+  'Embrace the dark',
+  'No one cares',
+  'Cry about it',
+  'Fade to black',
+  'Gone forever',
+  'Hauntingly yours',
+  'Beautifully tragic',
+  'Cold and numb',
+  'Welcome to pain',
+  'Doomed, honestly',
+  'It hurts so good',
+  'Stay broken',
+];
+
 export default defineComponent({
   name: 'App',
 
@@ -148,6 +214,7 @@ export default defineComponent({
       emoResult: '',
       generating: false,
       copied: false,
+      postMessage: '',
     };
   },
 
@@ -164,6 +231,12 @@ export default defineComponent({
       return this.resolveFruit(this.fruit) === null
         ? 'Not a recognized fruit'
         : '';
+    },
+
+    buttonText() {
+      if (this.generating) return 'Transforming...';
+      if (this.hasResult && this.postMessage) return this.postMessage;
+      return 'Generate My Name';
     },
 
     isReady() {
@@ -208,6 +281,13 @@ export default defineComponent({
     fruit() {
       this.resetResult();
     },
+    emo(isEmo) {
+      if (this.hasResult) {
+        this.postMessage = this.pickRandom(
+          isEmo ? emoPostMessages : postGenerateMessages,
+        );
+      }
+    },
   },
 
   methods: {
@@ -217,6 +297,7 @@ export default defineComponent({
         this.emoResult = '';
         this.emo = false;
         this.copied = false;
+        this.postMessage = '';
       }
     },
 
@@ -286,6 +367,7 @@ export default defineComponent({
         const data = JSON.parse(cached);
         this.mainResult = data.mainResult;
         this.emoResult = data.emoResult;
+        this.postMessage = this.pickRandom(postGenerateMessages);
         return;
       }
 
@@ -301,6 +383,7 @@ export default defineComponent({
 
         this.mainResult = `${emotion}_${petName}_${sugar}`;
         this.emoResult = emoFormat(emoEmotion, petName, emoNum);
+        this.postMessage = this.pickRandom(postGenerateMessages);
 
         localStorage.setItem(
           cacheKey,
@@ -311,7 +394,7 @@ export default defineComponent({
         );
 
         this.generating = false;
-      }, 400);
+      }, 800);
     },
 
     copyResult() {
@@ -812,6 +895,7 @@ body {
   color: #fff;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  white-space: nowrap;
   cursor: pointer;
   user-select: none;
   background: linear-gradient(135deg, #00d4aa 0%, #00b4d8 50%, #00d4aa 100%);
