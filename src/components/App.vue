@@ -571,8 +571,8 @@ body {
   transition: color 0.4s ease, text-shadow 0.4s ease;
 
   .emo-active & {
-    color: #4a1275;
-    text-shadow: 0 0 30px rgba(55, 12, 85, 0.4);
+    color: #8855bb;
+    text-shadow: 0 0 30px rgba(80, 30, 120, 0.4);
   }
 }
 
@@ -585,7 +585,7 @@ body {
   transition: color 0.4s ease;
 
   .emo-active & {
-    color: rgba(55, 12, 85, 0.5);
+    color: rgba(130, 70, 180, 0.5);
   }
 }
 
@@ -611,7 +611,7 @@ body {
   transition: color 0.4s ease;
 
   .emo-active & {
-    color: rgba(55, 12, 85, 0.7);
+    color: rgba(130, 70, 180, 0.6);
   }
 }
 
@@ -640,11 +640,11 @@ body {
 
   .emo-active & {
     background: rgba(55, 12, 85, 0.08);
-    border-color: rgba(55, 12, 85, 0.7);
+    border-color: rgba(100, 40, 150, 0.5);
 
     &:focus {
-      border-color: #4a1275;
-      box-shadow: 0 0 0 3px rgba(55, 12, 85, 0.15);
+      border-color: #7744aa;
+      box-shadow: 0 0 0 3px rgba(80, 30, 120, 0.2);
     }
   }
 
@@ -786,7 +786,7 @@ body {
 .result-card {
   position: relative;
   padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   text-align: center;
   background: rgba(0, 212, 170, 0.06);
   border: 1px solid rgba(0, 212, 170, 0.2);
@@ -794,8 +794,8 @@ body {
   transition: background 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
 
   .emo-active & {
-    background: rgba(55, 12, 85, 0.06);
-    border-color: rgba(55, 12, 85, 0.25);
+    background: rgba(80, 30, 120, 0.06);
+    border-color: rgba(100, 40, 150, 0.25);
   }
 
   &.result-card-hidden {
@@ -816,8 +816,8 @@ body {
   transition: color 0.4s ease, text-shadow 0.4s ease;
 
   .emo-active & {
-    color: #7744aa;
-    text-shadow: 0 0 30px rgba(65, 18, 95, 0.4);
+    color: #9966cc;
+    text-shadow: 0 0 30px rgba(100, 50, 160, 0.4);
   }
 }
 
@@ -841,12 +841,19 @@ body {
     background: rgba(255, 255, 255, 0.12);
   }
 
+  .emo-active & {
+    border-color: rgba(100, 40, 150, 0.25);
+
+    &:hover {
+      background: rgba(80, 30, 120, 0.15);
+    }
+  }
+
   &.copy-btn-hidden {
     opacity: 0;
     pointer-events: none;
   }
 }
-
 
 .footer {
   font-size: 0.75rem;
@@ -865,7 +872,7 @@ body {
 
     .emo-active & {
       &:hover {
-        color: #4a1275;
+        color: #8855bb;
       }
     }
   }

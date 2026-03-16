@@ -31,6 +31,7 @@
         </option>
       </select>
     </div>
+    <span class="error-text error-text-hidden">&nbsp;</span>
   </div>
 </template>
 
