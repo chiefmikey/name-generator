@@ -117,8 +117,8 @@ export default defineComponent({
   left: 0;
   display: flex;
   align-items: center;
-  height: 2.75rem;
-  padding: 0 0.875rem;
+  height: 2.25rem;
+  padding: 0 0.75rem;
   overflow: hidden;
   pointer-events: none;
 }
@@ -141,9 +141,10 @@ export default defineComponent({
   }
 }
 
-@media (max-width: 520px) {
+@media (min-width: 520px) {
   .ac-ghost {
-    height: 2.25rem;
+    height: 2.75rem;
+    padding: 0 0.875rem;
   }
 }
 </style>

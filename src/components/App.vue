@@ -438,7 +438,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: 1rem;
+  padding: 2rem 0.75rem;
   overflow-x: hidden;
   overflow-y: auto;
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
@@ -475,10 +475,10 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: 2.5rem 2rem;
+  padding: 1.25rem 1rem;
   background: rgba(15, 15, 35, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.5),
     0 0 100px rgba(100, 60, 255, 0.08);
@@ -742,10 +742,10 @@ body {
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.35rem;
   font-weight: 900;
   text-align: center;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.08em;
   user-select: none;
   background: linear-gradient(135deg, #00ffc8 0%, #00b4d8 50%, #00d4aa 100%);
   background-clip: text;
@@ -762,9 +762,9 @@ body {
 }
 
 .subtitle {
-  margin-top: 0.5rem;
-  margin-bottom: 2rem;
-  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.45);
   text-align: center;
   user-select: none;
@@ -778,18 +778,18 @@ body {
 .form-area {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  margin-bottom: 1.75rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.2rem;
 }
 
 .input-label {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
@@ -805,10 +805,10 @@ body {
 .styled-input,
 .styled-select {
   width: 100%;
-  height: 2.75rem;
-  padding: 0 0.875rem;
+  height: 2.25rem;
+  padding: 0 0.75rem;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #fff;
   background: rgba(255, 255, 255, 0.08);
   border: 1.5px solid rgba(255, 255, 255, 0.7);
@@ -852,7 +852,7 @@ body {
 }
 
 .error-text {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 500;
   color: #ff4757;
   user-select: none;
@@ -887,10 +887,10 @@ body {
 .generate-btn {
   display: block;
   width: 100%;
-  height: 3.5rem;
-  margin-bottom: 1.25rem;
+  height: 2.75rem;
+  margin-bottom: 0.75rem;
   font-family: inherit;
-  font-size: 1.1rem;
+  font-size: 0.85rem;
   font-weight: 800;
   color: #fff;
   letter-spacing: 0.12em;
@@ -968,11 +968,11 @@ body {
 
 .emo-toggle {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
-  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.35);
   user-select: none;
 
@@ -1026,8 +1026,8 @@ body {
 
 .result-card {
   position: relative;
-  padding: 1.5rem;
-  margin-bottom: 0.75rem;
+  padding: 1rem 0.75rem;
+  margin-bottom: 0.5rem;
   text-align: center;
   background: rgba(0, 212, 170, 0.06);
   border: 1px solid rgba(0, 212, 170, 0.2);
@@ -1065,7 +1065,7 @@ body {
 .copy-btn {
   display: block;
   min-width: 5.5rem;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 0.75rem;
   padding: 0.45rem 1.25rem;
   font-family: inherit;
   font-size: 0.75rem;
@@ -1121,124 +1121,70 @@ body {
   }
 }
 
-@media (max-width: 520px) {
+@media (min-width: 520px) {
   .page {
-    padding: 1.5rem 0.5rem;
+    padding: 1rem;
   }
 
   .card {
-    padding: 1.5rem 1.25rem;
-    border-radius: 1rem;
+    padding: 2.5rem 2rem;
+    border-radius: 1.25rem;
   }
 
   .title {
-    font-size: 1.35rem;
-    letter-spacing: 0.08em;
+    font-size: 2rem;
+    letter-spacing: 0.15em;
   }
 
   .subtitle {
-    margin-top: 0.25rem;
-    margin-bottom: 1rem;
-    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.85rem;
   }
 
   .form-area {
-    gap: 0.6rem;
-    margin-bottom: 1rem;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
   }
 
   .input-group {
-    gap: 0.25rem;
+    gap: 0.4rem;
   }
 
   .input-label {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
   }
 
   .styled-input,
   .styled-select {
-    height: 2.25rem;
-    font-size: 1rem;
+    height: 2.75rem;
+    padding: 0 0.875rem;
+    font-size: 0.95rem;
   }
 
   .error-text {
-    font-size: 0.6rem;
-  }
-
-  .select-row {
-    gap: 0.5rem;
+    font-size: 0.7rem;
   }
 
   .generate-btn {
-    height: 2.75rem;
-    margin-bottom: 0.75rem;
-    font-size: 0.85rem;
+    height: 3.5rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
   }
 
   .emo-toggle {
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-    font-size: 0.7rem;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
   }
 
   .result-card {
-    padding: 1rem 0.75rem;
-    margin-bottom: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 0.75rem;
   }
 
   .copy-btn {
-    margin-bottom: 0.75rem;
-    font-size: 0.7rem;
-  }
-
-  .emo-decor {
-    inset: -24px;
-  }
-
-  .emo-bar {
-    height: 14px;
-  }
-
-  .emo-skull {
-    width: 26px;
-    height: 32px;
-
-    &::before {
-      width: 26px;
-      height: 24px;
-      border-radius: 13px 13px 7px 7px;
-    }
-
-    &::after {
-      left: 3px;
-      width: 20px;
-      height: 10px;
-    }
-  }
-
-  .emo-cross {
-    height: 14px;
-
-    &::after {
-      top: 3px;
-      left: -5px;
-      width: 12px;
-    }
-  }
-}
-
-@media (max-width: 380px) {
-  .card {
-    padding: 1.25rem 1rem;
-  }
-
-  .title {
-    font-size: 1.15rem;
-  }
-
-  .generate-btn {
-    height: 2.5rem;
-    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
   }
 }
 </style>
