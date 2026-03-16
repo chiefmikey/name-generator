@@ -1,26 +1,12 @@
 <template>
-  <div class="input-group">
-    <label class="input-label">Favorite Animal</label>
-    <input
-      :value="modelValue"
-      :class="['styled-input', { 'input-error': error }]"
-      type="text"
-      list="animal-options"
-      placeholder="Dog, cat, snake..."
-      @input="$emit('update:modelValue', $event.target.value)"
-    />
-    <datalist id="animal-options">
-      <option
-        v-for="name in animalNames"
-        :key="name"
-        :value="name"
-      />
-    </datalist>
-    <span
-      v-if="error"
-      class="error-text"
-    >{{ error }}</span>
-  </div>
+  <AutocompleteInput
+    :model-value="modelValue"
+    :options="animalNames"
+    :error="error"
+    label="Favorite Animal"
+    placeholder="Dog, cat, snake..."
+    @update:model-value="$emit('update:modelValue', $event)"
+  />
 </template>
 
 <script>
@@ -28,12 +14,16 @@ import { defineComponent } from 'vue';
 
 import animals from '../data/animals.json';
 
+import AutocompleteInput from './AutocompleteInput.vue';
+
 const animalNames = Object.keys(animals)
   .filter((k) => k !== 'default')
   .sort();
 
 export default defineComponent({
   name: 'ChooseAnimal',
+
+  components: { AutocompleteInput },
 
   props: {
     modelValue: {
