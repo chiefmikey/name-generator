@@ -11,12 +11,10 @@
         >
           <div class="emo-bar emo-bar-1" />
           <div class="emo-bar emo-bar-2" />
-          <div class="emo-xxx emo-xxx-1">
-            xXx
-          </div>
-          <div class="emo-xxx emo-xxx-2">
-            xXx
-          </div>
+          <div class="emo-cross emo-cross-1" />
+          <div class="emo-cross emo-cross-2" />
+          <div class="emo-cross emo-cross-3" />
+          <div class="emo-cross emo-cross-4" />
           <div class="emo-skull emo-skull-1" />
           <div class="emo-skull emo-skull-2" />
         </div>
@@ -459,39 +457,85 @@ body {
   transform: rotate(-28deg);
 }
 
-.emo-xxx {
+.emo-cross {
   position: absolute;
-  font-size: 0.85rem;
-  font-weight: 700;
-  font-style: italic;
-  color: #331055;
-  opacity: 0.4;
-  letter-spacing: 0.15em;
-  text-shadow: 0 0 6px rgba(45, 10, 65, 0.3);
-  animation: emo-pulse 6s ease-in-out infinite;
+  width: 3px;
+  height: 18px;
+  background: #3d1260;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 4px rgba(45, 10, 65, 0.4));
+  animation: emo-cross-spin 20s linear infinite;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: -6px;
+    width: 15px;
+    height: 3px;
+    background: inherit;
+  }
 }
 
-.emo-xxx-1 {
-  top: -12px;
-  right: 40px;
-  transform: rotate(-8deg);
+.emo-cross-1 {
+  top: -10px;
+  left: -10px;
 }
 
-.emo-xxx-2 {
-  bottom: -12px;
-  left: 40px;
-  transform: rotate(6deg);
-  animation-delay: 3s;
+.emo-cross-2 {
+  top: -10px;
+  right: -10px;
+  animation-delay: 5s;
+  animation-direction: reverse;
 }
 
-@keyframes emo-pulse {
-  0%,
-  100% {
-    opacity: 0.35;
+.emo-cross-3 {
+  bottom: -10px;
+  left: -10px;
+  animation-delay: 10s;
+}
+
+.emo-cross-4 {
+  bottom: -10px;
+  right: -10px;
+  animation-delay: 15s;
+  animation-direction: reverse;
+}
+
+@keyframes emo-cross-spin {
+  from {
+    transform: rotate(0deg);
+    opacity: 0.3;
+  }
+
+  25% {
+    opacity: 0.6;
   }
 
   50% {
-    opacity: 0.7;
+    opacity: 0.3;
+  }
+
+  75% {
+    opacity: 0.6;
+  }
+
+  to {
+    transform: rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes emo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateY(-6px);
+    opacity: 0.55;
   }
 }
 
@@ -501,7 +545,7 @@ body {
   height: 42px;
   opacity: 0.45;
   filter: drop-shadow(0 0 6px rgba(45, 10, 65, 0.5));
-  animation: emo-pulse 5s ease-in-out infinite;
+  animation: emo-float 4s ease-in-out infinite;
 
   &::before {
     content: '';
@@ -537,14 +581,14 @@ body {
 }
 
 .emo-skull-1 {
-  top: 18%;
-  right: -20px;
+  top: 3%;
+  right: -22px;
   animation-delay: 1s;
 }
 
 .emo-skull-2 {
-  bottom: 18%;
-  left: -20px;
+  bottom: 3%;
+  left: -22px;
   animation-delay: 3s;
 }
 
