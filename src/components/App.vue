@@ -24,7 +24,7 @@
           NAME GENERATOR
         </h1>
         <p class="subtitle">
-          Generate your ultimate social media identity
+          Your new identity starts here
         </p>
 
         <div class="form-area">
@@ -661,15 +661,20 @@ body {
 .title {
   font-size: 2rem;
   font-weight: 900;
-  color: #fff;
   text-align: center;
   letter-spacing: 0.15em;
   user-select: none;
-  transition: color 0.4s ease, text-shadow 0.4s ease;
+  background: linear-gradient(135deg, #00ffc8 0%, #00b4d8 50%, #00d4aa 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background 0.4s ease, filter 0.4s ease;
 
   .emo-active & {
-    color: #8855bb;
-    text-shadow: 0 0 30px rgba(80, 30, 120, 0.4);
+    background: linear-gradient(135deg, #7744aa 0%, #4a1275 50%, #8855bb 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(80, 30, 120, 0.4));
   }
 }
 
