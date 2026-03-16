@@ -42,7 +42,8 @@
         <button
           type="button"
           class="generate-btn"
-          :disabled="!isReady"
+          :disabled="!isReady || hasResult"
+          :class="{ 'generate-btn-done': hasResult }"
           @click="generate"
         >
           {{ buttonText }}
@@ -925,6 +926,12 @@ body {
     cursor: not-allowed;
     opacity: 0.3;
     box-shadow: none;
+    animation: none;
+  }
+
+  &.generate-btn-done {
+    cursor: default;
+    opacity: 0.7;
     animation: none;
   }
 
