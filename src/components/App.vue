@@ -654,7 +654,7 @@ body {
   font-size: 0.95rem;
   color: #fff;
   background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
   border-radius: 0.625rem;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.4s;
@@ -670,7 +670,7 @@ body {
 
   .emo-active & {
     background: rgba(224, 64, 251, 0.08);
-    border-color: rgba(224, 64, 251, 0.55);
+    border-color: rgba(224, 64, 251, 0.7);
 
     &:focus {
       border-color: #e040fb;
