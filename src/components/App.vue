@@ -8,8 +8,14 @@
 
       <div class="form-area">
         <ChooseBirthday v-model="birthday" />
-        <ChooseAnimal v-model="animal" />
-        <ChooseFruit v-model="fruit" />
+        <ChooseAnimal
+          v-model="animal"
+          :error="animalError"
+        />
+        <ChooseFruit
+          v-model="fruit"
+          :error="fruitError"
+        />
       </div>
 
       <button
@@ -98,11 +104,27 @@ export default defineComponent({
   },
 
   computed: {
+    animalError() {
+      if (!this.animal.trim()) return '';
+      return this.resolveAnimal(this.animal) === null
+        ? 'Not a recognized animal'
+        : '';
+    },
+
+    fruitError() {
+      if (!this.fruit.trim()) return '';
+      return this.resolveFruit(this.fruit) === null
+        ? 'Not a recognized fruit'
+        : '';
+    },
+
     isReady() {
       return (
         this.birthday.length > 0 &&
-        this.animal.length > 0 &&
-        this.fruit.length > 0
+        this.animal.trim().length > 0 &&
+        this.fruit.trim().length > 0 &&
+        !this.animalError &&
+        !this.fruitError
       );
     },
 
@@ -116,22 +138,57 @@ export default defineComponent({
   },
 
   methods: {
+    depluralize(word) {
+      if (word.endsWith('ies') && word.length > 4) {
+        return [word.slice(0, -3) + 'y'];
+      }
+      const forms = [];
+      if (word.endsWith('ves') && word.length > 4) {
+        forms.push(word.slice(0, -3) + 'f');
+        forms.push(word.slice(0, -3) + 'fe');
+      }
+      if (word.endsWith('es') && word.length > 3) {
+        forms.push(word.slice(0, -2));
+      }
+      if (word.endsWith('s') && word.length > 2) {
+        forms.push(word.slice(0, -1));
+      }
+      return forms;
+    },
+
+    resolveAnimal(value) {
+      const key = value.toLowerCase().trim();
+      if (key in animals && key !== 'default') return key;
+      for (const candidate of this.depluralize(key)) {
+        if (candidate in animals && candidate !== 'default') return candidate;
+      }
+      return null;
+    },
+
+    resolveFruit(value) {
+      const key = value.toLowerCase().trim();
+      if (key in fruits) return key;
+      for (const candidate of this.depluralize(key)) {
+        if (candidate in fruits) return candidate;
+      }
+      return null;
+    },
+
     pickRandom(array) {
       return array[Math.floor(Math.random() * array.length)];
     },
 
     getSugar(fruitName) {
-      const key = fruitName.toLowerCase().trim();
-      const sugar = fruits[key];
-      if (sugar !== undefined) {
-        return String(sugar).replace('.', '');
+      const key = this.resolveFruit(fruitName);
+      if (key !== null) {
+        return String(fruits[key]).replace('.', '');
       }
-      return String(Math.floor(Math.random() * 2000));
+      return '0';
     },
 
     getPetName(animalType) {
-      const key = animalType.toLowerCase().trim();
-      const names = animals[key] || animals.default;
+      const key = this.resolveAnimal(animalType);
+      const names = key !== null ? animals[key] : animals.default;
       return this.pickRandom(names);
     },
 
@@ -282,6 +339,22 @@ body {
     border-color: #00d4aa;
     box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.15);
   }
+
+  &.input-error {
+    border-color: #ff4757;
+    box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.15);
+
+    &:focus {
+      border-color: #ff4757;
+      box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.25);
+    }
+  }
+}
+
+.error-text {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #ff4757;
 }
 
 .styled-select {

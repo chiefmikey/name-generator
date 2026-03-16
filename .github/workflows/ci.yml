@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 22
-          cache: 'npm'
+          cache: "npm"
       - run: npm install --legacy-peer-deps
       - run: npx eslint .
       - run: npm run build:prod
