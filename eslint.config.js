@@ -23,4 +23,15 @@ export default [
       'prettier/prettier': 'off',
     },
   },
+  {
+    files: ['tests/**/*.{js,ts}'],
+    rules: {
+      'import-x/no-extraneous-dependencies': [
+        'error',
+        { devDependencies: true },
+      ],
+      'import-x/no-relative-parent-imports': 'off',
+      'jest/require-hook': 'off',
+    },
+  },
 ];

@@ -5,12 +5,12 @@ import fruits from '../src/data/fruits.json';
 
 function depluralize(word) {
   if (word.endsWith('ies') && word.length > 4) {
-    return [word.slice(0, -3) + 'y'];
+    return [`${word.slice(0, -3)}y`];
   }
   const forms = [];
+
   if (word.endsWith('ves') && word.length > 4) {
-    forms.push(word.slice(0, -3) + 'f');
-    forms.push(word.slice(0, -3) + 'fe');
+    forms.push(`${word.slice(0, -3)}f`, `${word.slice(0, -3)}fe`);
   }
   if (word.endsWith('es') && word.length > 3) {
     forms.push(word.slice(0, -2));
@@ -18,24 +18,37 @@ function depluralize(word) {
   if (word.endsWith('s') && word.length > 2) {
     forms.push(word.slice(0, -1));
   }
+
   return forms;
 }
 
 function resolveAnimal(value) {
   const key = value.toLowerCase().trim();
-  if (key in animals && key !== 'default') return key;
-  for (const candidate of depluralize(key)) {
-    if (candidate in animals && candidate !== 'default') return candidate;
+
+  if (key in animals && key !== 'default') {
+    return key;
   }
+  for (const candidate of depluralize(key)) {
+    if (candidate in animals && candidate !== 'default') {
+      return candidate;
+    }
+  }
+
   return null;
 }
 
 function resolveFruit(value) {
   const key = value.toLowerCase().trim();
-  if (key in fruits) return key;
-  for (const candidate of depluralize(key)) {
-    if (candidate in fruits) return candidate;
+
+  if (key in fruits) {
+    return key;
   }
+  for (const candidate of depluralize(key)) {
+    if (candidate in fruits) {
+      return candidate;
+    }
+  }
+
   return null;
 }
 
@@ -115,6 +128,7 @@ describe('depluralize', () => {
 
   it('handles -ves', () => {
     const result = depluralize('wolves');
+
     expect(result).toContain('wolf');
     expect(result).toContain('wolfe');
   });

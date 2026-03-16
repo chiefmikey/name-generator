@@ -49,9 +49,7 @@
   },
   "license": "MIT",
   "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
-  "browserslist": [
-    "defaults"
-  ],
+  "browserslist": ["defaults"],
   "prettier": "mikey-pro/prettier",
   "stylelint": {
     "extends": "mikey-pro/stylelint"

@@ -10,6 +10,7 @@ describe('animals dataset', () => {
 
   it('has at least 150 animal types', () => {
     const animalKeys = keys.filter((k) => k !== 'default');
+
     expect(animalKeys.length).toBeGreaterThanOrEqual(150);
   });
 
@@ -19,7 +20,10 @@ describe('animals dataset', () => {
 
   it('every animal has at least 10 pet names', () => {
     for (const key of keys) {
-      expect(animals[key].length, `${key} has too few names`).toBeGreaterThanOrEqual(10);
+      expect(
+        animals[key].length,
+        `${key} has too few names`,
+      ).toBeGreaterThanOrEqual(10);
     }
   });
 
@@ -60,7 +64,9 @@ describe('fruits dataset', () => {
 
   it('sugar values are non-negative', () => {
     for (const key of keys) {
-      expect(fruits[key], `${key} has negative sugar`).toBeGreaterThanOrEqual(0);
+      expect(fruits[key], `${key} has negative sugar`).toBeGreaterThanOrEqual(
+        0,
+      );
     }
   });
 });
@@ -80,6 +86,7 @@ describe('emotions dataset', () => {
 
   it('has no duplicates', () => {
     const unique = new Set(emotions);
+
     expect(unique.size).toBe(emotions.length);
   });
 });
