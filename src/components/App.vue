@@ -464,7 +464,7 @@ body {
   background: #3d1260;
   opacity: 0.5;
   filter: drop-shadow(0 0 4px rgba(45, 10, 65, 0.4));
-  animation: emo-cross-spin 20s linear infinite;
+  animation: emo-cross-drift 20s linear infinite;
 
   &::after {
     content: '';
@@ -502,40 +502,57 @@ body {
   animation-direction: reverse;
 }
 
-@keyframes emo-cross-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes emo-cross-drift {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
     opacity: 0.3;
   }
 
   25% {
+    transform: rotate(90deg) translate(6px, -4px);
     opacity: 0.6;
   }
 
   50% {
+    transform: rotate(180deg) translate(-3px, 5px);
     opacity: 0.3;
   }
 
   75% {
+    transform: rotate(270deg) translate(4px, 3px);
     opacity: 0.6;
   }
 
-  to {
-    transform: rotate(360deg);
+  100% {
+    transform: rotate(360deg) translate(0, 0);
     opacity: 0.3;
   }
 }
 
 @keyframes emo-float {
-  0%,
-  100% {
-    transform: translateY(0);
+  0% {
+    transform: translate(0, 0);
     opacity: 0.4;
   }
 
+  25% {
+    transform: translate(4px, -8px);
+    opacity: 0.5;
+  }
+
   50% {
-    transform: translateY(-6px);
+    transform: translate(-3px, -4px);
     opacity: 0.55;
+  }
+
+  75% {
+    transform: translate(5px, -10px);
+    opacity: 0.45;
+  }
+
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.4;
   }
 }
 
@@ -545,7 +562,7 @@ body {
   height: 42px;
   opacity: 0.45;
   filter: drop-shadow(0 0 6px rgba(45, 10, 65, 0.5));
-  animation: emo-float 4s ease-in-out infinite;
+  animation: emo-float 7s ease-in-out infinite;
 
   &::before {
     content: '';
