@@ -11,22 +11,14 @@
         >
           <div class="emo-bar emo-bar-1" />
           <div class="emo-bar emo-bar-2" />
-          <div class="emo-x emo-x-1">
-            x
+          <div class="emo-xxx emo-xxx-1">
+            xXx
           </div>
-          <div class="emo-x emo-x-2">
-            x
+          <div class="emo-xxx emo-xxx-2">
+            xXx
           </div>
-          <div class="emo-x emo-x-3">
-            x
-          </div>
-          <div class="emo-x emo-x-4">
-            x
-          </div>
-          <div class="emo-star emo-star-1" />
-          <div class="emo-star emo-star-2" />
-          <div class="emo-heart emo-heart-1" />
-          <div class="emo-heart emo-heart-2" />
+          <div class="emo-skull emo-skull-1" />
+          <div class="emo-skull emo-skull-2" />
         </div>
       </transition>
       <div class="card">
@@ -384,8 +376,8 @@ body {
     background 0.4s ease;
 
   .emo-active & {
-    background: rgba(10, 5, 15, 0.92);
-    border-color: rgba(180, 0, 40, 0.3);
+    background: rgba(5, 2, 5, 0.95);
+    border-color: rgba(180, 0, 40, 0.25);
     box-shadow:
       0 25px 50px rgba(0, 0, 0, 0.7),
       0 0 60px rgba(180, 0, 40, 0.15),
@@ -445,139 +437,85 @@ body {
   transform: rotate(-28deg);
 }
 
-.emo-x {
+.emo-xxx {
   position: absolute;
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: 900;
   font-style: italic;
-  color: #cc0033;
-  opacity: 0.5;
-  text-shadow: 0 0 15px rgba(180, 0, 40, 0.6);
-  animation: emo-x-pulse 4s ease-in-out infinite;
+  color: #880022;
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 10px rgba(120, 0, 30, 0.5);
+  animation: emo-pulse 4s ease-in-out infinite;
 }
 
-.emo-x-1 {
-  top: -8px;
-  left: -8px;
+.emo-xxx-1 {
+  top: -14px;
+  left: 10px;
 }
 
-.emo-x-2 {
-  top: -8px;
-  right: -8px;
-  animation-delay: 1s;
-}
-
-.emo-x-3 {
-  bottom: -8px;
-  left: -8px;
+.emo-xxx-2 {
+  bottom: -14px;
+  right: 10px;
   animation-delay: 2s;
 }
 
-.emo-x-4 {
-  bottom: -8px;
-  right: -8px;
-  animation-delay: 3s;
-}
-
-@keyframes emo-x-pulse {
+@keyframes emo-pulse {
   0%,
   100% {
-    opacity: 0.3;
-    transform: scale(1);
+    opacity: 0.35;
   }
 
   50% {
     opacity: 0.7;
-    transform: scale(1.2);
   }
 }
 
-.emo-star {
+.emo-skull {
   position: absolute;
-  width: 28px;
-  height: 28px;
-  background: #cc3355;
+  width: 22px;
+  height: 26px;
+  background: #991133;
+  border-radius: 11px 11px 7px 7px;
   opacity: 0.45;
-  filter: drop-shadow(0 0 8px rgba(180, 30, 60, 0.6));
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
-  animation: emo-star-spin 12s linear infinite;
-}
+  filter: drop-shadow(0 0 6px rgba(120, 0, 30, 0.4));
+  animation: emo-pulse 5s ease-in-out infinite;
 
-.emo-star-1 {
-  top: 15%;
-  right: -18px;
-}
-
-.emo-star-2 {
-  bottom: 15%;
-  left: -18px;
-  animation-direction: reverse;
-  animation-delay: 2s;
-}
-
-@keyframes emo-star-spin {
-  from {
-    transform: rotate(0deg);
+  &::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 4px;
+    width: 5px;
+    height: 5px;
+    background: #0a0204;
+    border-radius: 50%;
+    box-shadow: 9px 0 0 #0a0204;
   }
 
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.emo-heart {
-  position: absolute;
-  width: 20px;
-  height: 18px;
-  opacity: 0.4;
-  filter: drop-shadow(0 0 6px rgba(180, 0, 40, 0.5));
-  animation: emo-x-pulse 5s ease-in-out infinite;
-
-  &::before,
   &::after {
     content: '';
     position: absolute;
-    top: 0;
-    width: 12px;
-    height: 14px;
-    background: #cc0033;
-    border-radius: 10px 10px 0 0;
-  }
-
-  &::before {
-    left: 0;
-    transform: rotate(-45deg);
-    transform-origin: 100% 100%;
-  }
-
-  &::after {
-    right: 0;
-    transform: rotate(45deg);
-    transform-origin: 0 100%;
+    bottom: 4px;
+    left: 50%;
+    width: 8px;
+    height: 3px;
+    background: #0a0204;
+    border-radius: 1px;
+    transform: translateX(-50%);
   }
 }
 
-.emo-heart-1 {
-  top: 50%;
-  right: -22px;
-  animation-delay: 1.5s;
+.emo-skull-1 {
+  top: 20%;
+  right: -18px;
+  animation-delay: 1s;
 }
 
-.emo-heart-2 {
-  bottom: 50%;
-  left: -22px;
-  animation-delay: 3.5s;
+.emo-skull-2 {
+  bottom: 20%;
+  left: -18px;
+  animation-delay: 3s;
 }
 
 .emo-appear-enter-active {
