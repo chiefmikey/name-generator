@@ -653,8 +653,8 @@ body {
   font-family: inherit;
   font-size: 0.95rem;
   color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 0.625rem;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.4s;
@@ -669,8 +669,8 @@ body {
   }
 
   .emo-active & {
-    background: rgba(224, 64, 251, 0.08);
-    border-color: rgba(224, 64, 251, 0.25);
+    background: rgba(224, 64, 251, 0.1);
+    border-color: rgba(224, 64, 251, 0.4);
 
     &:focus {
       border-color: #e040fb;
