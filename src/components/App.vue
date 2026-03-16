@@ -635,13 +635,13 @@ body {
 .input-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   transition: color 0.4s ease;
 
   .emo-active & {
-    color: rgba(224, 64, 251, 0.55);
+    color: rgba(224, 64, 251, 0.7);
   }
 }
 
@@ -653,14 +653,14 @@ body {
   font-family: inherit;
   font-size: 0.95rem;
   color: #fff;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.625rem;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.4s;
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.35);
   }
 
   &:focus {
@@ -669,8 +669,8 @@ body {
   }
 
   .emo-active & {
-    background: rgba(224, 64, 251, 0.04);
-    border-color: rgba(224, 64, 251, 0.15);
+    background: rgba(224, 64, 251, 0.08);
+    border-color: rgba(224, 64, 251, 0.25);
 
     &:focus {
       border-color: #e040fb;
