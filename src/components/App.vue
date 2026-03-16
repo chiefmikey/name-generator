@@ -799,6 +799,7 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
+  user-select: none;
   background: linear-gradient(135deg, #00d4aa 0%, #00b4d8 50%, #00d4aa 100%);
   background-size: 200% 100%;
   border: none;
@@ -973,6 +974,7 @@ body {
   font-weight: 600;
   color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
+  user-select: none;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.5rem;
