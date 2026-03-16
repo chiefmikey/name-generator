@@ -80,15 +80,15 @@
           >
             {{ displayResult || '&nbsp;' }}
           </div>
-          <button
-            type="button"
-            class="copy-btn"
-            :disabled="!hasResult"
-            @click="copyResult"
-          >
-            {{ copied ? 'Copied!' : 'Copy' }}
-          </button>
         </div>
+        <button
+          type="button"
+          class="copy-btn"
+          :class="{ 'copy-btn-hidden': !hasResult }"
+          @click="copyResult"
+        >
+          {{ copied ? 'Copied!' : 'Copy' }}
+        </button>
 
         <footer class="footer">
           made by
@@ -850,27 +850,28 @@ body {
 }
 
 .copy-btn {
+  display: block;
   min-width: 5.5rem;
-  margin-top: 0.75rem;
-  padding: 0.4rem 1rem;
+  margin: 0 auto 1.5rem;
+  padding: 0.45rem 1.25rem;
   font-family: inherit;
   font-size: 0.75rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.5rem;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, opacity 0.4s;
 
-  &:hover:not(:disabled) {
+  &:hover {
     color: #fff;
     background: rgba(255, 255, 255, 0.12);
   }
 
-  &:disabled {
-    cursor: default;
+  &.copy-btn-hidden {
     opacity: 0;
+    pointer-events: none;
   }
 }
 
