@@ -395,15 +395,15 @@ body {
 
   .emo-active & {
     background: rgba(5, 2, 5, 0.95);
-    border-color: rgba(90, 20, 130, 0.25);
+    border-color: rgba(55, 12, 85, 0.25);
 
     &::after {
       opacity: 1;
     }
     box-shadow:
       0 25px 50px rgba(0, 0, 0, 0.7),
-      0 0 60px rgba(90, 20, 130, 0.15),
-      0 0 120px rgba(90, 20, 130, 0.05);
+      0 0 60px rgba(55, 12, 85, 0.15),
+      0 0 120px rgba(55, 12, 85, 0.05);
     animation: emo-border-pulse 3s ease-in-out infinite;
   }
 }
@@ -413,15 +413,15 @@ body {
   100% {
     box-shadow:
       0 25px 50px rgba(0, 0, 0, 0.7),
-      0 0 60px rgba(90, 20, 130, 0.15),
-      0 0 120px rgba(90, 20, 130, 0.05);
+      0 0 60px rgba(55, 12, 85, 0.15),
+      0 0 120px rgba(55, 12, 85, 0.05);
   }
 
   50% {
     box-shadow:
       0 25px 50px rgba(0, 0, 0, 0.7),
-      0 0 80px rgba(90, 20, 130, 0.3),
-      0 0 160px rgba(90, 20, 130, 0.1);
+      0 0 80px rgba(55, 12, 85, 0.3),
+      0 0 160px rgba(55, 12, 85, 0.1);
   }
 }
 
@@ -440,8 +440,8 @@ body {
   height: 22px;
   background: repeating-linear-gradient(
     90deg,
-    #4a1570 0px,
-    #4a1570 3px,
+    #331055 0px,
+    #331055 3px,
     #06020f 3px,
     #06020f 7px
   );
@@ -461,25 +461,27 @@ body {
 
 .emo-xxx {
   position: absolute;
-  font-size: 1.4rem;
-  font-weight: 900;
+  font-size: 0.85rem;
+  font-weight: 700;
   font-style: italic;
-  color: #4a1570;
-  opacity: 0.6;
-  letter-spacing: 0.05em;
-  text-shadow: 0 0 10px rgba(70, 15, 100, 0.5);
-  animation: emo-pulse 4s ease-in-out infinite;
+  color: #331055;
+  opacity: 0.4;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 6px rgba(45, 10, 65, 0.3);
+  animation: emo-pulse 6s ease-in-out infinite;
 }
 
 .emo-xxx-1 {
-  top: -14px;
-  left: 10px;
+  top: -12px;
+  right: 40px;
+  transform: rotate(-8deg);
 }
 
 .emo-xxx-2 {
-  bottom: -14px;
-  right: 10px;
-  animation-delay: 2s;
+  bottom: -12px;
+  left: 40px;
+  transform: rotate(6deg);
+  animation-delay: 3s;
 }
 
 @keyframes emo-pulse {
@@ -495,42 +497,54 @@ body {
 
 .emo-skull {
   position: absolute;
-  width: 32px;
-  height: 38px;
-  background: #5a1a80;
-  opacity: 0.5;
-  filter: drop-shadow(0 0 8px rgba(70, 15, 100, 0.5));
-  clip-path: polygon(
-    20% 0%,
-    80% 0%,
-    100% 15%,
-    100% 50%,
-    90% 60%,
-    82% 72%,
-    78% 85%,
-    72% 100%,
-    58% 88%,
-    50% 100%,
-    42% 88%,
-    28% 100%,
-    22% 85%,
-    18% 72%,
-    10% 60%,
-    0% 50%,
-    0% 15%
-  );
+  width: 34px;
+  height: 42px;
+  opacity: 0.45;
+  filter: drop-shadow(0 0 6px rgba(45, 10, 65, 0.5));
   animation: emo-pulse 5s ease-in-out infinite;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 32px;
+    background:
+      radial-gradient(circle 4px at 35% 52%, #06020f 99%, transparent 100%),
+      radial-gradient(circle 4px at 65% 52%, #06020f 99%, transparent 100%),
+      radial-gradient(ellipse 3px 4px at 50% 72%, #06020f 99%, transparent 100%),
+      #3d1260;
+    border-radius: 17px 17px 10px 10px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    width: 24px;
+    height: 12px;
+    background: repeating-linear-gradient(
+      90deg,
+      #3d1260 0px,
+      #3d1260 3px,
+      #06020f 3px,
+      #06020f 4px
+    );
+    border-radius: 0 0 5px 5px;
+  }
 }
 
 .emo-skull-1 {
-  top: 20%;
-  right: -18px;
+  top: 18%;
+  right: -20px;
   animation-delay: 1s;
 }
 
 .emo-skull-2 {
-  bottom: 20%;
-  left: -18px;
+  bottom: 18%;
+  left: -20px;
   animation-delay: 3s;
 }
 
@@ -557,8 +571,8 @@ body {
   transition: color 0.4s ease, text-shadow 0.4s ease;
 
   .emo-active & {
-    color: #6b1a9e;
-    text-shadow: 0 0 30px rgba(90, 20, 130, 0.4);
+    color: #4a1275;
+    text-shadow: 0 0 30px rgba(55, 12, 85, 0.4);
   }
 }
 
@@ -571,7 +585,7 @@ body {
   transition: color 0.4s ease;
 
   .emo-active & {
-    color: rgba(90, 20, 130, 0.5);
+    color: rgba(55, 12, 85, 0.5);
   }
 }
 
@@ -597,7 +611,7 @@ body {
   transition: color 0.4s ease;
 
   .emo-active & {
-    color: rgba(90, 20, 130, 0.7);
+    color: rgba(55, 12, 85, 0.7);
   }
 }
 
@@ -625,12 +639,12 @@ body {
   }
 
   .emo-active & {
-    background: rgba(90, 20, 130, 0.08);
-    border-color: rgba(90, 20, 130, 0.7);
+    background: rgba(55, 12, 85, 0.08);
+    border-color: rgba(55, 12, 85, 0.7);
 
     &:focus {
-      border-color: #6b1a9e;
-      box-shadow: 0 0 0 3px rgba(90, 20, 130, 0.15);
+      border-color: #4a1275;
+      box-shadow: 0 0 0 3px rgba(55, 12, 85, 0.15);
     }
   }
 
@@ -708,7 +722,7 @@ body {
   }
 
   .emo-active & {
-    background: linear-gradient(135deg, #6b1a9e 0%, #2d0845 100%);
+    background: linear-gradient(135deg, #4a1275 0%, #2d0845 100%);
   }
 }
 
@@ -739,7 +753,7 @@ body {
     opacity: 0;
 
     &:checked + .slider {
-      background: #6b1a9e;
+      background: #4a1275;
     }
 
     &:checked + .slider::before {
@@ -780,8 +794,8 @@ body {
   transition: background 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
 
   .emo-active & {
-    background: rgba(90, 20, 130, 0.06);
-    border-color: rgba(90, 20, 130, 0.25);
+    background: rgba(55, 12, 85, 0.06);
+    border-color: rgba(55, 12, 85, 0.25);
   }
 
   &.result-card-hidden {
@@ -802,8 +816,8 @@ body {
   transition: color 0.4s ease, text-shadow 0.4s ease;
 
   .emo-active & {
-    color: #9955cc;
-    text-shadow: 0 0 30px rgba(100, 30, 140, 0.4);
+    color: #7744aa;
+    text-shadow: 0 0 30px rgba(65, 18, 95, 0.4);
   }
 }
 
@@ -851,7 +865,7 @@ body {
 
     .emo-active & {
       &:hover {
-        color: #6b1a9e;
+        color: #4a1275;
       }
     }
   }

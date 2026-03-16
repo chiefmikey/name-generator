@@ -121,7 +121,7 @@ export default defineComponent({
   white-space: pre;
 
   .emo-active & {
-    color: rgba(90, 20, 130, 0.35);
+    color: rgba(55, 12, 85, 0.35);
   }
 }
 </style>
