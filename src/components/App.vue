@@ -642,6 +642,10 @@ body {
   font-size: 0.7rem;
   font-weight: 500;
   color: #ff4757;
+
+  &.error-text-hidden {
+    visibility: hidden;
+  }
 }
 
 .styled-select {

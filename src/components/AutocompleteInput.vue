@@ -21,9 +21,9 @@
       </div>
     </div>
     <span
-      v-if="error"
       class="error-text"
-    >{{ error }}</span>
+      :class="{ 'error-text-hidden': !error }"
+    >{{ error || '&nbsp;' }}</span>
   </div>
 </template>
 
