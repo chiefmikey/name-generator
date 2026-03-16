@@ -24,10 +24,10 @@
             x
           </div>
           <div class="emo-star emo-star-1">
-            *
+            &lt;/3
           </div>
           <div class="emo-star emo-star-2">
-            *
+            &lt;/3
           </div>
         </div>
       </transition>
@@ -72,26 +72,25 @@
           <span :class="{ active: emo }">Emo Mode</span>
         </div>
 
-        <transition name="result-fade">
+        <div
+          class="result-card"
+          :class="{ 'result-card-hidden': !hasResult }"
+        >
           <div
-            v-if="hasResult"
-            class="result-card"
+            class="result-text"
+            :style="{ fontSize: resultFontSize }"
           >
-            <div
-              class="result-text"
-              :style="{ fontSize: resultFontSize }"
-            >
-              {{ displayResult }}
-            </div>
-            <button
-              type="button"
-              class="copy-btn"
-              @click="copyResult"
-            >
-              {{ copied ? 'Copied!' : 'Copy' }}
-            </button>
+            {{ displayResult || '&nbsp;' }}
           </div>
-        </transition>
+          <button
+            type="button"
+            class="copy-btn"
+            :disabled="!hasResult"
+            @click="copyResult"
+          >
+            {{ copied ? 'Copied!' : 'Copy' }}
+          </button>
+        </div>
 
         <footer class="footer">
           made by
@@ -426,14 +425,12 @@ body {
   position: absolute;
   left: -15%;
   width: 130%;
-  height: 20px;
-  background: repeating-linear-gradient(
-    90deg,
-    #e040fb 0px,
-    #e040fb 8px,
-    #1a0015 8px,
-    #1a0015 16px
-  );
+  height: 22px;
+  background: repeating-conic-gradient(
+      #e040fb 0% 25%,
+      #1a0015 0% 50%
+    )
+    0 0 / 11px 11px;
   border-radius: 3px;
   opacity: 0.5;
 }
@@ -770,11 +767,16 @@ body {
   background: rgba(0, 212, 170, 0.06);
   border: 1px solid rgba(0, 212, 170, 0.2);
   border-radius: 0.75rem;
-  transition: background 0.4s ease, border-color 0.4s ease;
+  transition: background 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
 
   .emo-active & {
     background: rgba(224, 64, 251, 0.06);
     border-color: rgba(224, 64, 251, 0.25);
+  }
+
+  &.result-card-hidden {
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
@@ -792,6 +794,7 @@ body {
 }
 
 .copy-btn {
+  min-width: 5.5rem;
   margin-top: 0.75rem;
   padding: 0.4rem 1rem;
   font-family: inherit;
@@ -804,28 +807,17 @@ body {
   border-radius: 0.5rem;
   transition: background 0.2s, color 0.2s;
 
-  &:hover {
+  &:hover:not(:disabled) {
     color: #fff;
     background: rgba(255, 255, 255, 0.12);
   }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0;
+  }
 }
 
-.result-fade-enter-active {
-  transition: all 0.4s ease-out;
-}
-
-.result-fade-leave-active {
-  transition: all 0.2s ease-in;
-}
-
-.result-fade-enter-from {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.result-fade-leave-to {
-  opacity: 0;
-}
 
 .footer {
   font-size: 0.75rem;
