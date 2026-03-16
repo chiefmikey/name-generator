@@ -23,12 +23,10 @@
           <div class="emo-x emo-x-4">
             x
           </div>
-          <div class="emo-star emo-star-1">
-            &lt;/3
-          </div>
-          <div class="emo-star emo-star-2">
-            &lt;/3
-          </div>
+          <div class="emo-star emo-star-1" />
+          <div class="emo-star emo-star-2" />
+          <div class="emo-heart emo-heart-1" />
+          <div class="emo-heart emo-heart-2" />
         </div>
       </transition>
       <div class="card">
@@ -494,22 +492,34 @@ body {
 
 .emo-star {
   position: absolute;
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: #ff69b4;
-  opacity: 0.35;
-  text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+  width: 28px;
+  height: 28px;
+  background: #ff69b4;
+  opacity: 0.45;
+  filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.6));
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
   animation: emo-star-spin 12s linear infinite;
 }
 
 .emo-star-1 {
   top: 15%;
-  right: -20px;
+  right: -18px;
 }
 
 .emo-star-2 {
   bottom: 15%;
-  left: -20px;
+  left: -18px;
   animation-direction: reverse;
   animation-delay: 2s;
 }
@@ -522,6 +532,50 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.emo-heart {
+  position: absolute;
+  width: 20px;
+  height: 18px;
+  opacity: 0.4;
+  filter: drop-shadow(0 0 6px rgba(224, 64, 251, 0.5));
+  animation: emo-x-pulse 5s ease-in-out infinite;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 12px;
+    height: 14px;
+    background: #e040fb;
+    border-radius: 10px 10px 0 0;
+  }
+
+  &::before {
+    left: 0;
+    transform: rotate(-45deg);
+    transform-origin: 100% 100%;
+  }
+
+  &::after {
+    right: 0;
+    transform: rotate(45deg);
+    transform-origin: 0 100%;
+  }
+}
+
+.emo-heart-1 {
+  top: 50%;
+  right: -22px;
+  animation-delay: 1.5s;
+}
+
+.emo-heart-2 {
+  bottom: 50%;
+  left: -22px;
+  animation-delay: 3.5s;
 }
 
 .emo-appear-enter-active {
