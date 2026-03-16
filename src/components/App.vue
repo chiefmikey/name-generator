@@ -775,6 +775,10 @@ body {
 }
 
 .result-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.75rem;
   font-weight: 800;
   color: #00ffc8;
   white-space: nowrap;
