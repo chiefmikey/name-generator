@@ -1,70 +1,107 @@
 <template>
-  <div class="page">
-    <div class="card">
-      <h1 class="title">NAME GENERATOR</h1>
-      <p class="subtitle">
-        Generate your ultimate social media identity
-      </p>
-
-      <div class="form-area">
-        <ChooseBirthday v-model="birthday" />
-        <ChooseAnimal
-          v-model="animal"
-          :error="animalError"
-        />
-        <ChooseFruit
-          v-model="fruit"
-          :error="fruitError"
-        />
-      </div>
-
-      <button
-        type="button"
-        class="generate-btn"
-        :disabled="!isReady"
-        @click="generate"
-      >
-        {{ generating ? 'Generating...' : 'Generate My Name' }}
-      </button>
-
-      <div class="emo-toggle">
-        <span :class="{ active: !emo }">Normal</span>
-        <label class="toggle">
-          <input
-            v-model="emo"
-            type="checkbox"
-          />
-          <span class="slider" />
-        </label>
-        <span :class="{ active: emo }">Emo Mode</span>
-      </div>
-
-      <transition name="result-fade">
+  <div
+    class="page"
+    :class="{ 'emo-active': emo }"
+  >
+    <div class="card-wrapper">
+      <transition name="emo-appear">
         <div
-          v-if="hasResult"
-          class="result-card"
+          v-if="emo"
+          class="emo-decor"
         >
-          <div class="result-text">
-            {{ displayResult }}
+          <div class="emo-bar emo-bar-1" />
+          <div class="emo-bar emo-bar-2" />
+          <div class="emo-x emo-x-1">
+            x
           </div>
-          <button
-            type="button"
-            class="copy-btn"
-            @click="copyResult"
-          >
-            {{ copied ? 'Copied!' : 'Copy' }}
-          </button>
+          <div class="emo-x emo-x-2">
+            x
+          </div>
+          <div class="emo-x emo-x-3">
+            x
+          </div>
+          <div class="emo-x emo-x-4">
+            x
+          </div>
+          <div class="emo-star emo-star-1">
+            *
+          </div>
+          <div class="emo-star emo-star-2">
+            *
+          </div>
         </div>
       </transition>
+      <div class="card">
+        <h1 class="title">
+          NAME GENERATOR
+        </h1>
+        <p class="subtitle">
+          Generate your ultimate social media identity
+        </p>
 
-      <footer class="footer">
-        made by
-        <a
-          href="https://github.com/chiefmikey"
-          target="_blank"
-          rel="noopener noreferrer"
-        >chief mikey</a>
-      </footer>
+        <div class="form-area">
+          <ChooseBirthday v-model="birthday" />
+          <ChooseAnimal
+            v-model="animal"
+            :error="animalError"
+          />
+          <ChooseFruit
+            v-model="fruit"
+            :error="fruitError"
+          />
+        </div>
+
+        <button
+          type="button"
+          class="generate-btn"
+          :disabled="!isReady"
+          @click="generate"
+        >
+          {{ generating ? 'Generating...' : 'Generate My Name' }}
+        </button>
+
+        <div class="emo-toggle">
+          <span :class="{ active: !emo }">Normal</span>
+          <label class="toggle">
+            <input
+              v-model="emo"
+              type="checkbox"
+            />
+            <span class="slider" />
+          </label>
+          <span :class="{ active: emo }">Emo Mode</span>
+        </div>
+
+        <transition name="result-fade">
+          <div
+            v-if="hasResult"
+            class="result-card"
+          >
+            <div
+              class="result-text"
+              :style="{ fontSize: resultFontSize }"
+            >
+              {{ displayResult }}
+            </div>
+            <button
+              type="button"
+              class="copy-btn"
+              @click="copyResult"
+            >
+              {{ copied ? 'Copied!' : 'Copy' }}
+            </button>
+          </div>
+        </transition>
+
+        <footer class="footer">
+          made by
+          <a
+            href="https://github.com/chiefmikey"
+            target="_blank"
+            rel="noopener noreferrer"
+          >chief mikey</a>
+        </footer>
+      </div>
     </div>
   </div>
 </template>
@@ -80,6 +117,30 @@ import fruits from '../data/fruits.json';
 import ChooseAnimal from './ChooseAnimal.vue';
 import ChooseBirthday from './ChooseBirthday.vue';
 import ChooseFruit from './ChooseFruit.vue';
+
+const emoFormats = [
+  (e, p, n) => `_xXx_${e}_${p}_${n}_xXx_`,
+  (e, p, n) => `x_${e}_${p}_${n}_x`,
+  (e, p) => `~*${e}_${p}*~`,
+  (e, p) => `*~${e}_${p}~*`,
+  (e, p, n) => `xX_${e}_${p}${n}_Xx`,
+  (e, p, n) => `-x-${e}_${p}_${n}-x-`,
+  (e, p) => `_-_${e}_${p}_-_`,
+  (e, p, n) => `..${e}_${p}_${n}..`,
+  (e, p, n) => `xx_${e}_${p}_${n}_xx`,
+  (e, p) => `${e}_${p}_</3`,
+  (e, p, n) => `~${e}_${p}_${n}~`,
+  (e, p) => `._${e}_${p}_.`,
+  (e, p, n) => `rawr_${e}_${p}_${n}`,
+  (e, p) => `o0o_${e}_${p}_o0o`,
+  (e, p, n) => `xo_${e}_${p}_${n}_xo`,
+  (e, p, n) => `--${e}_${p}_${n}--`,
+  (e, p) => `${e}_x_${p}_x3`,
+];
+
+const emoNums = [
+  '666', '13', '333', '999', '616', '143', '831', '69', '420',
+];
 
 export default defineComponent({
   name: 'App',
@@ -134,6 +195,19 @@ export default defineComponent({
 
     displayResult() {
       return this.emo ? this.emoResult : this.mainResult;
+    },
+
+    resultFontSize() {
+      const len = this.displayResult.length;
+      const maxSize = 1.35;
+      const minSize = 0.7;
+      const longThreshold = 42;
+      const shortThreshold = 18;
+      if (len <= shortThreshold) return `${maxSize}rem`;
+      if (len >= longThreshold) return `${minSize}rem`;
+      const scale =
+        (len - shortThreshold) / (longThreshold - shortThreshold);
+      return `${(maxSize - scale * (maxSize - minSize)).toFixed(3)}rem`;
     },
   },
 
@@ -214,9 +288,11 @@ export default defineComponent({
         const emoEmotion = this.pickRandom(emoEmotions);
         const petName = this.getPetName(this.animal);
         const sugar = this.getSugar(this.fruit);
+        const emoFormat = this.pickRandom(emoFormats);
+        const emoNum = this.pickRandom(emoNums);
 
         this.mainResult = `${emotion}_${petName}_${sugar}`;
-        this.emoResult = `_xXx_${emoEmotion}_${petName}_666_xXx_`;
+        this.emoResult = emoFormat(emoEmotion, petName, emoNum);
 
         localStorage.setItem(
           cacheKey,
@@ -259,17 +335,46 @@ body {
 }
 
 .page {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   padding: 1rem;
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      #0a0a0a 0%,
+      #1a0015 30%,
+      #0d0011 60%,
+      #050005 100%
+    );
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    z-index: 0;
+  }
+
+  &.emo-active::before {
+    opacity: 1;
+  }
+}
+
+.card-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
 }
 
 .card {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  max-width: 480px;
   padding: 2.5rem 2rem;
   background: rgba(15, 15, 35, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -278,6 +383,162 @@ body {
     0 25px 50px rgba(0, 0, 0, 0.5),
     0 0 100px rgba(100, 60, 255, 0.08);
   backdrop-filter: blur(20px);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease,
+    background 0.4s ease;
+
+  .emo-active & {
+    background: rgba(10, 5, 15, 0.92);
+    border-color: rgba(224, 64, 251, 0.3);
+    box-shadow:
+      0 25px 50px rgba(0, 0, 0, 0.7),
+      0 0 60px rgba(224, 64, 251, 0.15),
+      0 0 120px rgba(224, 64, 251, 0.05);
+    animation: emo-border-pulse 3s ease-in-out infinite;
+  }
+}
+
+@keyframes emo-border-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 25px 50px rgba(0, 0, 0, 0.7),
+      0 0 60px rgba(224, 64, 251, 0.15),
+      0 0 120px rgba(224, 64, 251, 0.05);
+  }
+
+  50% {
+    box-shadow:
+      0 25px 50px rgba(0, 0, 0, 0.7),
+      0 0 80px rgba(224, 64, 251, 0.3),
+      0 0 160px rgba(224, 64, 251, 0.1);
+  }
+}
+
+// Emo decorative elements (behind the card)
+.emo-decor {
+  position: absolute;
+  inset: -30px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.emo-bar {
+  position: absolute;
+  left: -15%;
+  width: 130%;
+  height: 20px;
+  background: repeating-linear-gradient(
+    90deg,
+    #e040fb 0px,
+    #e040fb 8px,
+    #1a0015 8px,
+    #1a0015 16px
+  );
+  border-radius: 3px;
+  opacity: 0.5;
+}
+
+.emo-bar-1 {
+  top: 35%;
+  transform: rotate(28deg);
+}
+
+.emo-bar-2 {
+  bottom: 35%;
+  transform: rotate(-28deg);
+}
+
+.emo-x {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: 900;
+  font-style: italic;
+  color: #e040fb;
+  opacity: 0.5;
+  text-shadow: 0 0 15px rgba(224, 64, 251, 0.6);
+  animation: emo-x-pulse 4s ease-in-out infinite;
+}
+
+.emo-x-1 {
+  top: -8px;
+  left: -8px;
+}
+
+.emo-x-2 {
+  top: -8px;
+  right: -8px;
+  animation-delay: 1s;
+}
+
+.emo-x-3 {
+  bottom: -8px;
+  left: -8px;
+  animation-delay: 2s;
+}
+
+.emo-x-4 {
+  bottom: -8px;
+  right: -8px;
+  animation-delay: 3s;
+}
+
+@keyframes emo-x-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+.emo-star {
+  position: absolute;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #ff69b4;
+  opacity: 0.35;
+  text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+  animation: emo-star-spin 12s linear infinite;
+}
+
+.emo-star-1 {
+  top: 15%;
+  right: -20px;
+}
+
+.emo-star-2 {
+  bottom: 15%;
+  left: -20px;
+  animation-direction: reverse;
+  animation-delay: 2s;
+}
+
+@keyframes emo-star-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.emo-appear-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.emo-appear-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.emo-appear-enter-from,
+.emo-appear-leave-to {
+  opacity: 0;
+  transform: scale(0.7);
 }
 
 .title {
@@ -286,6 +547,12 @@ body {
   color: #fff;
   text-align: center;
   letter-spacing: 0.15em;
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+
+  .emo-active & {
+    color: #e040fb;
+    text-shadow: 0 0 30px rgba(224, 64, 251, 0.4);
+  }
 }
 
 .subtitle {
@@ -294,6 +561,11 @@ body {
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.45);
   text-align: center;
+  transition: color 0.4s ease;
+
+  .emo-active & {
+    color: rgba(224, 64, 251, 0.5);
+  }
 }
 
 .form-area {
@@ -315,6 +587,11 @@ body {
   color: rgba(255, 255, 255, 0.55);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  transition: color 0.4s ease;
+
+  .emo-active & {
+    color: rgba(224, 64, 251, 0.55);
+  }
 }
 
 .styled-input,
@@ -329,7 +606,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0.625rem;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.4s;
 
   &::placeholder {
     color: rgba(255, 255, 255, 0.25);
@@ -338,6 +615,16 @@ body {
   &:focus {
     border-color: #00d4aa;
     box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.15);
+  }
+
+  .emo-active & {
+    background: rgba(224, 64, 251, 0.04);
+    border-color: rgba(224, 64, 251, 0.15);
+
+    &:focus {
+      border-color: #e040fb;
+      box-shadow: 0 0 0 3px rgba(224, 64, 251, 0.15);
+    }
   }
 
   &.input-error {
@@ -393,7 +680,7 @@ body {
   background: linear-gradient(135deg, #00d4aa 0%, #00b4d8 100%);
   border: none;
   border-radius: 0.75rem;
-  transition: opacity 0.2s, transform 0.15s;
+  transition: opacity 0.2s, transform 0.15s, background 0.4s;
 
   &:hover:not(:disabled) {
     transform: translateY(-1px);
@@ -407,6 +694,10 @@ body {
   &:disabled {
     cursor: not-allowed;
     opacity: 0.35;
+  }
+
+  .emo-active & {
+    background: linear-gradient(135deg, #e040fb 0%, #9c27b0 100%);
   }
 }
 
@@ -475,14 +766,25 @@ body {
   background: rgba(0, 212, 170, 0.06);
   border: 1px solid rgba(0, 212, 170, 0.2);
   border-radius: 0.75rem;
+  transition: background 0.4s ease, border-color 0.4s ease;
+
+  .emo-active & {
+    background: rgba(224, 64, 251, 0.06);
+    border-color: rgba(224, 64, 251, 0.25);
+  }
 }
 
 .result-text {
-  font-size: 1.35rem;
   font-weight: 800;
   color: #00ffc8;
-  word-break: break-all;
+  white-space: nowrap;
   text-shadow: 0 0 30px rgba(0, 255, 200, 0.3);
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+
+  .emo-active & {
+    color: #ff69b4;
+    text-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+  }
 }
 
 .copy-btn {
@@ -525,6 +827,7 @@ body {
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.25);
   text-align: center;
+  transition: color 0.4s ease;
 
   a {
     color: rgba(255, 255, 255, 0.45);
@@ -533,6 +836,12 @@ body {
 
     &:hover {
       color: #00d4aa;
+    }
+
+    .emo-active & {
+      &:hover {
+        color: #e040fb;
+      }
     }
   }
 }
