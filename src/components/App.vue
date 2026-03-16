@@ -198,7 +198,28 @@ export default defineComponent({
     },
   },
 
+  watch: {
+    birthday() {
+      this.resetResult();
+    },
+    animal() {
+      this.resetResult();
+    },
+    fruit() {
+      this.resetResult();
+    },
+  },
+
   methods: {
+    resetResult() {
+      if (this.hasResult) {
+        this.mainResult = '';
+        this.emoResult = '';
+        this.emo = false;
+        this.copied = false;
+      }
+    },
+
     depluralize(word) {
       if (word.endsWith('ies') && word.length > 4) {
         return [word.slice(0, -3) + 'y'];
