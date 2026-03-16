@@ -722,7 +722,12 @@ body {
   border: 1.5px solid rgba(255, 255, 255, 0.7);
   border-radius: 0.625rem;
   outline: none;
+  caret-color: #00d4aa;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.4s;
+
+  &::selection {
+    background: transparent;
+  }
 
   &::placeholder {
     color: rgba(255, 255, 255, 0.35);
@@ -736,6 +741,7 @@ body {
   .emo-active & {
     background: rgba(55, 12, 85, 0.08);
     border-color: rgba(100, 40, 150, 0.5);
+    caret-color: #7744aa;
 
     &:focus {
       border-color: #7744aa;
@@ -1051,7 +1057,7 @@ body {
   .styled-input,
   .styled-select {
     height: 2.5rem;
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 
   .generate-btn {
