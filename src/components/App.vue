@@ -424,7 +424,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
   -webkit-font-smoothing: antialiased;
-  touch-action: manipulation;
+  touch-action: pan-y;
 }
 
 body {
@@ -440,9 +440,9 @@ body {
   justify-content: center;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: 2rem 1.75rem;
+  padding: 2.5rem 2.5rem;
   overflow-x: hidden;
-  touch-action: manipulation;
+  touch-action: pan-y;
   overflow-y: auto;
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
 
