@@ -24,7 +24,7 @@
           NAME GENERATOR
         </h1>
         <p class="subtitle">
-          Your new identity starts here
+          Something wonderful is about to happen
         </p>
 
         <div class="form-area">
@@ -771,6 +771,8 @@ body {
   margin-top: 0.25rem;
   margin-bottom: 1rem;
   font-size: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.45);
   text-align: center;
   user-select: none;
@@ -811,8 +813,8 @@ body {
 .styled-input,
 .styled-select {
   width: 100%;
-  height: 2.25rem;
-  padding: 0 0.75rem;
+  height: 2.75rem;
+  padding: 0 0.875rem;
   font-family: inherit;
   font-size: 1rem;
   color: #fff;
@@ -901,10 +903,10 @@ body {
 .generate-btn {
   display: block;
   width: 100%;
-  height: 2.75rem;
+  height: 3.25rem;
   margin-bottom: 1rem;
   font-family: inherit;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 800;
   color: #fff;
   letter-spacing: 0.12em;
@@ -1046,7 +1048,7 @@ body {
 
 .result-card {
   position: relative;
-  padding: 1rem 0.75rem;
+  padding: 1.25rem 1rem;
   margin-bottom: 1rem;
   overflow: visible;
   text-align: center;
@@ -1119,6 +1121,7 @@ body {
 }
 
 .footer {
+  margin-top: 1.25rem;
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.25);
   text-align: center;
@@ -1182,8 +1185,8 @@ body {
 
   .styled-input,
   .styled-select {
-    height: 2.75rem;
-    padding: 0 0.875rem;
+    height: 3rem;
+    padding: 0 1rem;
     font-size: 0.95rem;
   }
 
@@ -1192,7 +1195,7 @@ body {
   }
 
   .generate-btn {
-    height: 3.5rem;
+    height: 3.75rem;
     margin-bottom: 1.25rem;
     font-size: 1.1rem;
   }
