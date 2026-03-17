@@ -264,7 +264,7 @@ export default defineComponent({
     resultFontSize() {
       const len = this.displayResult.length;
       const maxSize = 1.35;
-      const minSize = 0.7;
+      const minSize = 0.55;
       const longThreshold = 42;
       const shortThreshold = 18;
       if (len <= shortThreshold) return `${maxSize}rem`;
@@ -439,7 +439,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: 2.5rem 2.5rem;
+  padding: 2rem 1rem;
   overflow-x: hidden;
   touch-action: pan-y;
   overflow-y: auto;
@@ -470,7 +470,7 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 480px;
+  max-width: 320px;
 }
 
 .card {
@@ -1036,6 +1036,7 @@ body {
   position: relative;
   padding: 1rem 0.75rem;
   margin-bottom: 0.5rem;
+  overflow: visible;
   text-align: center;
   background: rgba(0, 212, 170, 0.06);
   border: 1px solid rgba(0, 212, 170, 0.2);
@@ -1132,6 +1133,10 @@ body {
 @media (min-width: 520px) {
   .page {
     padding: 1rem;
+  }
+
+  .card-wrapper {
+    max-width: 480px;
   }
 
   .card {
