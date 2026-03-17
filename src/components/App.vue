@@ -753,17 +753,59 @@ body {
   text-align: center;
   letter-spacing: 0.08em;
   user-select: none;
-  background: linear-gradient(135deg, #00ffc8 0%, #00b4d8 50%, #00d4aa 100%);
+  background: linear-gradient(
+    90deg,
+    #00d4aa 0%,
+    #00ffc8 20%,
+    #00b4d8 40%,
+    #00ffc8 60%,
+    #00d4aa 80%,
+    #00ffc8 100%
+  );
+  background-size: 300% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  transition: background 0.4s ease, filter 0.4s ease;
+  animation: title-sheen 4s ease-in-out infinite;
 
   .emo-active & {
-    background: linear-gradient(135deg, #7744aa 0%, #4a1275 50%, #8855bb 100%);
+    background: linear-gradient(
+      90deg,
+      #4a1275 0%,
+      #8855bb 20%,
+      #6633aa 40%,
+      #9966cc 60%,
+      #4a1275 80%,
+      #8855bb 100%
+    );
+    background-size: 300% 100%;
     background-clip: text;
     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 20px rgba(80, 30, 120, 0.4));
+    animation: title-sheen-emo 4s ease-in-out infinite;
+  }
+}
+
+@keyframes title-sheen {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes title-sheen-emo {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
   }
 }
 
@@ -926,15 +968,17 @@ body {
   animation: btn-shimmer 3s ease-in-out infinite;
 
   &:hover:not(:disabled) {
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
     box-shadow:
-      0 6px 20px rgba(0, 212, 170, 0.4),
-      0 0 40px rgba(0, 180, 216, 0.15);
+      0 8px 25px rgba(0, 212, 170, 0.5),
+      0 0 50px rgba(0, 180, 216, 0.2),
+      0 0 80px rgba(0, 212, 170, 0.1);
   }
 
   &:active:not(:disabled) {
-    transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(0, 212, 170, 0.2);
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 10px rgba(0, 212, 170, 0.3);
+    transition: transform 0.1s, box-shadow 0.1s;
   }
 
   &:disabled {
@@ -959,9 +1003,11 @@ body {
     animation: btn-shimmer-emo 3s ease-in-out infinite;
 
     &:hover:not(:disabled) {
+      transform: translateY(-3px) scale(1.02);
       box-shadow:
-        0 6px 20px rgba(55, 12, 85, 0.5),
-        0 0 40px rgba(55, 12, 85, 0.2);
+        0 8px 25px rgba(55, 12, 85, 0.6),
+        0 0 50px rgba(55, 12, 85, 0.25),
+        0 0 80px rgba(55, 12, 85, 0.1);
     }
   }
 }
@@ -1055,11 +1101,16 @@ body {
   background: rgba(0, 212, 170, 0.06);
   border: 1px solid rgba(0, 212, 170, 0.2);
   border-radius: 0.75rem;
-  transition: background 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
+  box-shadow: 0 0 20px rgba(0, 212, 170, 0.08);
+  transition: background 0.4s ease, border-color 0.4s ease, opacity 0.4s ease,
+    box-shadow 0.4s ease;
+  animation: result-card-glow 2.5s ease-in-out infinite;
 
   .emo-active & {
     background: rgba(80, 30, 120, 0.06);
     border-color: rgba(100, 40, 150, 0.25);
+    box-shadow: 0 0 20px rgba(80, 30, 120, 0.1);
+    animation: result-card-glow-emo 3s ease-in-out infinite;
   }
 
   &.result-card-hidden {
@@ -1076,12 +1127,76 @@ body {
   font-weight: 800;
   color: #00ffc8;
   white-space: nowrap;
-  text-shadow: 0 0 30px rgba(0, 255, 200, 0.3);
+  text-shadow:
+    0 0 10px rgba(0, 255, 200, 0.6),
+    0 0 30px rgba(0, 255, 200, 0.3),
+    0 0 60px rgba(0, 212, 170, 0.15);
+  animation: result-glow 2.5s ease-in-out infinite;
   transition: color 0.4s ease, text-shadow 0.4s ease;
 
   .emo-active & {
     color: #9966cc;
-    text-shadow: 0 0 30px rgba(100, 50, 160, 0.4);
+    text-shadow:
+      0 0 10px rgba(120, 60, 180, 0.5),
+      0 0 30px rgba(100, 50, 160, 0.3),
+      0 0 60px rgba(80, 30, 120, 0.15);
+    animation: result-glow-emo 3s ease-in-out infinite;
+  }
+}
+
+@keyframes result-glow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 10px rgba(0, 255, 200, 0.6),
+      0 0 30px rgba(0, 255, 200, 0.3),
+      0 0 60px rgba(0, 212, 170, 0.15);
+  }
+
+  50% {
+    text-shadow:
+      0 0 15px rgba(0, 255, 200, 0.8),
+      0 0 40px rgba(0, 255, 200, 0.5),
+      0 0 80px rgba(0, 212, 170, 0.25);
+  }
+}
+
+@keyframes result-glow-emo {
+  0%,
+  100% {
+    text-shadow:
+      0 0 10px rgba(120, 60, 180, 0.5),
+      0 0 30px rgba(100, 50, 160, 0.3),
+      0 0 60px rgba(80, 30, 120, 0.15);
+  }
+
+  50% {
+    text-shadow:
+      0 0 15px rgba(120, 60, 180, 0.7),
+      0 0 40px rgba(100, 50, 160, 0.5),
+      0 0 80px rgba(80, 30, 120, 0.25);
+  }
+}
+
+@keyframes result-card-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.08);
+  }
+
+  50% {
+    box-shadow: 0 0 35px rgba(0, 212, 170, 0.18);
+  }
+}
+
+@keyframes result-card-glow-emo {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(80, 30, 120, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 35px rgba(80, 30, 120, 0.2);
   }
 }
 
