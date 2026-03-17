@@ -49,6 +49,30 @@
           >
             {{ buttonText }}
           </button>
+        </div>
+
+        <div class="result-area">
+          <div
+            class="result-card"
+            :class="{
+              'result-card-hidden': !hasResult,
+              'result-card-clickable': hasResult,
+            }"
+            @click="hasResult && copyResult()"
+          >
+            <transition name="toast-fade">
+              <span
+                v-if="copied"
+                class="copy-toast"
+              >Copied!</span>
+            </transition>
+            <div
+              class="result-text"
+              :style="{ fontSize: resultFontSize }"
+            >
+              {{ displayResult || '&nbsp;' }}
+            </div>
+          </div>
 
           <div class="emo-toggle">
             <span :class="{ active: !emo }">Normal</span>
@@ -61,28 +85,6 @@
             </label>
             <span :class="{ active: emo }">Emo Mode</span>
           </div>
-        </div>
-
-        <div class="result-area">
-          <div
-            class="result-card"
-            :class="{ 'result-card-hidden': !hasResult }"
-          >
-            <div
-              class="result-text"
-              :style="{ fontSize: resultFontSize }"
-            >
-              {{ displayResult || '&nbsp;' }}
-            </div>
-          </div>
-          <button
-            type="button"
-            class="copy-btn"
-            :class="{ 'copy-btn-hidden': !hasResult }"
-            @click="copyResult"
-          >
-            {{ copied ? 'Copied!' : 'Copy' }}
-          </button>
         </div>
 
         <footer class="footer">
@@ -1042,7 +1044,7 @@ body {
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0;
+  margin-top: 1rem;
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.35);
   user-select: none;
@@ -1120,6 +1122,67 @@ body {
     opacity: 0;
     pointer-events: none;
   }
+
+  &.result-card-clickable {
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.3s ease, background 0.4s ease,
+      border-color 0.4s ease, opacity 0.4s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(0, 212, 170, 0.2);
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
+      transition: transform 0.08s;
+    }
+  }
+
+  .emo-active &.result-card-clickable {
+    &:hover {
+      box-shadow: 0 0 40px rgba(80, 30, 120, 0.2);
+    }
+  }
+}
+
+.copy-toast {
+  position: absolute;
+  top: -1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #00ffc8;
+  user-select: none;
+  background: rgba(0, 212, 170, 0.15);
+  border: 1px solid rgba(0, 212, 170, 0.25);
+  border-radius: 0.4rem;
+
+  .emo-active & {
+    color: #9966cc;
+    background: rgba(80, 30, 120, 0.2);
+    border-color: rgba(100, 40, 150, 0.3);
+  }
+}
+
+.toast-fade-enter-active {
+  transition: all 0.25s ease-out;
+}
+
+.toast-fade-leave-active {
+  transition: all 0.4s ease-in;
+}
+
+.toast-fade-enter-from {
+  opacity: 0;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.toast-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-8px);
 }
 
 .result-text {
@@ -1203,40 +1266,6 @@ body {
   }
 }
 
-.copy-btn {
-  display: block;
-  min-width: 5.5rem;
-  margin: 0 auto;
-  padding: 0.45rem 1.25rem;
-  font-family: inherit;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
-  cursor: pointer;
-  user-select: none;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.5rem;
-  transition: background 0.2s, color 0.2s, opacity 0.4s;
-
-  &:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.12);
-  }
-
-  .emo-active & {
-    border-color: rgba(100, 40, 150, 0.25);
-
-    &:hover {
-      background: rgba(80, 30, 120, 0.15);
-    }
-  }
-
-  &.copy-btn-hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-}
 
 .footer {
   margin-top: 1.25rem;
