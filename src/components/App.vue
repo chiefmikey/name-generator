@@ -267,10 +267,10 @@ export default defineComponent({
 
     resultFontSize() {
       const len = this.displayResult.length;
-      const maxSize = 1.35;
-      const minSize = 0.55;
-      const longThreshold = 42;
-      const shortThreshold = 18;
+      const maxSize = 1.5;
+      const minSize = 0.6;
+      const longThreshold = 50;
+      const shortThreshold = 28;
       if (len <= shortThreshold) return `${maxSize}rem`;
       if (len >= longThreshold) return `${minSize}rem`;
       const scale =
