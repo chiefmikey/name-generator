@@ -237,7 +237,7 @@ export default defineComponent({
     buttonText() {
       if (this.generating) return 'Transforming...';
       if (this.hasResult && this.postMessage) return this.postMessage;
-      return 'Generate My Name';
+      return "Let's Go";
     },
 
     isReady() {
