@@ -748,10 +748,10 @@ body {
 }
 
 .title {
-  font-size: 1.35rem;
+  font-size: 1.6rem;
   font-weight: 900;
   text-align: center;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   user-select: none;
   background: linear-gradient(
     90deg,
@@ -828,14 +828,14 @@ body {
 .form-area {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
 }
 
 .input-label {
@@ -855,8 +855,8 @@ body {
 .styled-input,
 .styled-select {
   width: 100%;
-  height: 2.75rem;
-  padding: 0 0.875rem;
+  height: 3.25rem;
+  padding: 0 1rem;
   font-family: inherit;
   font-size: 1rem;
   color: #fff;
@@ -945,10 +945,10 @@ body {
 .generate-btn {
   display: block;
   width: 100%;
-  height: 3.25rem;
+  height: 3.5rem;
   margin-bottom: 1rem;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 800;
   color: #fff;
   letter-spacing: 0.12em;
@@ -961,24 +961,27 @@ body {
   border: none;
   border-radius: 0.75rem;
   box-shadow:
-    0 4px 15px rgba(0, 212, 170, 0.3),
-    0 0 30px rgba(0, 180, 216, 0.1);
+    0 4px 20px rgba(0, 212, 170, 0.4),
+    0 0 40px rgba(0, 180, 216, 0.15),
+    0 0 80px rgba(0, 212, 170, 0.08);
   transition: transform 0.2s, box-shadow 0.3s, background 0.4s,
     background-size 0.4s;
-  animation: btn-shimmer 3s ease-in-out infinite;
+  animation: btn-shimmer 2s ease-in-out infinite;
 
   &:hover:not(:disabled) {
-    transform: translateY(-3px) scale(1.02);
+    transform: translateY(-4px) scale(1.03);
     box-shadow:
-      0 8px 25px rgba(0, 212, 170, 0.5),
-      0 0 50px rgba(0, 180, 216, 0.2),
-      0 0 80px rgba(0, 212, 170, 0.1);
+      0 10px 30px rgba(0, 212, 170, 0.6),
+      0 0 60px rgba(0, 180, 216, 0.25),
+      0 0 100px rgba(0, 212, 170, 0.12);
   }
 
   &:active:not(:disabled) {
-    transform: translateY(0) scale(0.98);
-    box-shadow: 0 2px 10px rgba(0, 212, 170, 0.3);
-    transition: transform 0.1s, box-shadow 0.1s;
+    transform: translateY(1px) scale(0.96);
+    box-shadow:
+      0 2px 10px rgba(0, 212, 170, 0.4),
+      inset 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.08s, box-shadow 0.08s;
   }
 
   &:disabled {
@@ -1000,7 +1003,7 @@ body {
     box-shadow:
       0 4px 15px rgba(55, 12, 85, 0.4),
       0 0 30px rgba(55, 12, 85, 0.15);
-    animation: btn-shimmer-emo 3s ease-in-out infinite;
+    animation: btn-shimmer-emo 2s ease-in-out infinite;
 
     &:hover:not(:disabled) {
       transform: translateY(-3px) scale(1.02);

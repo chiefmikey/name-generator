@@ -117,8 +117,8 @@ export default defineComponent({
   left: 0;
   display: flex;
   align-items: center;
-  height: 2.75rem;
-  padding: 0 0.875rem;
+  height: 3.25rem;
+  padding: 0 1rem;
   overflow: hidden;
   pointer-events: none;
 }
