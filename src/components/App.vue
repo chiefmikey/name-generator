@@ -832,7 +832,7 @@ body {
   }
 
   .emo-active & {
-    background: rgba(55, 12, 85, 0.08);
+    background-color: rgba(55, 12, 85, 0.08);
     border-color: rgba(100, 40, 150, 0.5);
     caret-color: #7744aa;
 
