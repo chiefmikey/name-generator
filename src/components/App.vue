@@ -1099,7 +1099,7 @@ body {
 
 .result-card {
   position: relative;
-  padding: 1.25rem 1rem;
+  padding: 1.25rem 1.5rem;
   margin-bottom: 1rem;
   overflow: visible;
   text-align: center;
@@ -1148,7 +1148,7 @@ body {
 
 .copy-toast {
   position: absolute;
-  top: -1.75rem;
+  top: -2.25rem;
   left: 50%;
   transform: translateX(-50%);
   padding: 0.25rem 0.75rem;
