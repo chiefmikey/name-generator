@@ -39,47 +39,51 @@
           />
         </div>
 
-        <button
-          type="button"
-          class="generate-btn"
-          :disabled="!isReady || hasResult"
-          :class="{ 'generate-btn-done': hasResult }"
-          @click="generate"
-        >
-          {{ buttonText }}
-        </button>
-
-        <div class="emo-toggle">
-          <span :class="{ active: !emo }">Normal</span>
-          <label class="toggle">
-            <input
-              v-model="emo"
-              type="checkbox"
-            />
-            <span class="slider" />
-          </label>
-          <span :class="{ active: emo }">Emo Mode</span>
-        </div>
-
-        <div
-          class="result-card"
-          :class="{ 'result-card-hidden': !hasResult }"
-        >
-          <div
-            class="result-text"
-            :style="{ fontSize: resultFontSize }"
+        <div class="action-area">
+          <button
+            type="button"
+            class="generate-btn"
+            :disabled="!isReady || hasResult"
+            :class="{ 'generate-btn-done': hasResult }"
+            @click="generate"
           >
-            {{ displayResult || '&nbsp;' }}
+            {{ buttonText }}
+          </button>
+
+          <div class="emo-toggle">
+            <span :class="{ active: !emo }">Normal</span>
+            <label class="toggle">
+              <input
+                v-model="emo"
+                type="checkbox"
+              />
+              <span class="slider" />
+            </label>
+            <span :class="{ active: emo }">Emo Mode</span>
           </div>
         </div>
-        <button
-          type="button"
-          class="copy-btn"
-          :class="{ 'copy-btn-hidden': !hasResult }"
-          @click="copyResult"
-        >
-          {{ copied ? 'Copied!' : 'Copy' }}
-        </button>
+
+        <div class="result-area">
+          <div
+            class="result-card"
+            :class="{ 'result-card-hidden': !hasResult }"
+          >
+            <div
+              class="result-text"
+              :style="{ fontSize: resultFontSize }"
+            >
+              {{ displayResult || '&nbsp;' }}
+            </div>
+          </div>
+          <button
+            type="button"
+            class="copy-btn"
+            :class="{ 'copy-btn-hidden': !hasResult }"
+            @click="copyResult"
+          >
+            {{ copied ? 'Copied!' : 'Copy' }}
+          </button>
+        </div>
 
         <footer class="footer">
           made by
@@ -886,11 +890,19 @@ body {
   }
 }
 
+.action-area {
+  padding: 0.75rem 0;
+}
+
+.result-area {
+  padding: 0.5rem 0;
+}
+
 .generate-btn {
   display: block;
   width: 100%;
   height: 2.75rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   font-family: inherit;
   font-size: 0.85rem;
   font-weight: 800;
@@ -979,7 +991,7 @@ body {
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0;
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.35);
   user-select: none;
@@ -1035,7 +1047,7 @@ body {
 .result-card {
   position: relative;
   padding: 1rem 0.75rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   overflow: visible;
   text-align: center;
   background: rgba(0, 212, 170, 0.06);
@@ -1074,7 +1086,7 @@ body {
 .copy-btn {
   display: block;
   min-width: 5.5rem;
-  margin: 0 auto 0.75rem;
+  margin: 0 auto;
   padding: 0.45rem 1.25rem;
   font-family: inherit;
   font-size: 0.75rem;
