@@ -24,7 +24,7 @@
           NAME GENERATOR
         </h1>
         <p class="subtitle">
-          Something wonderful is about to happen
+          {{ emo ? 'Something dark stirs within' : 'Something wonderful is about to happen' }}
         </p>
 
         <div class="form-area">
