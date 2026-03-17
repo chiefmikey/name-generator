@@ -33,4 +33,4 @@ is required to conquer the pursuit of coolness.
 > hit up **Name Generator**."
 
 The biggest change of your life is just a few clicks away. Visit
-<http://localhost:8080> to get started lol.
+<https://name.hullowurld.com> to get started.
