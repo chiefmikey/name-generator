@@ -817,7 +817,7 @@ body {
   border-radius: 0.625rem;
   outline: none;
   caret-color: #00d4aa;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.4s;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.4s;
 
   user-select: none;
   -webkit-user-select: none;
