@@ -216,6 +216,7 @@ export default defineComponent({
       generating: false,
       copied: false,
       postMessage: '',
+      emoPostMessage: '',
     };
   },
 
@@ -236,7 +237,9 @@ export default defineComponent({
 
     buttonText() {
       if (this.generating) return 'Transforming...';
-      if (this.hasResult && this.postMessage) return this.postMessage;
+      if (this.hasResult) {
+        return this.emo ? this.emoPostMessage : this.postMessage;
+      }
       return "Let's Go";
     },
 
@@ -282,13 +285,6 @@ export default defineComponent({
     fruit() {
       this.resetResult();
     },
-    emo(isEmo) {
-      if (this.hasResult) {
-        this.postMessage = this.pickRandom(
-          isEmo ? emoPostMessages : postGenerateMessages,
-        );
-      }
-    },
   },
 
   methods: {
@@ -299,6 +295,7 @@ export default defineComponent({
         this.emo = false;
         this.copied = false;
         this.postMessage = '';
+        this.emoPostMessage = '';
       }
     },
 
@@ -369,6 +366,7 @@ export default defineComponent({
         this.mainResult = data.mainResult;
         this.emoResult = data.emoResult;
         this.postMessage = this.pickRandom(postGenerateMessages);
+        this.emoPostMessage = this.pickRandom(emoPostMessages);
         return;
       }
 
@@ -385,6 +383,7 @@ export default defineComponent({
         this.mainResult = `${emotion}_${petName}_${sugar}`;
         this.emoResult = emoFormat(emoEmotion, petName, emoNum);
         this.postMessage = this.pickRandom(postGenerateMessages);
+        this.emoPostMessage = this.pickRandom(emoPostMessages);
 
         localStorage.setItem(
           cacheKey,
