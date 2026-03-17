@@ -481,7 +481,7 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: 1.25rem 1rem;
+  padding: 1.5rem 1rem;
   background: rgba(15, 15, 35, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1rem;
@@ -891,18 +891,18 @@ body {
 }
 
 .action-area {
-  padding: 0.75rem 0;
+  padding: 1.25rem 0 0.5rem;
 }
 
 .result-area {
-  padding: 0.5rem 0;
+  padding: 0.75rem 0 0;
 }
 
 .generate-btn {
   display: block;
   width: 100%;
   height: 2.75rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-family: inherit;
   font-size: 0.85rem;
   font-weight: 800;
@@ -1047,7 +1047,7 @@ body {
 .result-card {
   position: relative;
   padding: 1rem 0.75rem;
-  margin-bottom: 0.35rem;
+  margin-bottom: 1rem;
   overflow: visible;
   text-align: center;
   background: rgba(0, 212, 170, 0.06);
