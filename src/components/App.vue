@@ -1265,72 +1265,77 @@ body {
 
 @media (min-width: 520px) {
   .page {
-    padding: 1rem;
+    padding: 2rem;
   }
 
   .card-wrapper {
-    max-width: 480px;
+    max-width: 420px;
   }
 
   .card {
-    padding: 2.5rem 2rem;
+    padding: 2rem 1.75rem;
     border-radius: 1.25rem;
   }
 
   .title {
-    font-size: 2rem;
-    letter-spacing: 0.15em;
+    font-size: 2.25rem;
+    letter-spacing: 0.12em;
   }
 
   .subtitle {
-    margin-top: 0.5rem;
-    margin-bottom: 2rem;
+    margin-top: 0.35rem;
+    margin-bottom: 1.25rem;
     font-size: 0.85rem;
   }
 
   .form-area {
-    gap: 1.25rem;
-    margin-bottom: 1.75rem;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
   }
 
   .input-group {
-    gap: 0.4rem;
+    gap: 0.2rem;
   }
 
   .input-label {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .styled-input,
   .styled-select {
-    height: 3rem;
-    padding: 0 1rem;
-    font-size: 0.95rem;
+    height: 3.5rem;
+    padding: 0 1.125rem;
   }
 
   .error-text {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .generate-btn {
-    height: 3.75rem;
-    margin-bottom: 1.25rem;
-    font-size: 1.1rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
   }
 
   .emo-toggle {
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
     font-size: 0.8rem;
   }
 
   .result-card {
-    padding: 1.5rem;
-    margin-bottom: 0.75rem;
+    padding: 1.5rem 1.25rem;
+    margin-bottom: 1rem;
   }
 
-  .copy-btn {
-    margin-bottom: 1.5rem;
+  .action-area {
+    padding: 1.5rem 0 0.75rem;
+  }
+
+  .result-area {
+    padding: 1rem 0 0;
+  }
+
+  .footer {
+    margin-top: 1.5rem;
   }
 }
 </style>

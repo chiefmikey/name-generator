@@ -125,14 +125,14 @@ export default defineComponent({
 
 .ac-spacer {
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: transparent;
   white-space: pre;
 }
 
 .ac-hint {
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.2);
   white-space: pre;
 
@@ -143,8 +143,8 @@ export default defineComponent({
 
 @media (min-width: 520px) {
   .ac-ghost {
-    height: 2.75rem;
-    padding: 0 0.875rem;
+    height: 3.5rem;
+    padding: 0 1.125rem;
   }
 }
 </style>
