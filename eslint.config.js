@@ -32,6 +32,7 @@ export default [
       ],
       'import-x/no-relative-parent-imports': 'off',
       'jest/require-hook': 'off',
+      'max-lines-per-function': 'off',
     },
   },
 ];
