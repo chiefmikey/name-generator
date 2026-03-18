@@ -55,7 +55,7 @@
           <div
             class="result-card"
             :class="{
-              'result-card-hidden': !hasResult,
+              'result-card-inactive': !hasResult,
               'result-card-clickable': hasResult,
             }"
             @click="hasResult && copyResult()"
@@ -270,8 +270,8 @@ export default defineComponent({
     resultFontSize() {
       const len = this.displayResult.length;
       const maxSize = 1.5;
-      const minSize = 0.6;
-      const longThreshold = 50;
+      const minSize = 0.4;
+      const longThreshold = 65;
       const shortThreshold = 28;
       if (len <= shortThreshold) return `${maxSize}rem`;
       if (len >= longThreshold) return `${minSize}rem`;
@@ -1118,8 +1118,8 @@ body {
     animation: result-card-glow-emo 3s ease-in-out infinite;
   }
 
-  &.result-card-hidden {
-    opacity: 0;
+  &.result-card-inactive {
+    opacity: 0.35;
     pointer-events: none;
   }
 
@@ -1190,6 +1190,8 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 1.75rem;
+  max-width: 100%;
+  overflow: hidden;
   font-weight: 800;
   color: #00ffc8;
   white-space: nowrap;

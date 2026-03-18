@@ -326,16 +326,16 @@ describe('App component', () => {
     const size = Number.parseFloat(wrapper.vm.resultFontSize);
 
     expect(size).toBeLessThan(1.5);
-    expect(size).toBeGreaterThanOrEqual(0.6);
+    expect(size).toBeGreaterThanOrEqual(0.4);
   });
 
   it('resultFontSize returns min for very long names', async () => {
     const wrapper = mountApp();
     await wrapper.setData({
-      mainResult: 'a'.repeat(60),
+      mainResult: 'a'.repeat(70),
     });
 
-    expect(wrapper.vm.resultFontSize).toBe('0.6rem');
+    expect(wrapper.vm.resultFontSize).toBe('0.4rem');
   });
 
   it('resolveAnimal handles plurals', () => {
@@ -407,20 +407,20 @@ describe('App component', () => {
     vi.useRealTimers();
   });
 
-  it('result card is hidden when no result', () => {
+  it('result card is inactive when no result', () => {
     const wrapper = mountApp();
 
-    expect(wrapper.find('.result-card-hidden').exists()).toBe(true);
+    expect(wrapper.find('.result-card-inactive').exists()).toBe(true);
   });
 
-  it('result card is visible when result exists', async () => {
+  it('result card is active when result exists', async () => {
     const wrapper = mountApp();
     await wrapper.setData({
       emoResult: 'x_test_x',
       mainResult: 'test_name',
     });
 
-    expect(wrapper.find('.result-card-hidden').exists()).toBe(false);
+    expect(wrapper.find('.result-card-inactive').exists()).toBe(false);
   });
 
   it('result card is clickable when result exists', async () => {
