@@ -25,3 +25,4 @@ jobs:
         with:
           name: dist
           path: public
+          retention-days: 7
