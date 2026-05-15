@@ -20,7 +20,7 @@
     "@babel/preset-env": "^7.29.5",
     "@mikey-pro/eslint-config-vue": "^10.2.0",
     "@types/webpack": "^5.28.5",
-    "@vitejs/plugin-vue": "^6.0.6",
+    "@vitejs/plugin-vue": "^6.0.7",
     "@vitest/coverage-v8": "^4.1.6",
     "@vue/babel-plugin-jsx": "^2.0.1",
     "@vue/compiler-sfc": "^3.5.28",
