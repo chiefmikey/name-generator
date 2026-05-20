@@ -33,7 +33,7 @@
     "mikey-pro": "^10.3.3",
     "prettier": "^3.8.3",
     "sass": "^1.99.0",
-    "sass-loader": "^16.0.8",
+    "sass-loader": "^17.0.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.6",
     "vue-loader": "^17.4.2",
