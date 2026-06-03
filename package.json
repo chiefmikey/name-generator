@@ -28,7 +28,7 @@
     "babel-loader": "^10.1.1",
     "css-loader": "^7.1.4",
     "eslint": "^10.4.0",
-    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-import-resolver-typescript": "^4.4.5",
     "happy-dom": "^20.9.0",
     "mikey-pro": "^10.3.3",
     "prettier": "^3.8.3",
