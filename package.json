@@ -15,7 +15,7 @@
     "vue": "^3.5.34"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.0",
+    "@babel/core": "^8.0.0",
     "@babel/plugin-transform-runtime": "^7.29.0",
     "@babel/preset-env": "^7.29.5",
     "@mikey-pro/eslint-config-vue": "^10.3.3",
