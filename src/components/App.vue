@@ -101,6 +101,7 @@
 </template>
 
 <script>
+import { capture } from '@mikl/analytics/vanilla';
 import { defineComponent } from 'vue';
 
 import animals from '../data/animals.json';
@@ -364,6 +365,7 @@ export default defineComponent({
     },
 
     generate() {
+      capture('name_generated');
       const cacheKey = this.getCacheKey();
       const cached = localStorage.getItem(cacheKey);
 
