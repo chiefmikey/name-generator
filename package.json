@@ -12,6 +12,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@mikl/analytics": "git+ssh://git@git.wolfe.tools:2222/mikl/analytics.git",
     "vue": "^3.5.33"
   },
   "devDependencies": {
@@ -52,7 +53,9 @@
   },
   "license": "MIT",
   "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
-  "browserslist": ["defaults"],
+  "browserslist": [
+    "defaults"
+  ],
   "prettier": "mikey-pro/prettier",
   "stylelint": {
     "extends": "mikey-pro/stylelint"
