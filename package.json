@@ -23,7 +23,7 @@
     "@types/webpack": "^5.28.5",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vitest/coverage-v8": "^4.1.7",
-    "@vue/babel-plugin-jsx": "^2.0.1",
+    "@vue/babel-plugin-jsx": "^3.0.0",
     "@vue/compiler-sfc": "^3.5.28",
     "@vue/test-utils": "^2.4.10",
     "babel-loader": "^10.1.1",
