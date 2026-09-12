@@ -33,7 +33,7 @@ const webpackConfig = {
       },
       {
         exclude: /node_modules/u,
-        test: /\.(js|jsx|ts|tsx)$/u,
+        test: /\.(js|jsx)$/u,
         use: [
           {
             loader: 'babel-loader',
@@ -47,6 +47,36 @@ const webpackConfig = {
                     targets: {
                       node: 'current',
                     },
+                  },
+                ],
+              ],
+            },
+          },
+        ],
+      },
+      {
+        exclude: /node_modules/u,
+        test: /\.(ts|tsx)$/u,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: [['@vue/babel-plugin-jsx']],
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    modules: false,
+                    targets: {
+                      node: 'current',
+                    },
+                  },
+                ],
+                [
+                  '@babel/preset-typescript',
+                  {
+                    allExtensions: true,
+                    isTSX: true,
                   },
                 ],
               ],

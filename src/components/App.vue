@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import { capture } from '@mikl/analytics/vanilla';
+import { capture } from '../lib/analytics';
 import { defineComponent } from 'vue';
 
 import animals from '../data/animals.json';

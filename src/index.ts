@@ -1,7 +1,7 @@
-import { capturePageView, initAnalytics } from '@mikl/analytics/vanilla';
 import { createApp } from 'vue';
 
 import App from './components/App.vue';
+import { capturePageView, initAnalytics } from './lib/analytics';
 
 initAnalytics();
 capturePageView();
