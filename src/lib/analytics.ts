@@ -20,10 +20,9 @@ export function initAnalytics(): PostHog {
 
 function getInstance(): PostHog {
   if (posthogInstance === null) {
-    initAnalytics();
+    return initAnalytics();
   }
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  return posthogInstance!;
+  return posthogInstance;
 }
 
 export function capture(event: string, properties?: Properties, options?: CaptureOptions): void {
