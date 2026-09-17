@@ -22,7 +22,7 @@
     "@babel/preset-typescript": "^8.0.1",
     "@mikey-pro/eslint-config-vue": "^10.3.3",
     "@types/webpack": "^5.28.5",
-    "@vitejs/plugin-vue": "^6.0.7",
+    "@vitejs/plugin-vue": "^6.0.9",
     "@vitest/coverage-v8": "^5.0.0",
     "@vue/babel-plugin-jsx": "^2.0.1",
     "@vue/compiler-sfc": "^3.5.28",
