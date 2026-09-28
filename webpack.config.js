@@ -72,13 +72,7 @@ const webpackConfig = {
                     },
                   },
                 ],
-                [
-                  '@babel/preset-typescript',
-                  {
-                    allExtensions: true,
-                    isTSX: true,
-                  },
-                ],
+                '@babel/preset-typescript',
               ],
             },
           },
