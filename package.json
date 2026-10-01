@@ -9,7 +9,8 @@
     "dev": "webpack serve --mode development --open",
     "fix": "eslint --fix '**/*'",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "prepare": "husky"
   },
   "dependencies": {
     "posthog-js": "^1.434.15",
@@ -32,6 +33,8 @@
     "eslint": "^10.11.0",
     "eslint-import-resolver-typescript": "^4.4.4",
     "happy-dom": "^20.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
     "mikey-pro": "^10.3.3",
     "prettier": "^3.9.9",
     "sass": "^1.105.0",
@@ -55,11 +58,16 @@
   },
   "license": "MIT",
   "author": "Mikl Wolfe <wolfe@mikl.io> (https://mikl.io)",
-  "browserslist": [
-    "defaults"
-  ],
+  "browserslist": ["defaults"],
   "prettier": "mikey-pro/prettier",
   "stylelint": {
     "extends": "mikey-pro/stylelint"
+  },
+  "lint-staged": {
+    "{src,tests}/**/*.{js,ts,vue}": [
+      "eslint --fix --cache --no-error-on-unmatched-pattern",
+      "prettier --write"
+    ],
+    "*.{js,ts,vue,mjs,cjs,json,md,yml,yaml}": ["prettier --write"]
   }
 }

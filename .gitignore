@@ -6,3 +6,7 @@ dist
 *.png
 CLAUDE.md
 docs/
+
+# Linter caches
+.eslintcache
+.stylelintcache

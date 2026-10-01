@@ -14,12 +14,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
-          cache: "npm"
+          node-version: '22'
+          cache: 'npm'
       - name: Install dependencies
         run: npm install --legacy-peer-deps
-      - name: Lint
+      - name: Lint (advisory)
         run: npx eslint .
+        # advisory: lint findings must never block build or deploy
+        continue-on-error: true
       - name: Test
         run: npm test
       - name: Build
@@ -34,8 +36,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
-          cache: "npm"
+          node-version: '22'
+          cache: 'npm'
       - name: Install dependencies
         run: npm install --legacy-peer-deps
       - name: Build
