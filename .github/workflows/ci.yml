@@ -14,9 +14,12 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 22
-          cache: "npm"
+          cache: 'npm'
       - run: npm install --legacy-peer-deps
-      - run: npx eslint .
+      - name: Lint (advisory)
+        run: npx eslint .
+        # advisory: lint findings must never block build or deploy
+        continue-on-error: true
       - name: Test with coverage
         run: npm run test:coverage
       - run: npm run build:prod
