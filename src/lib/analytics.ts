@@ -1,13 +1,11 @@
 import posthogJs, { type CaptureOptions, type PostHog, type Properties } from 'posthog-js';
 
-// Kill switch. The self-hosted PostHog backend was frozen on
-// 2026-09-28. While false, init and capture are no-ops: no SDK load, no network
-// requests, no console errors. Flip to true only after POSTHOG_HOST/KEY point
-// at a live backend.
-const ANALYTICS_ENABLED = false as boolean;
-// Intentionally empty: the backend address is private and must not be committed.
-const POSTHOG_HOST = '';
-const POSTHOG_KEY = '';
+// Public event-intake host (capture-only proxy) and publishable project key.
+// Both are safe to commit; the private PostHog dashboard host must never
+// appear in this public repo (never set ui_host).
+const ANALYTICS_ENABLED = true as boolean;
+const POSTHOG_HOST = 'https://e.wolfe.works';
+const POSTHOG_KEY = 'phc_qwmTbmBYEBvZfpK8L8wZNmMsknSu2itJDpQjJ5FfndE4';
 
 let posthogInstance: PostHog | null = null;
 
