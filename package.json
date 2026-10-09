@@ -12,7 +12,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "posthog-js": "^1.436.1",
+    "posthog-js": "^1.438.1",
     "vue": "^3.5.43"
   },
   "devDependencies": {
