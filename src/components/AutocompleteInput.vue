@@ -24,7 +24,8 @@
     <span
       class="error-text"
       :class="{ 'error-text-hidden': !showError }"
-    >{{ showError ? error : '&nbsp;' }}</span>
+    >{{ showError ? error : '&nbsp;' }}</span
+    >
   </div>
 </template>
 
@@ -70,18 +71,32 @@ export default defineComponent({
       return this.touched && this.error;
     },
 
+    match() {
+      const raw = this.modelValue;
+      const query = raw.toLowerCase();
+      if (!query.trim()) return null;
+      // Lowercasing can change string length (e.g. "İ"); a hint sliced by
+      // query length would then misalign with the text the user typed.
+      if (query.length !== raw.length) return null;
+      return (
+        this.options.find(
+          (opt) =>
+            typeof opt === 'string' &&
+            query.length <= opt.length &&
+            opt.startsWith(query) &&
+            opt.slice(0, query.length) === query,
+        ) || null
+      );
+    },
+
     hint() {
-      const query = this.modelValue.toLowerCase();
-      if (!query.trim()) return '';
-      const match = this.options.find((opt) => opt.startsWith(query));
-      if (!match || match === query) return '';
-      return match.slice(query.length);
+      const { match } = this;
+      if (!match || match === this.modelValue.toLowerCase()) return '';
+      return match.slice(this.modelValue.length);
     },
 
     fullMatch() {
-      const query = this.modelValue.toLowerCase();
-      if (!query.trim()) return null;
-      return this.options.find((opt) => opt.startsWith(query)) || null;
+      return this.match;
     },
   },
 
@@ -93,6 +108,9 @@ export default defineComponent({
 
     onKeydown(e) {
       if (!this.hint) return;
+      if (e.isComposing || e.shiftKey || e.ctrlKey || e.metaKey || e.altKey) {
+        return;
+      }
       if (e.key === 'Tab' || e.key === 'ArrowRight') {
         const input = this.$refs.input;
         if (input.selectionStart === this.modelValue.length) {
