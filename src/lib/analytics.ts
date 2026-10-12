@@ -42,14 +42,14 @@ function stripQueryAndHash(value: unknown): unknown {
 }
 
 function sanitizeProperties(properties: Properties): Properties {
-  return Object.fromEntries(
+  return Object.fromEntries<unknown>(
     Object.entries(properties)
       .filter(([key]) => !REFERRER_PROPERTIES.has(key))
       .map(([key, value]): [string, unknown] => [
         key,
         URL_PROPERTIES.has(key) ? stripQueryAndHash(value) : value,
       ]),
-  ) as Properties;
+  );
 }
 
 export function sanitizeEvent(
