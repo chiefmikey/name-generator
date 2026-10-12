@@ -144,6 +144,55 @@ describe('AutocompleteInput', () => {
     expect(wrapper.emitted('update:modelValue')).toBeFalsy();
   });
 
+  it('does not accept hint with Shift+Tab', async () => {
+    const wrapper = mountAc({ modelValue: 'ap' });
+    const input = wrapper.find('input');
+    input.element.selectionStart = 2;
+    await input.trigger('keydown', { key: 'Tab', shiftKey: true });
+
+    expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+  });
+
+  it.each(['ctrlKey', 'metaKey', 'altKey'])(
+    'does not accept hint with %s held',
+    async (modifier) => {
+      const wrapper = mountAc({ modelValue: 'ap' });
+      const input = wrapper.find('input');
+      input.element.selectionStart = 2;
+      await input.trigger('keydown', { key: 'ArrowRight', [modifier]: true });
+
+      expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+    },
+  );
+
+  it('does not accept hint while IME composing', async () => {
+    const wrapper = mountAc({ modelValue: 'ap' });
+    const input = wrapper.find('input');
+    input.element.selectionStart = 2;
+    await input.trigger('keydown', { isComposing: true, key: 'Tab' });
+
+    expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+  });
+
+  it('does not produce a garbled hint when lowercasing changes length', () => {
+    const wrapper = mountAc({
+      modelValue: 'İ',
+      options: ['i̇stanbul', 'apple'],
+    });
+
+    expect(wrapper.vm.hint).toBe('');
+    expect(wrapper.vm.fullMatch).toBeNull();
+  });
+
+  it('ignores non-string options', () => {
+    const wrapper = mountAc({
+      modelValue: 'ap',
+      options: [null, 42, undefined, { a: 1 }, 'apple'],
+    });
+
+    expect(wrapper.vm.hint).toBe('ple');
+  });
+
   it('does not show error until touched', () => {
     const wrapper = mountAc({ error: 'Not valid' });
 

@@ -394,7 +394,7 @@ describe('App component', () => {
       emoResult: 'x_test_x',
       mainResult: 'test_name_123',
     });
-    wrapper.vm.copyResult();
+    await wrapper.vm.copyResult();
 
     expect(writeText).toHaveBeenCalledWith('test_name_123');
     expect(wrapper.vm.copied).toBe(true);
