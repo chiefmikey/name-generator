@@ -12,97 +12,100 @@ const scss = [
   { loader: 'sass-loader', options: { api: 'modern-compiler' } },
 ];
 
-const webpackConfig = {
-  devServer: {
-    historyApiFallback: true,
-    hot: true,
-    port: 8080,
-    static: path.resolve(import.meta.dirname, 'public'),
-  },
-  devtool: 'source-map',
-  entry: SRC_DIR,
-  experiments: {
-    topLevelAwait: true,
-  },
-  mode: 'development',
-  module: {
-    rules: [
-      {
-        loader: 'vue-loader',
-        test: /\.vue$/u,
-      },
-      {
-        exclude: /node_modules/u,
-        test: /\.(js|jsx)$/u,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              plugins: [['@vue/babel-plugin-jsx']],
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {
-                    modules: false,
-                    targets: {
-                      node: 'current',
+const createConfig = (_environment, argv = {}) => {
+  const mode = argv.mode ?? 'development';
+  return {
+    devServer: {
+      historyApiFallback: true,
+      hot: true,
+      port: 8080,
+      static: path.resolve(import.meta.dirname, 'public'),
+    },
+    devtool: mode === 'production' ? false : 'source-map',
+    entry: SRC_DIR,
+    experiments: {
+      topLevelAwait: true,
+    },
+    mode,
+    module: {
+      rules: [
+        {
+          loader: 'vue-loader',
+          test: /\.vue$/u,
+        },
+        {
+          exclude: /node_modules/u,
+          test: /\.(js|jsx)$/u,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                plugins: [['@vue/babel-plugin-jsx']],
+                presets: [
+                  [
+                    '@babel/preset-env',
+                    {
+                      modules: false,
+                      targets: {
+                        node: 'current',
+                      },
                     },
-                  },
+                  ],
                 ],
-              ],
+              },
             },
-          },
-        ],
-      },
-      {
-        exclude: /node_modules/u,
-        test: /\.(ts|tsx)$/u,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              plugins: [['@vue/babel-plugin-jsx']],
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {
-                    modules: false,
-                    targets: {
-                      node: 'current',
+          ],
+        },
+        {
+          exclude: /node_modules/u,
+          test: /\.(ts|tsx)$/u,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                plugins: [['@vue/babel-plugin-jsx']],
+                presets: [
+                  [
+                    '@babel/preset-env',
+                    {
+                      modules: false,
+                      targets: {
+                        node: 'current',
+                      },
                     },
-                  },
+                  ],
+                  '@babel/preset-typescript',
                 ],
-                '@babel/preset-typescript',
-              ],
+              },
             },
-          },
-        ],
-      },
-      {
-        test: /\.s[ac]ss$/u,
-        use: scss,
-      },
-      {
-        test: /\.(png|ttf|jp(e*)g|svg)$/u,
-        type: 'asset/resource',
-      },
+          ],
+        },
+        {
+          test: /\.s[ac]ss$/u,
+          use: scss,
+        },
+        {
+          test: /\.(png|ttf|jp(e*)g|svg)$/u,
+          type: 'asset/resource',
+        },
+      ],
+    },
+    output: {
+      filename: 'bundle.js',
+      path: DIST_DIR,
+    },
+    plugins: [
+      new VueLoaderPlugin(),
+      new webpack.DefinePlugin({
+        __VUE_OPTIONS_API__: true,
+        __VUE_PROD_DEVTOOLS__: false,
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false),
+      }),
     ],
-  },
-  output: {
-    filename: 'bundle.js',
-    path: DIST_DIR,
-  },
-  plugins: [
-    new VueLoaderPlugin(),
-    new webpack.DefinePlugin({
-      __VUE_OPTIONS_API__: true,
-      __VUE_PROD_DEVTOOLS__: false,
-      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false),
-    }),
-  ],
-  resolve: {
-    extensions: ['*', '.ts', '.tsx', '.js', '.jsx', '.vue', '.json', '...'],
-  },
+    resolve: {
+      extensions: ['*', '.ts', '.tsx', '.js', '.jsx', '.vue', '.json', '...'],
+    },
+  };
 };
 
-export default webpackConfig;
+export default createConfig;
