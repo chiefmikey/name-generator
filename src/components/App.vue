@@ -20,11 +20,13 @@
         </div>
       </transition>
       <div class="card">
-        <h1 class="title">
-          NAME GENERATOR
-        </h1>
+        <h1 class="title">NAME GENERATOR</h1>
         <p class="subtitle">
-          {{ emo ? 'Something dark stirs within' : 'Something wonderful is about to happen' }}
+          {{
+            emo
+              ? 'Something dark stirs within'
+              : 'Something wonderful is about to happen'
+          }}
         </p>
 
         <div class="form-area">
@@ -43,7 +45,7 @@
           <button
             type="button"
             class="generate-btn"
-            :disabled="!isReady || hasResult"
+            :disabled="!isReady || hasResult || generating"
             :class="{ 'generate-btn-done': hasResult }"
             @click="generate"
           >
@@ -64,7 +66,8 @@
               <span
                 v-if="copied"
                 class="copy-toast"
-              >Copied!</span>
+              >Copied!</span
+              >
             </transition>
             <div
               class="result-text"
@@ -93,7 +96,8 @@
             href="https://github.com/chiefmikey"
             target="_blank"
             rel="noopener noreferrer"
-          >chief mikey</a>
+          >chief mikey</a
+          >
         </footer>
       </div>
     </div>
@@ -133,9 +137,7 @@ const emoFormats = [
   (e, p, n) => `~x~_${e}_${p}_${n}_~x~`,
 ];
 
-const emoNums = [
-  '666', '13', '333', '999', '616', '143', '831', '69', '420',
-];
+const emoNums = ['666', '13', '333', '999', '616', '143', '831', '69', '420'];
 
 const postGenerateMessages = [
   'Enjoy the new you',
@@ -202,6 +204,16 @@ const emoPostMessages = [
   'It hurts so good',
   'Stay broken',
 ];
+
+const maxCacheTextLength = 200;
+
+function isValidCacheText(value) {
+  return (
+    typeof value === 'string' &&
+    value.length > 0 &&
+    value.length <= maxCacheTextLength
+  );
+}
 
 export default defineComponent({
   name: 'App',
@@ -276,8 +288,7 @@ export default defineComponent({
       const shortThreshold = 28;
       if (len <= shortThreshold) return `${maxSize}rem`;
       if (len >= longThreshold) return `${minSize}rem`;
-      const scale =
-        (len - shortThreshold) / (longThreshold - shortThreshold);
+      const scale = (len - shortThreshold) / (longThreshold - shortThreshold);
       return `${(maxSize - scale * (maxSize - minSize)).toFixed(3)}rem`;
     },
   },
@@ -326,18 +337,20 @@ export default defineComponent({
 
     resolveAnimal(value) {
       const key = value.toLowerCase().trim();
-      if (key in animals && key !== 'default') return key;
+      if (Object.hasOwn(animals, key) && key !== 'default') return key;
       for (const candidate of this.depluralize(key)) {
-        if (candidate in animals && candidate !== 'default') return candidate;
+        if (Object.hasOwn(animals, candidate) && candidate !== 'default') {
+          return candidate;
+        }
       }
       return null;
     },
 
     resolveFruit(value) {
       const key = value.toLowerCase().trim();
-      if (key in fruits) return key;
+      if (Object.hasOwn(fruits, key)) return key;
       for (const candidate of this.depluralize(key)) {
-        if (candidate in fruits) return candidate;
+        if (Object.hasOwn(fruits, candidate)) return candidate;
       }
       return null;
     },
@@ -361,52 +374,100 @@ export default defineComponent({
     },
 
     getCacheKey() {
-      return `name-gen:${this.birthday}:${this.animal.toLowerCase()}:${this.fruit.toLowerCase()}`;
+      return `name-gen:${this.birthday}:${this.animal.trim().toLowerCase()}:${this.fruit.trim().toLowerCase()}`;
+    },
+
+    readCache(cacheKey) {
+      let raw = null;
+      try {
+        raw = localStorage.getItem(cacheKey);
+      } catch {
+        return null;
+      }
+      if (!raw) return null;
+
+      try {
+        const data = JSON.parse(raw);
+        if (
+          isValidCacheText(data?.mainResult) &&
+          isValidCacheText(data?.emoResult)
+        ) {
+          return { emoResult: data.emoResult, mainResult: data.mainResult };
+        }
+      } catch {
+        // Malformed JSON falls through to removal below.
+      }
+      this.removeCache(cacheKey);
+      return null;
+    },
+
+    writeCache(cacheKey, value) {
+      try {
+        localStorage.setItem(cacheKey, JSON.stringify(value));
+      } catch {
+        // Cache is best-effort (quota, disabled storage, private mode).
+      }
+    },
+
+    removeCache(cacheKey) {
+      try {
+        localStorage.removeItem(cacheKey);
+      } catch {
+        // Best-effort.
+      }
     },
 
     generate() {
+      if (this.generating) return;
       capture('name_generated');
       const cacheKey = this.getCacheKey();
-      const cached = localStorage.getItem(cacheKey);
+      const cached = this.readCache(cacheKey);
 
       if (cached) {
-        const data = JSON.parse(cached);
-        this.mainResult = data.mainResult;
-        this.emoResult = data.emoResult;
+        this.mainResult = cached.mainResult;
+        this.emoResult = cached.emoResult;
         this.postMessage = this.pickRandom(postGenerateMessages);
         this.emoPostMessage = this.pickRandom(emoPostMessages);
         return;
       }
 
+      const { animal, fruit } = this;
       this.generating = true;
 
       setTimeout(() => {
-        const emotion = this.pickRandom(emotions);
-        const emoEmotion = this.pickRandom(emoEmotions);
-        const petName = this.getPetName(this.animal);
-        const sugar = this.getSugar(this.fruit);
-        const emoFormat = this.pickRandom(emoFormats);
-        const emoNum = this.pickRandom(emoNums);
+        try {
+          const emotion = this.pickRandom(emotions);
+          const emoEmotion = this.pickRandom(emoEmotions);
+          const petName = this.getPetName(animal);
+          const sugar = this.getSugar(fruit);
+          const emoFormat = this.pickRandom(emoFormats);
+          const emoNum = this.pickRandom(emoNums);
 
-        this.mainResult = `${emotion}_${petName}_${sugar}`;
-        this.emoResult = emoFormat(emoEmotion, petName, emoNum);
-        this.postMessage = this.pickRandom(postGenerateMessages);
-        this.emoPostMessage = this.pickRandom(emoPostMessages);
+          const mainResult = `${emotion}_${petName}_${sugar}`;
+          const emoResult = emoFormat(emoEmotion, petName, emoNum);
 
-        localStorage.setItem(
-          cacheKey,
-          JSON.stringify({
-            emoResult: this.emoResult,
-            mainResult: this.mainResult,
-          }),
-        );
+          this.writeCache(cacheKey, { emoResult, mainResult });
 
-        this.generating = false;
+          // Inputs edited mid-generation: cache under the old key, but do not
+          // show a result that belongs to stale inputs.
+          if (this.getCacheKey() === cacheKey) {
+            this.mainResult = mainResult;
+            this.emoResult = emoResult;
+            this.postMessage = this.pickRandom(postGenerateMessages);
+            this.emoPostMessage = this.pickRandom(emoPostMessages);
+          }
+        } finally {
+          this.generating = false;
+        }
       }, 800);
     },
 
-    copyResult() {
-      navigator.clipboard.writeText(this.displayResult);
+    async copyResult() {
+      try {
+        await navigator.clipboard.writeText(this.displayResult);
+      } catch {
+        return;
+      }
       this.copied = true;
       setTimeout(() => {
         this.copied = false;
@@ -428,8 +489,9 @@ export default defineComponent({
 html,
 body {
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, sans-serif;
   -webkit-font-smoothing: antialiased;
   touch-action: pan-y;
 }
@@ -493,7 +555,9 @@ body {
     0 25px 50px rgba(0, 0, 0, 0.5),
     0 0 100px rgba(100, 60, 255, 0.08);
   backdrop-filter: blur(20px);
-  transition: border-color 0.4s ease, box-shadow 0.4s ease,
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
     background 0.4s ease;
 
   &::after {
@@ -702,7 +766,11 @@ body {
     background:
       radial-gradient(circle 4px at 35% 52%, #06020f 99%, transparent 100%),
       radial-gradient(circle 4px at 65% 52%, #06020f 99%, transparent 100%),
-      radial-gradient(ellipse 3px 4px at 50% 72%, #06020f 99%, transparent 100%),
+      radial-gradient(
+        ellipse 3px 4px at 50% 72%,
+        #06020f 99%,
+        transparent 100%
+      ),
       #6b3a9e;
     border-radius: 17px 17px 10px 10px;
   }
@@ -869,7 +937,10 @@ body {
   border-radius: 0.625rem;
   outline: none;
   caret-color: #00d4aa;
-  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.4s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background-color 0.4s;
 
   user-select: none;
   -webkit-user-select: none;
@@ -968,7 +1039,10 @@ body {
     0 4px 20px rgba(0, 212, 170, 0.4),
     0 0 40px rgba(0, 180, 216, 0.15),
     0 0 80px rgba(0, 212, 170, 0.08);
-  transition: transform 0.2s, box-shadow 0.3s, background 0.4s,
+  transition:
+    transform 0.2s,
+    box-shadow 0.3s,
+    background 0.4s,
     background-size 0.4s;
   animation: btn-shimmer 2s ease-in-out infinite;
 
@@ -985,7 +1059,9 @@ body {
     box-shadow:
       0 2px 10px rgba(0, 212, 170, 0.4),
       inset 0 2px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.08s, box-shadow 0.08s;
+    transition:
+      transform 0.08s,
+      box-shadow 0.08s;
   }
 
   &:disabled {
@@ -1053,7 +1129,9 @@ body {
 
   span.active {
     color: #fff;
-    text-shadow: 0 0 0.5px #fff, 0 0 0.5px #fff;
+    text-shadow:
+      0 0 0.5px #fff,
+      0 0 0.5px #fff;
   }
 }
 
@@ -1109,7 +1187,10 @@ body {
   border: 1px solid rgba(0, 212, 170, 0.2);
   border-radius: 0.75rem;
   box-shadow: 0 0 20px rgba(0, 212, 170, 0.08);
-  transition: background 0.4s ease, border-color 0.4s ease, opacity 0.4s ease,
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease,
+    opacity 0.4s ease,
     box-shadow 0.4s ease;
   animation: result-card-glow 2.5s ease-in-out infinite;
 
@@ -1127,8 +1208,12 @@ body {
 
   &.result-card-clickable {
     cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.3s ease, background 0.4s ease,
-      border-color 0.4s ease, opacity 0.4s ease;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.3s ease,
+      background 0.4s ease,
+      border-color 0.4s ease,
+      opacity 0.4s ease;
 
     &:hover {
       transform: translateY(-2px);
@@ -1202,7 +1287,9 @@ body {
     0 0 30px rgba(0, 255, 200, 0.3),
     0 0 60px rgba(0, 212, 170, 0.15);
   animation: result-glow 2.5s ease-in-out infinite;
-  transition: color 0.4s ease, text-shadow 0.4s ease;
+  transition:
+    color 0.4s ease,
+    text-shadow 0.4s ease;
 
   .emo-active & {
     color: #9966cc;
@@ -1269,7 +1356,6 @@ body {
     box-shadow: 0 0 35px rgba(80, 30, 120, 0.2);
   }
 }
-
 
 .footer {
   margin-top: 1.25rem;
