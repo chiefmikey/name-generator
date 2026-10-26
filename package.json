@@ -34,7 +34,7 @@
     "happy-dom": "^21.0.4",
     "mikey-pro": "^10.3.9",
     "prettier": "^3.9.10",
-    "sass": "^1.105.2",
+    "sass": "^1.106.1",
     "sass-loader": "^17.0.1",
     "typescript": "^6.0.3",
     "vite": "^8.3.4",
