@@ -295,19 +295,29 @@ export default defineComponent({
 
   watch: {
     birthday() {
-      this.resetResult();
+      this.resetResult('birthday');
     },
     animal() {
-      this.resetResult();
+      this.resetResult('animal');
     },
     fruit() {
-      this.resetResult();
+      this.resetResult('fruit');
+    },
+    animalError(value) {
+      if (value) capture('input_unrecognized', { field: 'animal' });
+    },
+    fruitError(value) {
+      if (value) capture('input_unrecognized', { field: 'fruit' });
+    },
+    emo(value) {
+      if (this.hasResult) capture('emo_mode_toggled', { enabled: value });
     },
   },
 
   methods: {
-    resetResult() {
+    resetResult(field) {
       if (this.hasResult) {
+        capture('result_reset', { field });
         this.mainResult = '';
         this.emoResult = '';
         this.emo = false;
@@ -419,9 +429,9 @@ export default defineComponent({
 
     generate() {
       if (this.generating) return;
-      capture('name_generated');
       const cacheKey = this.getCacheKey();
       const cached = this.readCache(cacheKey);
+      capture('name_generated', { cache_hit: cached !== null });
 
       if (cached) {
         this.mainResult = cached.mainResult;
@@ -468,6 +478,7 @@ export default defineComponent({
       } catch {
         return;
       }
+      capture('name_copied', { mode: this.emo ? 'emo' : 'normal' });
       this.copied = true;
       setTimeout(() => {
         this.copied = false;
