@@ -59,5 +59,8 @@
   "prettier": "mikey-pro/prettier",
   "stylelint": {
     "extends": "mikey-pro/stylelint"
+  },
+  "overrides": {
+    "handlebars": "4.7.10"
   }
 }
