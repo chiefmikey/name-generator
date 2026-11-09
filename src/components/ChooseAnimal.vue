@@ -4,6 +4,7 @@
     :options="animalNames"
     :error="error"
     label="Favorite Animal"
+    testid="animal-input"
     placeholder="Dog, cat, snake..."
     @update:model-value="$emit('update:modelValue', $event)"
   />

@@ -1,10 +1,17 @@
 <template>
   <div class="input-group">
-    <label class="input-label">Your Birthday</label>
+    <label
+      class="input-label"
+      for="birthday-month"
+    >Your Birthday</label
+    >
     <div class="select-row">
       <select
+        id="birthday-month"
         v-model="month"
         class="styled-select"
+        aria-label="Birthday month"
+        data-testid="birthday-month"
         @change="onMonthChange"
       >
         <option value="">Month</option>
@@ -19,6 +26,8 @@
       <select
         v-model="day"
         class="styled-select"
+        aria-label="Birthday day"
+        data-testid="birthday-day"
         @change="emitValue"
       >
         <option value="">Day</option>

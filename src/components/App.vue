@@ -45,6 +45,7 @@
           <button
             type="button"
             class="generate-btn"
+            data-testid="generate-button"
             :disabled="!isReady || hasResult || generating"
             :class="{ 'generate-btn-done': hasResult }"
             @click="generate"
@@ -56,6 +57,7 @@
         <div class="result-area">
           <div
             class="result-card"
+            data-testid="result-card"
             :class="{
               'result-card-inactive': !hasResult,
               'result-card-clickable': hasResult,
@@ -83,6 +85,8 @@
               <input
                 v-model="emo"
                 type="checkbox"
+                aria-label="Emo Mode"
+                data-testid="emo-toggle"
               />
               <span class="slider" />
             </label>
@@ -262,6 +266,18 @@ export default defineComponent({
       return "Let's Go";
     },
 
+    birthdayChosen() {
+      return this.birthday.length > 0;
+    },
+
+    animalRecognized() {
+      return this.animal.trim().length > 0 && !this.animalError;
+    },
+
+    fruitRecognized() {
+      return this.fruit.trim().length > 0 && !this.fruitError;
+    },
+
     isReady() {
       return (
         this.birthday.length > 0 &&
@@ -302,6 +318,15 @@ export default defineComponent({
     },
     fruit() {
       this.resetResult('fruit');
+    },
+    birthdayChosen(done) {
+      if (done) capture('name_step', { step: 1 });
+    },
+    animalRecognized(done) {
+      if (done) capture('name_step', { step: 2 });
+    },
+    fruitRecognized(done) {
+      if (done) capture('name_step', { step: 3 });
     },
     animalError(value) {
       if (value) capture('input_unrecognized', { field: 'animal' });
@@ -476,6 +501,7 @@ export default defineComponent({
       try {
         await navigator.clipboard.writeText(this.displayResult);
       } catch {
+        capture('name_copy_failed', { mode: this.emo ? 'emo' : 'normal' });
         return;
       }
       capture('name_copied', { mode: this.emo ? 'emo' : 'normal' });

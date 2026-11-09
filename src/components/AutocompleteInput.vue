@@ -1,9 +1,15 @@
 <template>
   <div class="input-group">
-    <label class="input-label">{{ label }}</label>
+    <label
+      class="input-label"
+      :for="inputId"
+    >{{ label }}</label
+    >
     <div class="ac-inline">
       <input
+        :id="inputId"
         ref="input"
+        :data-testid="testid"
         :value="modelValue"
         :class="['styled-input', { 'input-error': showError }]"
         type="text"
@@ -52,6 +58,10 @@ export default defineComponent({
       required: true,
       type: String,
     },
+    testid: {
+      required: true,
+      type: String,
+    },
     placeholder: {
       default: '',
       type: String,
@@ -67,6 +77,10 @@ export default defineComponent({
   },
 
   computed: {
+    inputId() {
+      return `${this.testid}-field`;
+    },
+
     showError() {
       return this.touched && this.error;
     },
