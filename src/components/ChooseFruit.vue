@@ -4,6 +4,7 @@
     :options="fruitNames"
     :error="error"
     label="Pick a Fruit"
+    testid="fruit-input"
     placeholder="Apple, banana, mango..."
     @update:model-value="$emit('update:modelValue', $event)"
   />
