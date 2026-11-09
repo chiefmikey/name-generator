@@ -81,12 +81,14 @@
 
           <div class="emo-toggle">
             <span :class="{ active: !emo }">Normal</span>
-            <label class="toggle">
+            <label
+              class="toggle"
+              data-testid="emo-toggle"
+            >
               <input
                 v-model="emo"
                 type="checkbox"
                 aria-label="Emo Mode"
-                data-testid="emo-toggle"
               />
               <span class="slider" />
             </label>
