@@ -32,7 +32,7 @@
     "eslint": "^10.15.0",
     "eslint-import-resolver-typescript": "^4.4.5",
     "happy-dom": "^21.0.4",
-    "mikey-pro": "^10.3.11",
+    "mikey-pro": "^10.3.12",
     "prettier": "^3.10.1",
     "sass": "^1.108.2",
     "sass-loader": "^17.1.1",
